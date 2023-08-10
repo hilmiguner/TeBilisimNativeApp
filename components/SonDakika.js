@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "100%",
         backgroundColor: AppColors.red300,
-        paddingHorizontal: 8,
-        paddingVertical: 12,
+        paddingHorizontal: 12,
+        paddingVertical: 16,
         alignItems: "center",
     },
     sonText: {
