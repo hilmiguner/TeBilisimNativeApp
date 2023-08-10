@@ -1,15 +1,16 @@
 // React Native Temel Paketler
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
-import SonDakika from "../components/SonDakika";
-import { ScrollView } from "react-native-gesture-handler";
+import BreakingNews from "../components/BreakingNews";
+import SliderNewsTop from "../components/SliderNewsTop";
 
-function MainScreen({ navigation }) {
+function MainScreen() {
   return(
       <View style={styles.rootContainer}>
           <ScrollView>
-            <SonDakika/>
+            <BreakingNews/>
+            <SliderNewsTop/>
             
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}

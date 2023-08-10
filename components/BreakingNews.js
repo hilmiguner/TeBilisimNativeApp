@@ -1,8 +1,10 @@
 // React Native Temel Paketler
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+
+// Statik Değerler
 import AppColors from "../constants/colors";
 
-function SonDakika() {
+function BreakingNews() {
     return(
         <View style={styles.rootContainer}>
             <View>
@@ -14,7 +16,7 @@ function SonDakika() {
     );
 }
 
-export default SonDakika;
+export default BreakingNews;
 
 const styles = StyleSheet.create({
     rootContainer: {
