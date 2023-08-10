@@ -2,12 +2,12 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 
 function MainScreen({ navigation }) {
-    return(
-        <View style={styles.rootContainer}>
-            <Text style={styles.text}>Ana Ekran</Text>
-            <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/>
-        </View>
-    );
+  return(
+      <View style={styles.rootContainer}>
+          <Text style={styles.text}>Ana Ekran</Text>
+          <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/>
+      </View>
+  );
 }
 
 export default MainScreen;

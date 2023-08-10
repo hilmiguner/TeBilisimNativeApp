@@ -16,9 +16,17 @@ import NewsDetailsScreen from './screens/NewsDetailsScreen';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
+const NavigatorHeaderStyle = {
+  elevation: 10,
+  shadowColor: "black",
+  shadowOffset: { width: 0, height: 3 },
+  shadowOpacity: 0.20,
+  shadowRadius: 6,
+};
+
 function DrawerNavigator() {
   return(
-    <Drawer.Navigator>
+    <Drawer.Navigator screenOptions={{ headerStyle: NavigatorHeaderStyle }}>
       <Drawer.Screen name='MainScreen' component={MainScreen}/>
     </Drawer.Navigator>
   );
