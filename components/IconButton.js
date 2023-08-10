@@ -16,7 +16,7 @@ export default IconButton;
 
 const styles = StyleSheet.create({
     rootContainer: {
-        marginRight: 12,
+        marginHorizontal: 12,
     },
     pressed: {
         opacity: 0.7,

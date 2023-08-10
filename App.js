@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainScreen from "./screens/MainScreen";
 import NewsDetailsScreen from './screens/NewsDetailsScreen';
 import IconButton from './components/IconButton';
+import AppColors from './constants/colors';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -28,8 +29,10 @@ const NavigatorHeaderStyle = {
 
 function DrawerNavigator() {
   return(
-    <Drawer.Navigator screenOptions={{ headerStyle: NavigatorHeaderStyle }}>
-      <Drawer.Screen name='MainScreen' component={MainScreen} options={{
+    <Drawer.Navigator>
+      <Drawer.Screen name='MainScreen' component={MainScreen} options={({ navigation }) => ({
+        headerStyle: NavigatorHeaderStyle,
+        headerLeft: (_) => <IconButton icon="menu" size={32} color={AppColors.gray300} onPress={navigation.toggleDrawer}/>,
         headerTitle: (_) =>
           <Image source={require("./assets/images/logo.png")} style={{
             width: 112,
@@ -37,8 +40,8 @@ function DrawerNavigator() {
             resizeMode: 'stretch',
           }}/>,
         headerTitleAlign: "center",
-        headerRight: (_) => <IconButton icon="search" size={32} color="#9DA2AB"/>, 
-      }}/>
+        headerRight: (_) => <IconButton icon="search" size={32} color={AppColors.gray300}/>, 
+      })}/>
     </Drawer.Navigator>
   );
 }
