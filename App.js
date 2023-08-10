@@ -29,7 +29,10 @@ const NavigatorHeaderStyle = {
 
 function DrawerNavigator() {
   return(
-    <Drawer.Navigator>
+    <Drawer.Navigator screenOptions={{
+      drawerActiveBackgroundColor: AppColors.red200,
+      drawerActiveTintColor: AppColors.logo,
+    }}>
       <Drawer.Screen name='MainScreen' component={MainScreen} options={({ navigation }) => ({
         headerStyle: NavigatorHeaderStyle,
         headerLeft: (_) => <IconButton icon="menu" size={32} color={AppColors.gray300} onPress={navigation.toggleDrawer}/>,
