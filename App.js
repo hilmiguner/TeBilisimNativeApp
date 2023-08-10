@@ -2,7 +2,7 @@
 import 'react-native-gesture-handler';
 
 // React Native Temel Paketler
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Image } from "react-native";
 
 // React Navigation Paketleri
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -12,7 +12,11 @@ import { NavigationContainer } from "@react-navigation/native";
 // Oluşturulan Ekranlar
 import MainScreen from "./screens/MainScreen";
 import NewsDetailsScreen from './screens/NewsDetailsScreen';
+
+// Oluşturulan Öğeler
 import IconButton from './components/IconButton';
+
+// Statik Değerler
 import AppColors from './constants/colors';
 
 const Stack = createNativeStackNavigator();
