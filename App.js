@@ -16,6 +16,7 @@ import NewsDetailsScreen from './screens/NewsDetailsScreen';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
+// Header barına gölge vermek için config objesi
 const NavigatorHeaderStyle = {
   elevation: 10,
   shadowColor: "black",
