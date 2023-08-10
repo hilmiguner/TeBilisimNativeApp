@@ -12,6 +12,7 @@ import { NavigationContainer } from "@react-navigation/native";
 // Oluşturulan Ekranlar
 import MainScreen from "./screens/MainScreen";
 import NewsDetailsScreen from './screens/NewsDetailsScreen';
+import IconButton from './components/IconButton';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -36,6 +37,7 @@ function DrawerNavigator() {
             resizeMode: 'stretch',
           }}/>,
         headerTitleAlign: "center",
+        headerRight: (_) => <IconButton icon="search" size={32} color="#9DA2AB"/>, 
       }}/>
     </Drawer.Navigator>
   );
