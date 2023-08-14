@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-teBilisimNativeApp-teBilisimNativeAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-teBilisimNativeApp-teBilisimNativeAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		EB59E86C2A8A5A4100092009 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB59E86B2A8A5A4100092009 /* MaterialIcons.ttf */; };
 		EBE86A0B2A84E25600166CA5 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBE86A0A2A84E25600166CA5 /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-teBilisimNativeApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-teBilisimNativeApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = teBilisimNativeApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-teBilisimNativeApp-teBilisimNativeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teBilisimNativeApp-teBilisimNativeAppTests.release.xcconfig"; path = "Target Support Files/Pods-teBilisimNativeApp-teBilisimNativeAppTests/Pods-teBilisimNativeApp-teBilisimNativeAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		EB59E86B2A8A5A4100092009 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		EBE86A0A2A84E25600166CA5 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -154,6 +156,7 @@
 		EBE86A092A84E1FF00166CA5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EB59E86B2A8A5A4100092009 /* MaterialIcons.ttf */,
 				EBE86A0A2A84E25600166CA5 /* Ionicons.ttf */,
 			);
 			name = Fonts;
@@ -253,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB59E86C2A8A5A4100092009 /* MaterialIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				EBE86A0B2A84E25600166CA5 /* Ionicons.ttf in Resources */,

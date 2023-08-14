@@ -5,6 +5,7 @@ import { Button, StyleSheet, Text, View, ScrollView, Dimensions } from "react-na
 import BreakingNews from "../components/BreakingNews";
 import SliderNewsTop from "../components/SliderNewsTop";
 import SliderBannerAds from "../components/SliderBannerAds";
+import Currency from "../components/Currency";
 
 function MainScreen() {
   return(
@@ -15,6 +16,7 @@ function MainScreen() {
             <View style={styles.carouselContainer}>
               <SliderBannerAds/>
             </View>
+            <Currency/>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>
@@ -29,7 +31,8 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     carouselContainer: {
-      margin: 16, 
+      marginHorizontal: 16, 
+      marginBottom: 16,
       overflow: "hidden", 
       justifyContent: "center"
     },

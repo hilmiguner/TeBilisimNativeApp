@@ -11,11 +11,11 @@ function SliderBannerAds() {
     const width = Dimensions.get('window').width;
     return(       
         <Carousel
-            width={width}
+            width={width-32}
             height={width / 3}
             data={[1,2]}
             scrollAnimationDuration={1000}
-            renderItem={({ index }) => <SliderBannerAdsItem>{index}</SliderBannerAdsItem> }
+            renderItem={({ index }) => <SliderBannerAdsItem>{"BANNER ADS HERE! (" + index + ")"}</SliderBannerAdsItem> }
         />
     );
 }
