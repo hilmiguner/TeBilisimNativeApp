@@ -9,6 +9,7 @@ import Currency from "../components/others/Currency";
 import SliderDotsNews from "../components/news/SliderDotsNews";
 
 function MainScreen() {
+  const sliderDotsNewsData = [{ imageSource: "SliderDots1", newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"}, { imageSource: "SliderDots2", newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"}];
   return(
       <View style={styles.rootContainer}>
           <ScrollView>
@@ -18,7 +19,7 @@ function MainScreen() {
               <SliderBannerAds/>
             </View>
             <Currency/>
-            <SliderDotsNews length={3}/>
+            <SliderDotsNews data={sliderDotsNewsData}/>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>
