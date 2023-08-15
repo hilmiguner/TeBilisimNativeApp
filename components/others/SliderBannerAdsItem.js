@@ -2,7 +2,7 @@
 import { View, Text } from "react-native";
 
 // Statik Değerler
-import AppColors from "../constants/colors";
+import AppColors from "../../constants/colors";
 
 function SliderBannerAdsItem({ children }) {
     return(

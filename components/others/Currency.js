@@ -1,11 +1,11 @@
 // React Native Temel Paketler
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 // Oluşturulan Öğeler
 import CurrencyItem from "./CurrencyItem";
 
 // Statik Değerler
-import AppColors from "../constants/colors";
+import AppColors from "../../constants/colors";
 
 // Linear Gradient Paketi
 import LinearGradient from "react-native-linear-gradient";

@@ -2,7 +2,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
 // Statik Değerler
-import AppColors from "../constants/colors";
+import AppColors from "../../constants/colors";
 
 function BreakingNews() {
     return(

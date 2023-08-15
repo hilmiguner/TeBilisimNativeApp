@@ -1,11 +1,11 @@
 // React Native Temel Paketler
-import { Button, StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
-import BreakingNews from "../components/BreakingNews";
-import SliderNewsTop from "../components/SliderNewsTop";
-import SliderBannerAds from "../components/SliderBannerAds";
-import Currency from "../components/Currency";
+import BreakingNews from "../components/news/BreakingNews";
+import SliderNewsTop from "../components/news/SliderNewsTop";
+import SliderBannerAds from "../components/others/SliderBannerAds";
+import Currency from "../components/others/Currency";
 
 function MainScreen() {
   return(
