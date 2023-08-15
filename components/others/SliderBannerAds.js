@@ -15,6 +15,9 @@ function SliderBannerAds() {
             height={width / 3}
             data={[1,2]}
             scrollAnimationDuration={1000}
+            panGestureHandlerProps={{
+                activeOffsetX: [-10, 10],
+            }}
             renderItem={({ index }) => <SliderBannerAdsItem>{"BANNER ADS HERE! (" + index + ")"}</SliderBannerAdsItem> }
         />
     );

@@ -1,8 +1,8 @@
-// Drawer Paketi için Gerekli Paket
-import 'react-native-gesture-handler';
-
 // React Native Temel Paketler
 import { Image } from "react-native";
+
+// Drawer Paketi için Gerekli Paket
+import 'react-native-gesture-handler';
 
 // React Navigation Paketleri
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

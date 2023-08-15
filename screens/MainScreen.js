@@ -6,6 +6,7 @@ import BreakingNews from "../components/news/BreakingNews";
 import SliderNewsTop from "../components/news/SliderNewsTop";
 import SliderBannerAds from "../components/others/SliderBannerAds";
 import Currency from "../components/others/Currency";
+import SliderDotsNews from "../components/news/SliderDotsNews";
 
 function MainScreen() {
   return(
@@ -17,6 +18,7 @@ function MainScreen() {
               <SliderBannerAds/>
             </View>
             <Currency/>
+            <SliderDotsNews length={3}/>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>
