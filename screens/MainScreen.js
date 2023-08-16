@@ -10,6 +10,7 @@ import SliderDotsNews from "../components/news/SliderDotsNews";
 import ExpandableList from "../components/others/ExpandableList";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
+import PhotoGallery from "../components/news/PhotoGallery";
 
 function MainScreen() {
   const sliderDotsNewsData = [{ imageSource: "SliderDots1", newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"}, { imageSource: "SliderDots2", newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"}];
@@ -56,6 +57,23 @@ function MainScreen() {
       title: "Emekli maaşlarına düzenleme sinyali! Bakan ekim ayını işaret etti",
     },
   ];
+  const photoGalleryData = [
+    {
+      key: 1,
+      imageName: "PhotoGallery1",
+      title: "Avusturya ile Avustralya'yı karıştıran Kiss grubu büyük gafa imza attı"
+    },
+    {
+      key: 2,
+      imageName: "PhotoGallery2",
+      title: "21 yaşındaki Meksikalı şarkıcı kocası tarafından öldürüldü"
+    },
+    {
+      key: 3,
+      imageName: "PhotoGallery3",
+      title: "Taylor Swift Yüksek Mahkeme ile ilgili endişelerini paylaştı"
+    },
+  ];
 
   return(
       <View style={styles.rootContainer}>
@@ -78,6 +96,9 @@ function MainScreen() {
                 <SliderVideoGallery videoGalleryData={videoGalleryData}/>
               </ExpandableList>
             </View>
+            <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
+              <PhotoGallery data={photoGalleryData}/>
+            </ExpandableList>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>

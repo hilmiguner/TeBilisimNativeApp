@@ -8,6 +8,9 @@ const imageMapping = {
     VideoGallery1: require("../assets/images/videoGallery1.jpeg"),
     VideoGallery2: require("../assets/images/videoGallery2.jpeg"),
     VideoGallery3: require("../assets/images/videoGallery3.jpeg"),
+    PhotoGallery1: require("../assets/images/photoGallery1.jpeg"),
+    PhotoGallery2: require("../assets/images/photoGallery2.jpeg"),
+    PhotoGallery3: require("../assets/images/photoGallery3.jpeg"),
 };
 
 export default imageMapping;
