@@ -51,5 +51,6 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         fontSize: 18,
         marginTop: 8,
+        color: "black",
     },
 });
