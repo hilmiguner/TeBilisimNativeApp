@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, Text, Image, Dimensions, Pressable } from "react-native";
+import { StyleSheet, Text, Image, Dimensions, View } from "react-native";
 
 // Statik Değerler
 import imageMapping from "../../constants/imageMapping";
@@ -7,6 +7,12 @@ import imageMapping from "../../constants/imageMapping";
 // Linear Gradient Paketi
 import LinearGradient from "react-native-linear-gradient";
 import { rgbaColor } from "react-native-reanimated";
+
+// Gesture Handler
+import { TapGestureHandler } from "react-native-gesture-handler";
+
+// React Native Navigation
+import { useNavigation } from "@react-navigation/native";
 
 function SliderDotsNewsItem({ itemData }) {
     const imageSource = itemData.imageSource;
@@ -24,17 +30,21 @@ function SliderDotsNewsItem({ itemData }) {
         zIndex: 0,
     };
 
+    const navigation = useNavigation();
+
     return(
-        <Pressable style={styles.rootContainer}>
-            <Image style={imageStyle} source={image}/>
-            <LinearGradient 
-                style={styles.textContainer}
-                colors={[rgbaColor(0, 0, 0, 0), "black"]}
-                locations={[0, 0.6]}
-            >
-                <Text style={styles.newsTitle}>{newsTitle}</Text>
-            </LinearGradient>
-        </Pressable>
+        <TapGestureHandler onActivated={() => navigation.navigate("NewsDetailsScreen")}>
+            <View>
+                <Image style={imageStyle} source={image}/>
+                <LinearGradient 
+                    style={styles.textContainer}
+                    colors={[rgbaColor(0, 0, 0, 0), "black"]}
+                    locations={[0, 0.6]}
+                >
+                    <Text style={styles.newsTitle}>{newsTitle}</Text>
+                </LinearGradient>
+            </View>
+        </TapGestureHandler>
     );
 }
 
