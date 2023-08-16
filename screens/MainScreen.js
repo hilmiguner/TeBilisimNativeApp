@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Text } from "react-native";
 
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
@@ -7,6 +7,7 @@ import SliderNewsTop from "../components/news/SliderNewsTop";
 import SliderBannerAds from "../components/others/SliderBannerAds";
 import Currency from "../components/others/Currency";
 import SliderDotsNews from "../components/news/SliderDotsNews";
+import ExpandableList from "../components/others/ExpandableList";
 
 function MainScreen() {
   const sliderDotsNewsData = [{ imageSource: "SliderDots1", newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"}, { imageSource: "SliderDots2", newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"}];
@@ -20,6 +21,9 @@ function MainScreen() {
             </View>
             <Currency/>
             <SliderDotsNews data={sliderDotsNewsData}/>
+            <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
+              
+            </ExpandableList>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>
