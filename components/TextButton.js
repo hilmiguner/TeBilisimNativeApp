@@ -1,11 +1,11 @@
 // React Native Temel Paketler
-import { Pressable, StyleSheet, Text } from "react-native";
+import { TouchableOpacity, StyleSheet, Text } from "react-native";
 
 function TextButton({ children, onPress }) {
     return(
-        <Pressable onPress={onPress}>
+        <TouchableOpacity onPress={onPress}>
             <Text style={styles.title}>{children}</Text>
-        </Pressable>
+        </TouchableOpacity>
     );
 }
 

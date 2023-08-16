@@ -8,7 +8,7 @@ import AppColors from "../../constants/colors";
 // React Navigation
 import { useNavigation } from "@react-navigation/native";
 
-function SliderNewsTopItem({ imageName, newsTitle }) {
+function SliderNewsItem({ imageName, newsTitle }) {
     const imagePath = imageMapping[imageName];
 
     const navigation = useNavigation();
@@ -29,7 +29,7 @@ function SliderNewsTopItem({ imageName, newsTitle }) {
     );
 }
 
-export default SliderNewsTopItem;
+export default SliderNewsItem;
 
 const styles = StyleSheet.create({
     rootContainer: {
