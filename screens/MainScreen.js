@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, FlatList } from "react-native";
 
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
@@ -11,6 +11,8 @@ import ExpandableList from "../components/others/ExpandableList";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
+import AppColors from "../constants/colors";
+import Card from "../components/others/Card";
 
 function MainScreen() {
   const sliderDotsNewsData = [{ imageSource: "SliderDots1", newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"}, { imageSource: "SliderDots2", newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"}];
@@ -74,6 +76,29 @@ function MainScreen() {
       title: "Taylor Swift Yüksek Mahkeme ile ilgili endişelerini paylaştı"
     },
   ];
+  const higlightsData = [
+    {
+      key: 1,
+      imageName: "Highlight1",
+      title: "Dünya",
+      titleColor: "#CF1A00",
+      content: "Putin'den flaş Ukrayna uyarısı: Gerekirse kullanırız!"
+    },
+    {
+      key: 2,
+      imageName: "Highlight2",
+      title: "Teknoloji",
+      titleColor: "#41ADC6",
+      content: "Elon Musk'ın Twitter planı ne?"
+    },
+    {
+      key: 3,
+      imageName: "Highlight3",
+      title: "Kayseri",
+      titleColor: "#640090",
+      content: "Talas'ta Ağaç Seferberliği"
+    },
+  ];
 
   return(
       <View style={styles.rootContainer}>
@@ -99,6 +124,13 @@ function MainScreen() {
             <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
               <PhotoGallery data={photoGalleryData}/>
             </ExpandableList>
+            <View style={styles.highlightsContainer}>
+              <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
+                <Card cardData={higlightsData[0]}/>
+                <Card cardData={higlightsData[1]}/>
+                <Card cardData={higlightsData[2]}/>
+              </ExpandableList>
+            </View>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>
@@ -120,5 +152,8 @@ const styles = StyleSheet.create({
     },
     videoGalleryContainer: {
       backgroundColor: "black",
+    },
+    highlightsContainer: {
+      backgroundColor: AppColors.red300,
     },
 });

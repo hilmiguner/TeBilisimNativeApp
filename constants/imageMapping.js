@@ -11,6 +11,9 @@ const imageMapping = {
     PhotoGallery1: require("../assets/images/photoGallery1.jpeg"),
     PhotoGallery2: require("../assets/images/photoGallery2.jpeg"),
     PhotoGallery3: require("../assets/images/photoGallery3.jpeg"),
+    Highlight1: require("../assets/images/highlight1.jpeg"),
+    Highlight2: require("../assets/images/highlight2.jpeg"),
+    Highlight3: require("../assets/images/highlight3.jpeg"),
 };
 
 export default imageMapping;
