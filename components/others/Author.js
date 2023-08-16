@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import { StyleSheet, Text, Image, Pressable } from "react-native";
 
 // Statik Değerler
 import AppColors from "../../constants/colors";

@@ -9,6 +9,7 @@ import Currency from "../components/others/Currency";
 import SliderDotsNews from "../components/news/SliderDotsNews";
 import ExpandableList from "../components/others/ExpandableList";
 import Authors from "../components/others/Authors";
+import SliderVideoGallery from "../components/news/SliderVideoGallery";
 
 function MainScreen() {
   const sliderDotsNewsData = [{ imageSource: "SliderDots1", newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"}, { imageSource: "SliderDots2", newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"}];
@@ -38,6 +39,23 @@ function MainScreen() {
       authorName: "AHMET HAKAN ÇOŞKUN",
     },
   ];
+  const videoGalleryData = [
+    {
+      key: 1,
+      imageName: "VideoGallery1",
+      title: "Kastamonu'da selde mahsur kalan hasta helikopterle kurtarıldı",
+    },
+    {
+      key: 2,
+      imageName: "VideoGallery2",
+      title: "İstanbul'da toplu taşımada kredi kartıyla ödeme ücretleri vatandaşı isyan ettirdi",
+    },
+    {
+      key: 3,
+      imageName: "VideoGallery3",
+      title: "Emekli maaşlarına düzenleme sinyali! Bakan ekim ayını işaret etti",
+    },
+  ];
 
   return(
       <View style={styles.rootContainer}>
@@ -55,6 +73,11 @@ function MainScreen() {
             <ExpandableList title="Yazarlar" expandButtonTitle="Tümü">
               <Authors authorsList={authorsData}/>
             </ExpandableList>
+            <View style={styles.videoGalleryContainer}>
+              <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü">
+                <SliderVideoGallery videoGalleryData={videoGalleryData}/>
+              </ExpandableList>
+            </View>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>
@@ -73,5 +96,8 @@ const styles = StyleSheet.create({
       marginBottom: 16,
       overflow: "hidden", 
       justifyContent: "center"
+    },
+    videoGalleryContainer: {
+      backgroundColor: "black",
     },
 });

@@ -4,12 +4,12 @@ import { StyleSheet, View, Text } from "react-native";
 // Oluşturulan Öğeler
 import TextButton from "../TextButton";
 
-function ExpandableList({ children, title, expandButtonTitle }) {
+function ExpandableList({ children, title, expandButtonTitle, titleTextStyle, buttonTextStyle }) {
     return(
         <View style={styles.rootContainer}>
             <View style={styles.titleContainer}>
-                <Text style={styles.title}>{title}</Text>
-                <TextButton onPress={null}>{expandButtonTitle}</TextButton>
+                <Text style={[styles.title, titleTextStyle]}>{title}</Text>
+                <TextButton textStyle={buttonTextStyle} onPress={null}>{expandButtonTitle}</TextButton>
             </View>
             {children}
         </View>
