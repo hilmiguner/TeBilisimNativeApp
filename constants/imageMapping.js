@@ -14,6 +14,11 @@ const imageMapping = {
     Highlight1: require("../assets/images/highlight1.jpeg"),
     Highlight2: require("../assets/images/highlight2.jpeg"),
     Highlight3: require("../assets/images/highlight3.jpeg"),
+    TrendNews1: require("../assets/images/trendNews1.jpeg"),
+    TrendNews2: require("../assets/images/trendNews2.jpeg"),
+    TrendNews3: require("../assets/images/trendNews3.jpeg"),
+    TrendNews4: require("../assets/images/trendNews4.jpeg"),
+    TrendNews5: require("../assets/images/trendNews5.jpeg"),
 };
 
 export default imageMapping;

@@ -13,6 +13,7 @@ import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
 import AppColors from "../constants/colors";
 import Card from "../components/others/Card";
+import NumberCard from "../components/others/NumberCard";
 
 function MainScreen() {
   const sliderDotsNewsData = [{ imageSource: "SliderDots1", newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"}, { imageSource: "SliderDots2", newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"}];
@@ -99,6 +100,43 @@ function MainScreen() {
       content: "Talas'ta Ağaç Seferberliği"
     },
   ];
+  const trendNewsData = [
+    {
+      cardLabel: "01",
+      imageName: "TrendNews1",
+      title: "Magazin",
+      titleColor: "#BC68C0",
+      content: "Sitemli mesaj: Çekirdek ailemi dağıttılar!",
+    },
+    {
+      cardLabel: "02",
+      imageName: "TrendNews2",
+      title: "Magazin",
+      titleColor: "#BC68C0",
+      content: "Büyük aşk bu noktaya geldi: İddiaların arkası kesilmiyor",
+    },
+    {
+      cardLabel: "03",
+      imageName: "TrendNews3",
+      title: "Tarih",
+      titleColor: "#5DB3BE",
+      content: "Ortadoğu'nun Sınırlarını Çizen Kadın: Gertrude Bell Kimdir?",
+    },
+    {
+      cardLabel: "04",
+      imageName: "TrendNews4",
+      title: "Spor",
+      titleColor: "#62C28C",
+      content: "Christiano Ronaldo'dan 50 Efsane Gol",
+    },
+    {
+      cardLabel: "05",
+      imageName: "TrendNews5",
+      title: "Sağlık",
+      titleColor: "#55AC05",
+      content: "Soğan sağlığa pek çok açıdan fayda sağlıyor",
+    },
+  ];
 
   return(
       <View style={styles.rootContainer}>
@@ -131,6 +169,13 @@ function MainScreen() {
                 <Card cardData={higlightsData[2]}/>
               </ExpandableList>
             </View>
+            <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü">
+              <NumberCard cardData={trendNewsData[0]}/>
+              <NumberCard cardData={trendNewsData[1]}/>
+              <NumberCard cardData={trendNewsData[2]}/>
+              <NumberCard cardData={trendNewsData[3]}/>
+              <NumberCard cardData={trendNewsData[4]}/>
+            </ExpandableList>
             {/* Haber Detay Sayfası'na gitmek için buton */}
             {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
           </ScrollView>
