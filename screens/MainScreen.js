@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, ScrollView, FlatList } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
@@ -14,9 +14,19 @@ import PhotoGallery from "../components/news/PhotoGallery";
 import AppColors from "../constants/colors";
 import Card from "../components/others/Card";
 import NumberCard from "../components/others/NumberCard";
+import VerticalCard from "../components/others/VerticalCard";
 
 function MainScreen() {
-  const sliderDotsNewsData = [{ imageSource: "SliderDots1", newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"}, { imageSource: "SliderDots2", newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"}];
+  const sliderDotsNewsData = [
+    { 
+      imageSource: "SliderDots1", 
+      newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"
+    },
+    { 
+      imageSource: "SliderDots2", 
+      newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"
+    }
+  ];
   const authorsData = [
     {
       key: 1,
@@ -137,6 +147,28 @@ function MainScreen() {
       content: "Soğan sağlığa pek çok açıdan fayda sağlıyor",
     },
   ];
+  const localNewsData = [
+    {
+      imageName: "LocalNews1",
+      cityName: "Adana", 
+      newsTitle: "Erdoğan'ın müjdesini verdiği petrolün çıkarıldığı saha!",
+    },
+    {
+      imageName: "LocalNews2",
+      cityName: "Trabzon", 
+      newsTitle: "'Sörloth ile anlaşıldı' yazdılar! Yıllık dev maaş belirlendi!",
+    },
+    {
+      imageName: "LocalNews3",
+      cityName: "Amasya", 
+      newsTitle: "Yıllar sonra büyüdüğü mahalleye döndü",
+    },
+    {
+      imageName: "LocalNews4",
+      cityName: "Artvin", 
+      newsTitle: "Hububatçılardan 5 ayda 4.5 milyar dolarlık ihracat",
+    },
+  ];
 
   return(
       <View style={styles.rootContainer}>
@@ -176,8 +208,16 @@ function MainScreen() {
               <NumberCard cardData={trendNewsData[3]}/>
               <NumberCard cardData={trendNewsData[4]}/>
             </ExpandableList>
-            {/* Haber Detay Sayfası'na gitmek için buton */}
-            {/* <Button title="Detay Ekranına Git" onPress={() => navigation.navigate("NewsDetailsScreen")}/> */}
+            <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü">
+              <View style={styles.localNewsContainer}>
+                <VerticalCard cardData={localNewsData[0]}/>
+                <VerticalCard cardData={localNewsData[1]}/>
+              </View>
+              <View style={styles.localNewsContainer}>
+                <VerticalCard cardData={localNewsData[2]}/>
+                <VerticalCard cardData={localNewsData[3]}/>
+              </View>
+            </ExpandableList>
           </ScrollView>
       </View>
   );
@@ -200,5 +240,9 @@ const styles = StyleSheet.create({
     },
     highlightsContainer: {
       backgroundColor: AppColors.red300,
+    },
+    localNewsContainer: {
+      flexDirection: "row",
+      flex: 1,
     },
 });
