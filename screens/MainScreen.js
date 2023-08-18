@@ -15,6 +15,7 @@ import AppColors from "../constants/colors";
 import Card from "../components/others/Card";
 import NumberCard from "../components/others/NumberCard";
 import VerticalCard from "../components/others/VerticalCard";
+import Weather from "../components/others/Weather";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -169,6 +170,24 @@ function MainScreen() {
       newsTitle: "Hububatçılardan 5 ayda 4.5 milyar dolarlık ihracat",
     },
   ];
+  const weatherData = {
+    cityName: "İstanbul",
+    currentIcon: "cloudy-outline",
+    status: "Parçalı Bulutlu",
+    degree: "19",
+    oneDayAfterName: "Cumartesi",
+    oneDayAfterStatus: "Parçalı Bulutlu",
+    oneDayAfterDegree: "19",
+    oneDayAfterIcon: "cloudy-outline",
+    twoDayAfterName: "Pazar",
+    twoDayAfterStatus: "Güneşli",
+    twoDayAfterDegree: "23",
+    twoDayAfterIcon: "sunny-outline",
+    threeDayAfterName: "Pazartesi",
+    threeDayAfterStatus: "Yağmurlu",
+    threeDayAfterDegree: "17",
+    threeDayAfterIcon: "rainy-outline",
+  };
 
   return(
       <View style={styles.rootContainer}>
@@ -218,6 +237,7 @@ function MainScreen() {
                 <VerticalCard cardData={localNewsData[3]}/>
               </View>
             </ExpandableList>
+            <Weather weatherData={weatherData}/>
           </ScrollView>
       </View>
   );
