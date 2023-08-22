@@ -18,6 +18,7 @@ import VerticalCard from "../components/others/VerticalCard";
 import Weather from "../components/others/Weather";
 import HorizontalCategories from "../components/others/HorizontalCategories";
 import PrayerTimes from "../components/others/PrayerTimes";
+import TopTabsLeague from "../components/others/TopTabsLeague";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -262,6 +263,7 @@ function MainScreen() {
             <HorizontalCategories/>
             <PhotoGallery data={tempNewsData}/>
             <PrayerTimes data={prayerTimesData}/>
+            <TopTabsLeague />
           </ScrollView>
       </View>
   );
