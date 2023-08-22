@@ -17,6 +17,7 @@ import NumberCard from "../components/others/NumberCard";
 import VerticalCard from "../components/others/VerticalCard";
 import Weather from "../components/others/Weather";
 import HorizontalCategories from "../components/others/HorizontalCategories";
+import PrayerTimes from "../components/others/PrayerTimes";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -203,6 +204,11 @@ function MainScreen() {
       title: "Maduro 4 yıl sonra Beştepe'de",
     },
   ];
+  const prayerTimesData = {
+    cityName: "İstanbul",
+    statusText: "Öğle Vaktine Kalan Süre",
+    remainingTime: "02:23:46",
+  };
 
   return(
       <View style={styles.rootContainer}>
@@ -255,6 +261,7 @@ function MainScreen() {
             <Weather weatherData={weatherData}/>
             <HorizontalCategories/>
             <PhotoGallery data={tempNewsData}/>
+            <PrayerTimes data={prayerTimesData}/>
           </ScrollView>
       </View>
   );
