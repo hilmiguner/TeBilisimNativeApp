@@ -189,6 +189,20 @@ function MainScreen() {
     threeDayAfterDegree: "17",
     threeDayAfterIcon: "rainy-outline",
   };
+  const tempNewsData = [
+    {
+      imageName: "TempNews1",
+      title: "Bakan Soylu bu mesajla duyurdu: 'Hepsi ele geçirildi!'",
+    },
+    {
+      imageName: "TempNews2",
+      title: "Bu gece yarısı motorine büyük indirim",
+    },
+    {
+      imageName: "TempNews3",
+      title: "Maduro 4 yıl sonra Beştepe'de",
+    },
+  ];
 
   return(
       <View style={styles.rootContainer}>
@@ -239,7 +253,8 @@ function MainScreen() {
               </View>
             </ExpandableList>
             <Weather weatherData={weatherData}/>
-            <HorizontalCategories />
+            <HorizontalCategories/>
+            <PhotoGallery data={tempNewsData}/>
           </ScrollView>
       </View>
   );

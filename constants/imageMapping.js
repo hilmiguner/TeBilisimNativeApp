@@ -23,6 +23,9 @@ const imageMapping = {
     LocalNews2: require("../assets/images/localNews2.jpeg"),
     LocalNews3: require("../assets/images/localNews3.jpeg"),
     LocalNews4: require("../assets/images/localNews4.jpeg"),
+    TempNews1: require("../assets/images/tempNews1.jpeg"),
+    TempNews2: require("../assets/images/tempNews2.jpeg"),
+    TempNews3: require("../assets/images/tempNews3.jpeg"),
 };
 
 export default imageMapping;
