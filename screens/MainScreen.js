@@ -16,6 +16,7 @@ import Card from "../components/others/Card";
 import NumberCard from "../components/others/NumberCard";
 import VerticalCard from "../components/others/VerticalCard";
 import Weather from "../components/others/Weather";
+import HorizontalCategories from "../components/others/HorizontalCategories";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -238,6 +239,7 @@ function MainScreen() {
               </View>
             </ExpandableList>
             <Weather weatherData={weatherData}/>
+            <HorizontalCategories />
           </ScrollView>
       </View>
   );
