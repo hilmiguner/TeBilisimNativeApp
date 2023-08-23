@@ -20,6 +20,7 @@ import HorizontalCategories from "../components/others/HorizontalCategories";
 import PrayerTimes from "../components/others/PrayerTimes";
 import TopTabsLeague from "../components/others/TopTabsLeague";
 import LinearGradient from "react-native-linear-gradient";
+import ThreeNews from "../components/news/ThreeNews";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -495,12 +496,15 @@ function MainScreen() {
             </ExpandableList>
             <Weather weatherData={weatherData}/>
             <HorizontalCategories/>
-            <PhotoGallery data={tempNewsData}/>
+            <ThreeNews data={tempNewsData}/>
             <PrayerTimes data={prayerTimesData}/>
             <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
               <Text style={styles.leagueScoreText}>Puan Durumu</Text>
               <TopTabsLeague data={leagueScoreData}/>
             </LinearGradient>
+            <ThreeNews data={tempNewsData}/>
+            <ThreeNews data={tempNewsData}/>
+            <ThreeNews data={tempNewsData}/>
           </ScrollView>
       </View>
   );
