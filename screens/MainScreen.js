@@ -21,6 +21,7 @@ import PrayerTimes from "../components/others/PrayerTimes";
 import TopTabsLeague from "../components/others/TopTabsLeague";
 import LinearGradient from "react-native-linear-gradient";
 import ThreeNews from "../components/news/ThreeNews";
+import SliderHighlights from "../components/news/SliderHighlights";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -505,6 +506,11 @@ function MainScreen() {
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
+            <View style={styles.horizontalHighlightsContainer}>
+              <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
+                <SliderHighlights />
+              </ExpandableList>
+            </View>
           </ScrollView>
       </View>
   );
@@ -537,5 +543,8 @@ const styles = StyleSheet.create({
       fontSize: 24,
       fontWeight: "bold",
       marginBottom: 12,
+    },
+    horizontalHighlightsContainer: {
+      backgroundColor: AppColors.red300,
     },
 });
