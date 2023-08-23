@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
@@ -19,6 +19,7 @@ import Weather from "../components/others/Weather";
 import HorizontalCategories from "../components/others/HorizontalCategories";
 import PrayerTimes from "../components/others/PrayerTimes";
 import TopTabsLeague from "../components/others/TopTabsLeague";
+import LinearGradient from "react-native-linear-gradient";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -210,10 +211,243 @@ function MainScreen() {
     statusText: "Öğle Vaktine Kalan Süre",
     remainingTime: "02:23:46",
   };
+  const leagueScoreData = [
+    {
+      key: 1,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 2,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 3,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 4,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 5,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 6,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 7,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 8,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 9,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 10,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 11,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 12,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 13,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 14,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 15,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 16,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 17,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 18,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 19,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 20,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+    {
+      key: 21,
+      teamName: "İstanbulspor",
+      o: "32",
+      g: "22",
+      b: "4",
+      m: "6",
+      a: "70",
+      y: "33",
+      p: "70",
+    },
+  ];
 
   return(
       <View style={styles.rootContainer}>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <BreakingNews/>
             <SliderNews/>
             <View style={styles.carouselContainer}>
@@ -263,7 +497,10 @@ function MainScreen() {
             <HorizontalCategories/>
             <PhotoGallery data={tempNewsData}/>
             <PrayerTimes data={prayerTimesData}/>
-            <TopTabsLeague />
+            <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
+              <Text style={styles.leagueScoreText}>Puan Durumu</Text>
+              <TopTabsLeague data={leagueScoreData}/>
+            </LinearGradient>
           </ScrollView>
       </View>
   );
@@ -290,5 +527,11 @@ const styles = StyleSheet.create({
     localNewsContainer: {
       flexDirection: "row",
       flex: 1,
+    },
+    leagueScoreText: {
+      color: "white",
+      fontSize: 24,
+      fontWeight: "bold",
+      marginBottom: 12,
     },
 });
