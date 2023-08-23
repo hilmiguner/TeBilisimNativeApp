@@ -22,6 +22,7 @@ import TopTabsLeague from "../components/others/TopTabsLeague";
 import LinearGradient from "react-native-linear-gradient";
 import ThreeNews from "../components/news/ThreeNews";
 import SliderHighlights from "../components/news/SliderHighlights";
+import Footer from "../components/others/Footer";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -511,6 +512,10 @@ function MainScreen() {
                 <SliderHighlights />
               </ExpandableList>
             </View>
+            <View style={styles.emptyArea}>
+              {/* Empty Area Above Footer */}
+            </View>
+            <Footer>Türkiye'nin en büyük haber sitesi, en kaliteli ve güncel haberleriyle artık karşınızda!</Footer>
           </ScrollView>
       </View>
   );
@@ -546,5 +551,10 @@ const styles = StyleSheet.create({
     },
     horizontalHighlightsContainer: {
       backgroundColor: AppColors.red300,
+    },
+    emptyArea: {
+      height: 200,
+      borderBottomWidth: 3,
+      borderColor: AppColors.red300,
     },
 });
