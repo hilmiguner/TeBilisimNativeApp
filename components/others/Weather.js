@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -14,16 +14,24 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import AppColors from "../../constants/colors";
 
 // React Native Hooks
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
-// Konum Fonksiyonları
-import { getCity } from "../../util/location";
+// React Native Navigation
+import { useNavigation } from "@react-navigation/native";
+
+// Context
+import { Context } from "../../store/context";
 
 function Weather({ weatherData }) {
     const [cityName, setCityName] = useState(null);
+
+    const ctx = useContext(Context);
     useEffect(() => {
-        getCity().then(( city ) => setCityName(city));
-    }, []);
+        if(!ctx.currentCity) {
+            ctx.getCityCTX();
+        }
+        setCityName(ctx.currentCity);
+    }, [ctx.currentCity]);
 
     let cityContent;
     if(!cityName) {
@@ -32,6 +40,12 @@ function Weather({ weatherData }) {
     else {
         cityContent = <Text style={styles.cityName}>{cityName}</Text>;
     }
+
+    const navigation = useNavigation();
+
+    function citySelectorHandler() {
+        cityName ? navigation.navigate("CitySelectionScreen") : null;
+    }
     return(
         <LinearGradient style={styles.rootContainer} colors={["#4593BC", "#2A6B8D"]}>
             <View style={styles.headBar}>
@@ -39,11 +53,11 @@ function Weather({ weatherData }) {
                 <IconButton icon="location" color={AppColors.yellow} size={24}/>
             </View>
             <View style={styles.statusContainer}>
-                <View style={styles.cityNameContainer}>
+                <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>
                     {/* <Text style={styles.cityName}>{weatherData.cityName}</Text> */}
                     {/* <Text style={styles.cityName}>{cityName}</Text> */}
                     {cityContent}
-                </View>
+                </TouchableOpacity>
                 <Ionicons name={ weatherData.currentIcon } color={AppColors.yellow} size={32} style={styles.currentIcon}/>
                 <Text style={styles.currentStatusText}>{weatherData.status}</Text>
                 <Text style={styles.currentDegreeText}>{weatherData.degree + " C°"}</Text>

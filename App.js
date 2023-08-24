@@ -12,12 +12,14 @@ import { NavigationContainer } from "@react-navigation/native";
 // Oluşturulan Ekranlar
 import MainScreen from "./screens/MainScreen";
 import NewsDetailsScreen from './screens/NewsDetailsScreen';
+import CitySelectionScreen from "./screens/CitySelectionScreen";
 
 // Oluşturulan Öğeler
 import IconButton from './components/IconButton';
 
 // Statik Değerler
 import AppColors from './constants/colors';
+import ContextProvider from "./store/context";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -55,21 +57,31 @@ function DrawerNavigator() {
 
 function App() {
   return(
-    <NavigationContainer>  
-      <Stack.Navigator>
-        <Stack.Screen 
-        name="DrawerMainScreen" 
-        component={DrawerNavigator}
-        options={{
-          headerShown: false,
-        }}
-        />
-        <Stack.Screen 
-        name="NewsDetailsScreen" 
-        component={NewsDetailsScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ContextProvider>
+      <NavigationContainer>  
+        <Stack.Navigator>
+          <Stack.Screen 
+          name="DrawerMainScreen" 
+          component={DrawerNavigator}
+          options={{
+            headerShown: false,
+          }}
+          />
+          <Stack.Screen 
+          name="NewsDetailsScreen" 
+          component={NewsDetailsScreen}
+          />
+          <Stack.Screen 
+          name="CitySelectionScreen" 
+          component={CitySelectionScreen}
+          options={{ 
+            presentation: "modal",
+            title: "Şehir Seç" 
+          }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ContextProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -12,16 +12,24 @@ import LinearGradient from "react-native-linear-gradient";
 import AppColors from "../../constants/colors";
 
 // React Native Hooks
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
-// Konum Fonksiyonları
-import { getCity } from "../../util/location";
+// React Native Navigation
+import { useNavigation } from "@react-navigation/native";
+
+// Context
+import { Context } from "../../store/context";
 
 function PrayerTimes({ data }) {
     const [cityName, setCityName] = useState(null);
+
+    const ctx = useContext(Context);
     useEffect(() => {
-        getCity().then(( city ) => setCityName(city));
-    }, []);
+        if(!ctx.currentCity) {
+            ctx.getCityCTX();
+        }
+        setCityName(ctx.currentCity);
+    }, [ctx.currentCity]);
 
     let cityContent;
     if(!cityName) {
@@ -30,6 +38,12 @@ function PrayerTimes({ data }) {
     else {
         cityContent = <Text style={styles.cityName}>{cityName}</Text>;
     }
+
+    const navigation = useNavigation();
+
+    function citySelectorHandler() {
+        cityName ? navigation.navigate("CitySelectionScreen") : null;
+    }
     return(
         <LinearGradient style={styles.rootContainer} colors={["#78318D", "#3F6A8B"]}>
             <View style={styles.headBar}>
@@ -37,10 +51,10 @@ function PrayerTimes({ data }) {
                 <IconButton icon="location" color={AppColors.yellow} size={24}/>
             </View>
             <View style={styles.statusContainer}>
-                <View style={styles.cityNameContainer}>
+                <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>
                     {/* <Text style={styles.cityName}>{data.cityName}</Text> */}
                     {cityContent}
-                </View>
+                </TouchableOpacity>
                 <Text style={styles.statusText}>{data.statusText}</Text>
                 <Text style={styles.remainingTimeText}>{data.remainingTime}</Text>
             </View>
