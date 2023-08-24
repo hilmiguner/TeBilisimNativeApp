@@ -22,9 +22,10 @@ import { useNavigation } from "@react-navigation/native";
 // Context
 import { Context } from "../../store/context";
 
+
 function Weather({ weatherData }) {
     const [cityName, setCityName] = useState(null);
-
+    
     const ctx = useContext(Context);
     useEffect(() => {
         if(!ctx.currentCity) {
@@ -32,7 +33,7 @@ function Weather({ weatherData }) {
         }
         setCityName(ctx.currentCity);
     }, [ctx.currentCity]);
-
+    
     let cityContent;
     if(!cityName) {
         cityContent = <ActivityIndicator color="white"/>;
@@ -40,17 +41,23 @@ function Weather({ weatherData }) {
     else {
         cityContent = <Text style={styles.cityName}>{cityName}</Text>;
     }
-
+    
     const navigation = useNavigation();
-
+    
     function citySelectorHandler() {
         cityName ? navigation.navigate("CitySelectionScreen") : null;
     }
+
+    function locationIconHandler() {
+        ctx.setCityCTX(null);
+        ctx.getCityCTX();
+    }
+
     return(
         <LinearGradient style={styles.rootContainer} colors={["#4593BC", "#2A6B8D"]}>
             <View style={styles.headBar}>
                 <Text style={styles.title}>Hava Durumu</Text>
-                <IconButton icon="location" color={AppColors.yellow} size={24}/>
+                <IconButton icon="location" color={AppColors.yellow} size={24} onPress={locationIconHandler}/>
             </View>
             <View style={styles.statusContainer}>
                 <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>

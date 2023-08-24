@@ -44,11 +44,17 @@ function PrayerTimes({ data }) {
     function citySelectorHandler() {
         cityName ? navigation.navigate("CitySelectionScreen") : null;
     }
+
+    function locationIconHandler() {
+        ctx.setCityCTX(null);
+        ctx.getCityCTX();
+    }
+
     return(
         <LinearGradient style={styles.rootContainer} colors={["#78318D", "#3F6A8B"]}>
             <View style={styles.headBar}>
                 <Text style={styles.title}>Namaz Vakitleri</Text>
-                <IconButton icon="location" color={AppColors.yellow} size={24}/>
+                <IconButton icon="location" color={AppColors.yellow} size={24} onPress={locationIconHandler}/>
             </View>
             <View style={styles.statusContainer}>
                 <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>

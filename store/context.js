@@ -3,11 +3,16 @@ import { getCity } from "../util/location";
 
 export const Context = createContext({
     currentCity: "",
+    setCityCTX: (name) => {},
     getCityCTX: () => {},
 });
 
 function ContextProvider({ children }) {
     const [cityName, setCityName] = useState();
+
+    function setCityCTX(name) {
+        setCityName(name);
+    }
 
     function getCityCTX() {
         getCity().then((name) => setCityName(name))
@@ -15,6 +20,7 @@ function ContextProvider({ children }) {
 
     const value = {
         currentCity: cityName,
+        setCityCTX: setCityCTX,
         getCityCTX: getCityCTX,
     };
 
