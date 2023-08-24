@@ -15,10 +15,8 @@ function CurrencyItem({ currentValue, deltaValue, currencyName, icon, color, siz
                 <Text style={styles.currencyNameText}>{currencyName}</Text>
                 <Icon name={currencyArrowIcon} color={currencyDeltaColor} size={24}/>
             </View>
-            <View style={styles.currencyValuesContainer}>
-                <Text style={styles.currentValueText}>{currentValue}</Text>
-                <Text style={[styles.deltaValueText, isIncreasing ? { color: "green" } : { color: "orange" }]}>{deltaValue}</Text>
-            </View>
+            <Text style={styles.currentValueText}>{currentValue}</Text>
+            <Text style={[styles.deltaValueText, isIncreasing ? { color: "green" } : { color: "orange" }]}>{deltaValue}</Text>
         </View>
     );
 }
@@ -48,6 +46,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: "center",
         color: "white",
+        marginBottom: 12,
     },
     deltaValueText: {
         fontWeight: "bold",

@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, ScrollView } from "react-native";
 import BreakingNews from "../components/news/BreakingNews";
 import SliderNews from "../components/news/SliderNews";
 import SliderBannerAds from "../components/others/SliderBannerAds";
-import Currency from "../components/others/Currency";
+import CurrencyAll from "../components/others/CurrencyAll";
 import SliderDotsNews from "../components/news/SliderDotsNews";
 import ExpandableList from "../components/others/ExpandableList";
 import Authors from "../components/others/Authors";
@@ -456,7 +456,7 @@ function MainScreen() {
             <View style={styles.carouselContainer}>
               <SliderBannerAds/>
             </View>
-            <Currency/>
+            <CurrencyAll/>
             <SliderDotsNews data={sliderDotsNewsData}/>
             <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
               <SliderNews/>
