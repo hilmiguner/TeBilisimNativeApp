@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -13,7 +13,25 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 // Statik Değerler
 import AppColors from "../../constants/colors";
 
+// React Native Hooks
+import { useEffect, useState } from "react";
+
+// Konum Fonksiyonları
+import { getCity } from "../../util/location";
+
 function Weather({ weatherData }) {
+    const [cityName, setCityName] = useState(null);
+    useEffect(() => {
+        getCity().then(( city ) => setCityName(city));
+    }, []);
+
+    let cityContent;
+    if(!cityName) {
+        cityContent = <ActivityIndicator color="white"/>;
+    }
+    else {
+        cityContent = <Text style={styles.cityName}>{cityName}</Text>;
+    }
     return(
         <LinearGradient style={styles.rootContainer} colors={["#4593BC", "#2A6B8D"]}>
             <View style={styles.headBar}>
@@ -22,7 +40,9 @@ function Weather({ weatherData }) {
             </View>
             <View style={styles.statusContainer}>
                 <View style={styles.cityNameContainer}>
-                    <Text style={styles.cityName}>{weatherData.cityName}</Text>
+                    {/* <Text style={styles.cityName}>{weatherData.cityName}</Text> */}
+                    {/* <Text style={styles.cityName}>{cityName}</Text> */}
+                    {cityContent}
                 </View>
                 <Ionicons name={ weatherData.currentIcon } color={AppColors.yellow} size={32} style={styles.currentIcon}/>
                 <Text style={styles.currentStatusText}>{weatherData.status}</Text>

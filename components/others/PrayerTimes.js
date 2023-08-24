@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -11,7 +11,25 @@ import LinearGradient from "react-native-linear-gradient";
 // Statik Değerler
 import AppColors from "../../constants/colors";
 
+// React Native Hooks
+import { useEffect, useState } from "react";
+
+// Konum Fonksiyonları
+import { getCity } from "../../util/location";
+
 function PrayerTimes({ data }) {
+    const [cityName, setCityName] = useState(null);
+    useEffect(() => {
+        getCity().then(( city ) => setCityName(city));
+    }, []);
+
+    let cityContent;
+    if(!cityName) {
+        cityContent = <ActivityIndicator color="white"/>;
+    }
+    else {
+        cityContent = <Text style={styles.cityName}>{cityName}</Text>;
+    }
     return(
         <LinearGradient style={styles.rootContainer} colors={["#78318D", "#3F6A8B"]}>
             <View style={styles.headBar}>
@@ -20,7 +38,8 @@ function PrayerTimes({ data }) {
             </View>
             <View style={styles.statusContainer}>
                 <View style={styles.cityNameContainer}>
-                    <Text style={styles.cityName}>{data.cityName}</Text>
+                    {/* <Text style={styles.cityName}>{data.cityName}</Text> */}
+                    {cityContent}
                 </View>
                 <Text style={styles.statusText}>{data.statusText}</Text>
                 <Text style={styles.remainingTimeText}>{data.remainingTime}</Text>
