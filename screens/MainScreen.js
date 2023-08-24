@@ -451,8 +451,6 @@ function MainScreen() {
   return(
       <View style={styles.rootContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Weather weatherData={weatherData}/>
-            <PrayerTimes data={prayerTimesData}/>
             <BreakingNews/>
             <SliderNews/>
             <View style={styles.carouselContainer}>
@@ -498,10 +496,10 @@ function MainScreen() {
                 <VerticalCard cardData={localNewsData[3]}/>
               </View>
             </ExpandableList>
-            {/* <Weather weatherData={weatherData}/> */}
+            <Weather weatherData={weatherData}/>
             <HorizontalCategories/>
             <ThreeNews data={tempNewsData}/>
-            {/* <PrayerTimes data={prayerTimesData}/> */}
+            <PrayerTimes data={prayerTimesData}/>
             <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
               <Text style={styles.leagueScoreText}>Puan Durumu</Text>
               <TopTabsLeague data={leagueScoreData}/>
