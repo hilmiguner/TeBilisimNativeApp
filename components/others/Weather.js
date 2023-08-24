@@ -61,8 +61,6 @@ function Weather({ weatherData }) {
             </View>
             <View style={styles.statusContainer}>
                 <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>
-                    {/* <Text style={styles.cityName}>{weatherData.cityName}</Text> */}
-                    {/* <Text style={styles.cityName}>{cityName}</Text> */}
                     {cityContent}
                 </TouchableOpacity>
                 <Ionicons name={ weatherData.currentIcon } color={AppColors.yellow} size={32} style={styles.currentIcon}/>

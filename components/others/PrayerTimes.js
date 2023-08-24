@@ -20,6 +20,9 @@ import { useNavigation } from "@react-navigation/native";
 // Context
 import { Context } from "../../store/context";
 
+// CountDown Paketi
+import CountDown from 'react-native-countdown-component';
+
 function PrayerTimes({ data }) {
     const [cityName, setCityName] = useState(null);
 
@@ -58,11 +61,19 @@ function PrayerTimes({ data }) {
             </View>
             <View style={styles.statusContainer}>
                 <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>
-                    {/* <Text style={styles.cityName}>{data.cityName}</Text> */}
                     {cityContent}
                 </TouchableOpacity>
                 <Text style={styles.statusText}>{data.statusText}</Text>
-                <Text style={styles.remainingTimeText}>{data.remainingTime}</Text>
+                <CountDown 
+                until={2*(60*60) + 23*(60) + 46}
+                size={30}
+                timeToShow={["H","M","S"]}
+                timeLabels={{}}
+                showSeparator={true}
+                digitStyle={{ backgroundColor: null }}
+                digitTxtStyle={{ color: AppColors.yellow }}
+                separatorStyle={{ color: AppColors.yellow }}
+                />
             </View>
             <View style={styles.otherTimesMainContainer}>
                 <View style={styles.otherTimesContainer}>
