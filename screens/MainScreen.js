@@ -23,6 +23,7 @@ import LinearGradient from "react-native-linear-gradient";
 import ThreeNews from "../components/news/ThreeNews";
 import SliderHighlights from "../components/news/SliderHighlights";
 import Footer from "../components/others/Footer";
+import CurrencySlider from "../components/others/CurrencySlider";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -457,6 +458,7 @@ function MainScreen() {
               <SliderBannerAds/>
             </View>
             <CurrencyAll/>
+            <CurrencySlider />
             <SliderDotsNews data={sliderDotsNewsData}/>
             <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
               <SliderNews/>
