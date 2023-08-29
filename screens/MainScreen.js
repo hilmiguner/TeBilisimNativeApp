@@ -457,9 +457,11 @@ function MainScreen() {
           <ScrollView showsVerticalScrollIndicator={false}>
             {PanelSettings.breakingNewsModule && <BreakingNews/>}
             <SliderNews/>
-            <View style={styles.carouselContainer}>
-              <SliderBannerAds/>
-            </View>
+            { PanelSettings.quintipleCuffsModule && 
+              <View style={styles.carouselContainer}>
+                <SliderBannerAds/>
+              </View>
+            }
             <CurrencyAll/>
             <CurrencySlider />
             <SliderDotsNews data={sliderDotsNewsData}/>
