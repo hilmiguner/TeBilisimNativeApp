@@ -22,7 +22,7 @@ const PanelSettings = {
     quintipleCuffsModule: true, // "Açık" veya "Kapalı"
     dailyCuffsModule: true, // "Açık" veya "Kapalı"
     highlightedNewsModule: true, // "Açık" veya "Kapalı"
-    localNewsModule: "", // "Açık" veya "Kapalı"
+    localNewsModule: true, // "Açık" veya "Kapalı"
     trendNewsModule: "", // "Açık" veya "Kapalı"
     tabbedNewsModule: "", // "Açık" veya "Kapalı"
     prayerTimesModule: "", // "Açık" veya "Kapalı"

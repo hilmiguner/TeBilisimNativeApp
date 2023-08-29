@@ -497,16 +497,18 @@ function MainScreen() {
               <NumberCard cardData={trendNewsData[3]}/>
               <NumberCard cardData={trendNewsData[4]}/>
             </ExpandableList>
-            <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü">
-              <View style={styles.localNewsContainer}>
-                <VerticalCard cardData={localNewsData[0]}/>
-                <VerticalCard cardData={localNewsData[1]}/>
-              </View>
-              <View style={styles.localNewsContainer}>
-                <VerticalCard cardData={localNewsData[2]}/>
-                <VerticalCard cardData={localNewsData[3]}/>
-              </View>
-            </ExpandableList>
+            { PanelSettings.localNewsModule && 
+              <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü">
+                <View style={styles.localNewsContainer}>
+                  <VerticalCard cardData={localNewsData[0]}/>
+                  <VerticalCard cardData={localNewsData[1]}/>
+                </View>
+                <View style={styles.localNewsContainer}>
+                  <VerticalCard cardData={localNewsData[2]}/>
+                  <VerticalCard cardData={localNewsData[3]}/>
+                </View>
+              </ExpandableList>
+            }
             <Weather weatherData={weatherData}/>
             <HorizontalCategories/>
             <ThreeNews data={tempNewsData}/>
