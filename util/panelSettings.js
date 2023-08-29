@@ -16,7 +16,7 @@ const PanelSettings = {
     tvStreamLink: "",
     radioStreamLink: "",
     footerShortDescription: "Türkiye'nin en büyük haber sitesi, en kaliteli ve güncel haberleriyle artık karşınızda!",
-    breakingNewsModule: "", // "Açık" veya "Kapalı"
+    breakingNewsModule: true, // "Açık" veya "Kapalı"
     biographyModule: "", // "Açık" veya "Kapalı"
     interviewModule: "", // "Açık" veya "Kapalı"
     quintipleCuffsModule: "", // "Açık" veya "Kapalı"

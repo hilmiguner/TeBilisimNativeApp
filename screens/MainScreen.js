@@ -455,7 +455,7 @@ function MainScreen() {
   return(
       <View style={styles.rootContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <BreakingNews/>
+            {PanelSettings.breakingNewsModule && <BreakingNews/>}
             <SliderNews/>
             <View style={styles.carouselContainer}>
               <SliderBannerAds/>
