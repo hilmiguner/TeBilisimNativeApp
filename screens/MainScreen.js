@@ -455,7 +455,7 @@ function MainScreen() {
   return(
       <View style={styles.rootContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            {PanelSettings.breakingNewsModule && <BreakingNews/>}
+            { PanelSettings.breakingNewsModule && <BreakingNews/> }
             <SliderNews/>
             { PanelSettings.quintipleCuffsModule && 
               <View style={styles.carouselContainer}>
@@ -465,9 +465,11 @@ function MainScreen() {
             <CurrencyAll/>
             <CurrencySlider />
             <SliderDotsNews data={sliderDotsNewsData}/>
-            <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
-              <SliderNews/>
-            </ExpandableList>
+            { PanelSettings.dailyCuffsModule && 
+              <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
+                <SliderNews/>
+              </ExpandableList>
+            }
             <ExpandableList title="Yazarlar" expandButtonTitle="Tümü">
               <Authors authorsList={authorsData}/>
             </ExpandableList>
