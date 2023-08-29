@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image } from "react-native";
+import { Image, StatusBar } from "react-native";
 
 // Drawer Paketi için Gerekli Paket
 import 'react-native-gesture-handler';
@@ -20,6 +20,9 @@ import IconButton from './components/IconButton';
 // Statik Değerler
 import AppColors from './constants/colors';
 import ContextProvider from "./store/context";
+
+// Uygulama Ayarları(API)
+import PanelSettings from "./util/panelSettings";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -58,6 +61,7 @@ function DrawerNavigator() {
 function App() {
   return(
     <ContextProvider>
+      <StatusBar barStyle={PanelSettings.iosStatusBarContentColor}/>
       <NavigationContainer>  
         <Stack.Navigator>
           <Stack.Screen 
