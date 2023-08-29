@@ -42,6 +42,7 @@ function DrawerNavigator() {
     <Drawer.Navigator screenOptions={{
       drawerActiveBackgroundColor: AppColors.red200,
       drawerActiveTintColor: PanelSettings.menuTextColor,
+      headerTintColor: PanelSettings.headerTextColor,
     }}>
       <Drawer.Screen name='MainScreen' component={MainScreen} options={({ navigation }) => ({
         headerStyle: NavigatorHeaderStyle,
@@ -66,6 +67,7 @@ function App() {
       <NavigationContainer>  
         <Stack.Navigator screenOptions={{
           headerStyle: { backgroundColor: PanelSettings.headerAndStatusBarBG_Color },
+          headerTintColor: PanelSettings.headerTextColor,
         }}>
           <Stack.Screen 
           name="DrawerMainScreen" 

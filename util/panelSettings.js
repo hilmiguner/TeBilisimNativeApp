@@ -4,7 +4,7 @@ export default PanelSettings = {
     iosStatusBarContentColor: "dark-content", // "Beyaz" veya "Siyah"
     headerAndStatusBarBG_Color: "white", // Renk
     menuTextColor: "black", // Renk
-    headerTextColor: "", // Renk
+    headerTextColor: "black", // Renk
     menuBG_Color: "", // Renk
     themePrimaryColor: "", // Renk
     moduleTitleTextColor: "", // Renk
