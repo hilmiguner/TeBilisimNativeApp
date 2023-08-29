@@ -481,13 +481,15 @@ function MainScreen() {
             <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
               <PhotoGallery data={photoGalleryData}/>
             </ExpandableList>
-            <View style={styles.highlightsContainer}>
-              <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
-                <Card cardData={higlightsData[0]}/>
-                <Card cardData={higlightsData[1]}/>
-                <Card cardData={higlightsData[2]}/>
-              </ExpandableList>
-            </View>
+            { PanelSettings.highlightedNewsModule && 
+              <View style={styles.highlightsContainer}>
+                <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
+                  <Card cardData={higlightsData[0]}/>
+                  <Card cardData={higlightsData[1]}/>
+                  <Card cardData={higlightsData[2]}/>
+                </ExpandableList>
+              </View>
+            }
             <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü">
               <NumberCard cardData={trendNewsData[0]}/>
               <NumberCard cardData={trendNewsData[1]}/>
@@ -516,11 +518,13 @@ function MainScreen() {
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
-            <View style={styles.horizontalHighlightsContainer}>
-              <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
-                <SliderHighlights />
-              </ExpandableList>
-            </View>
+            { PanelSettings.highlightedNewsModule && 
+              <View style={styles.horizontalHighlightsContainer}>
+                <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
+                  <SliderHighlights />
+                </ExpandableList>
+              </View>
+            }
             <View style={styles.emptyArea}>
               {/* Empty Area Above Footer */}
             </View>

@@ -21,7 +21,7 @@ const PanelSettings = {
     interviewModule: "", // "Açık" veya "Kapalı"
     quintipleCuffsModule: true, // "Açık" veya "Kapalı"
     dailyCuffsModule: true, // "Açık" veya "Kapalı"
-    highlightedNewsModule: "", // "Açık" veya "Kapalı"
+    highlightedNewsModule: true, // "Açık" veya "Kapalı"
     localNewsModule: "", // "Açık" veya "Kapalı"
     trendNewsModule: "", // "Açık" veya "Kapalı"
     tabbedNewsModule: "", // "Açık" veya "Kapalı"
