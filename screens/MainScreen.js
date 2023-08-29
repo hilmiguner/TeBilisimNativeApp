@@ -520,7 +520,7 @@ function MainScreen() {
             <View style={styles.emptyArea}>
               {/* Empty Area Above Footer */}
             </View>
-            <Footer>Türkiye'nin en büyük haber sitesi, en kaliteli ve güncel haberleriyle artık karşınızda!</Footer>
+            <Footer>{PanelSettings.footerShortDescription}</Footer>
           </ScrollView>
       </View>
   );

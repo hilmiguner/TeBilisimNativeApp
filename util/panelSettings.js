@@ -15,7 +15,7 @@ const PanelSettings = {
     adMobAndroidInterstitialID: "",
     tvStreamLink: "",
     radioStreamLink: "",
-    footerShortDescription: "",
+    footerShortDescription: "Türkiye'nin en büyük haber sitesi, en kaliteli ve güncel haberleriyle artık karşınızda!",
     breakingNewsModule: "", // "Açık" veya "Kapalı"
     biographyModule: "", // "Açık" veya "Kapalı"
     interviewModule: "", // "Açık" veya "Kapalı"
