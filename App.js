@@ -34,6 +34,7 @@ const NavigatorHeaderStyle = {
   shadowOffset: { width: 0, height: 3 },
   shadowOpacity: 0.20,
   shadowRadius: 6,
+  backgroundColor: PanelSettings.headerAndStatusBarBG_Color,
 };
 
 function DrawerNavigator() {
@@ -52,7 +53,7 @@ function DrawerNavigator() {
             resizeMode: 'stretch',
           }}/>,
         headerTitleAlign: "center",
-        headerRight: (_) => <IconButton icon="search" size={32} color={AppColors.gray300}/>, 
+        headerRight: (_) => <IconButton icon="search" size={32} color={AppColors.gray300}/>,
       })}/>
     </Drawer.Navigator>
   );
@@ -61,9 +62,11 @@ function DrawerNavigator() {
 function App() {
   return(
     <ContextProvider>
-      <StatusBar barStyle={PanelSettings.iosStatusBarContentColor}/>
+      <StatusBar barStyle={PanelSettings.iosStatusBarContentColor} backgroundColor={PanelSettings.headerAndStatusBarBG_Color}/>
       <NavigationContainer>  
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+          headerStyle: { backgroundColor: PanelSettings.headerAndStatusBarBG_Color },
+        }}>
           <Stack.Screen 
           name="DrawerMainScreen" 
           component={DrawerNavigator}
