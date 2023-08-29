@@ -3,7 +3,7 @@ export default PanelSettings = {
     oneSignalAPI_Key: "",
     iosStatusBarContentColor: "dark-content", // "Beyaz" veya "Siyah"
     headerAndStatusBarBG_Color: "white", // Renk
-    menuTextColor: "", // Renk
+    menuTextColor: "black", // Renk
     headerTextColor: "", // Renk
     menuBG_Color: "", // Renk
     themePrimaryColor: "", // Renk

@@ -41,7 +41,7 @@ function DrawerNavigator() {
   return(
     <Drawer.Navigator screenOptions={{
       drawerActiveBackgroundColor: AppColors.red200,
-      drawerActiveTintColor: AppColors.logo,
+      drawerActiveTintColor: PanelSettings.menuTextColor,
     }}>
       <Drawer.Screen name='MainScreen' component={MainScreen} options={({ navigation }) => ({
         headerStyle: NavigatorHeaderStyle,
