@@ -25,6 +25,9 @@ import SliderHighlights from "../components/news/SliderHighlights";
 import Footer from "../components/others/Footer";
 import CurrencySlider from "../components/others/CurrencySlider";
 
+// Uygulama Ayarları(API)
+import PanelSettings from "../util/panelSettings";
+
 function MainScreen() {
   const sliderDotsNewsData = [
     { 
@@ -539,7 +542,7 @@ const styles = StyleSheet.create({
       backgroundColor: "black",
     },
     highlightsContainer: {
-      backgroundColor: AppColors.red300,
+      backgroundColor: PanelSettings.themePrimaryColor,
     },
     localNewsContainer: {
       flexDirection: "row",
@@ -552,11 +555,11 @@ const styles = StyleSheet.create({
       marginBottom: 12,
     },
     horizontalHighlightsContainer: {
-      backgroundColor: AppColors.red300,
+      backgroundColor: PanelSettings.themePrimaryColor,
     },
     emptyArea: {
       height: 200,
       borderBottomWidth: 3,
-      borderColor: AppColors.red300,
+      borderColor: PanelSettings.themePrimaryColor,
     },
 });

@@ -4,10 +4,13 @@ import { Pressable, StyleSheet, Text } from "react-native";
 // Statik Değerler
 import AppColors from "../../constants/colors";
 
+// Uygulama Ayarları(API)
+import PanelSettings from "../../util/panelSettings";
+
 function HorizontalCategory({ title, isSelected, onPress }) {
     const rootContainerStyle = (isSelected ? {
-        backgroundColor: AppColors.red300,
-        borderColor: AppColors.red300,
+        backgroundColor: PanelSettings.themePrimaryColor,
+        borderColor: PanelSettings.themePrimaryColor,
     } : {
         backgroundColor: "#FFFFFF",
         borderColor: AppColors.gray200,

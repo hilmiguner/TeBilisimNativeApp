@@ -3,7 +3,9 @@ import { Image, StyleSheet, Text, View } from "react-native";
 
 // Statik Değerler
 import imageMapping from "../../constants/imageMapping";
-import AppColors from "../../constants/colors";
+
+// Uygulama Ayarları(API)
+import PanelSettings from "../../util/panelSettings";
 
 function NumberCard({ cardData }) {
     const image = imageMapping[cardData.imageName];
@@ -17,7 +19,7 @@ function NumberCard({ cardData }) {
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={image}/>
                 <View style={styles.imageWhiteLabel}>
-                    <View style={styles.imageRedLabel}>
+                    <View style={styles.imageFrontLabel}>
                         <Text style={styles.labelText}>{cardLabel}</Text>
                     </View>
                 </View>
@@ -60,11 +62,11 @@ const styles = StyleSheet.create({
         justifyContent: "center", 
         alignItems: "center",
     },
-    imageRedLabel: {
+    imageFrontLabel: {
         width: 40, 
         height: 40, 
         borderRadius: 20, 
-        backgroundColor: AppColors.red300, 
+        backgroundColor: PanelSettings.themePrimaryColor, 
         overflow: "hidden", 
         justifyContent: "center", 
         alignItems: "center",

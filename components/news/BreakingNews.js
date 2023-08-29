@@ -4,6 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 // Statik Değerler
 import AppColors from "../../constants/colors";
 
+// Uygulama Ayarları(API)
+import PanelSettings from "../../util/panelSettings";
+
 function BreakingNews() {
     return(
         <View style={styles.rootContainer}>
@@ -22,7 +25,7 @@ const styles = StyleSheet.create({
     rootContainer: {
         flexDirection: "row",
         width: "100%",
-        backgroundColor: AppColors.red300,
+        backgroundColor: PanelSettings.themePrimaryColor,
         paddingHorizontal: 12,
         paddingVertical: 16,
         alignItems: "center",

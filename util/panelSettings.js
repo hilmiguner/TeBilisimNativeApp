@@ -1,4 +1,4 @@
-export default PanelSettings = {
+const PanelSettings = {
     oneSignalAppID: "",
     oneSignalAPI_Key: "",
     iosStatusBarContentColor: "dark-content", // "Beyaz" veya "Siyah"
@@ -6,7 +6,7 @@ export default PanelSettings = {
     menuTextColor: "black", // Renk
     headerTextColor: "black", // Renk
     menuBG_Color: "white", // Renk
-    themePrimaryColor: "", // Renk
+    themePrimaryColor: "#d65543", // Renk
     moduleTitleTextColor: "", // Renk
     detailTextColor: "", // Renk
     adMobIosBannerID: "",
@@ -51,3 +51,5 @@ export default PanelSettings = {
     app_adsContentCode: "",
     mainCuffLimit: "", // Sayı
 };
+
+export default PanelSettings;

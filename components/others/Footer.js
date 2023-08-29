@@ -1,11 +1,14 @@
 // React Native Temel Paketler
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
 
 // Statik Değerler
 import AppColors from "../../constants/colors";
+
+// Uygulama Ayarları(API)
+import PanelSettings from "../../util/panelSettings";
 
 function Footer({ children }) {
     return(
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         justifyContent: "space-around",
-        backgroundColor: AppColors.red300,
+        backgroundColor: PanelSettings.themePrimaryColor,
         paddingHorizontal: 18,
     },
     socialMediaLogo: {

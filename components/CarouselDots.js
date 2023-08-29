@@ -7,6 +7,9 @@ import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
 // Statik Değerler
 import AppColors from '../constants/colors';
 
+// Uygulama Ayarları(API)
+import PanelSettings from "../util/panelSettings";
+
 function CarouselDots({ length, currentIndex }) {
     
     return(
@@ -17,7 +20,7 @@ function CarouselDots({ length, currentIndex }) {
                 maxIndicators={length}
                 interpolateOpacityAndColor={true}
                 activeIndicatorConfig={{
-                    color: AppColors.red300,
+                    color: PanelSettings.themePrimaryColor,
                     margin: 3,
                     opacity: 1,
                     size: 8,

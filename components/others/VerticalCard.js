@@ -5,6 +5,9 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import imageMapping from "../../constants/imageMapping";
 import AppColors from "../../constants/colors";
 
+// Uygulama Ayarları(API)
+import PanelSettings from "../../util/panelSettings";
+
 function VerticalCard({ cardData }) {
     const image = imageMapping[cardData.imageName];
     const cityName = cardData.cityName;
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         borderBottomWidth: 4,
-        borderBottomColor: AppColors.red300,
+        borderBottomColor: PanelSettings.themePrimaryColor,
     },
     image: {
         width: "100%",
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
         borderBottomColor: AppColors.gray200,
     },
     cityText: {
-        color: AppColors.red300,
+        color: PanelSettings.themePrimaryColor,
         fontWeight: "bold"
     },
     titleText: {

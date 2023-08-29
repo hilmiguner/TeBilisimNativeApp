@@ -5,6 +5,9 @@ import { StyleSheet, Text, Image, Pressable } from "react-native";
 import AppColors from "../../constants/colors";
 import imageMapping from "../../constants/imageMapping";
 
+// Uygulama Ayarları(API)
+import PanelSettings from "../../util/panelSettings";
+
 function Author({ authorData }) {
     const image = imageMapping[authorData.imageName];
     const content = authorData.content;
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
         borderBottomWidth: 6,
-        borderBottomColor: AppColors.red300,
+        borderBottomColor: PanelSettings.themePrimaryColor,
         width: 200,
         //padding: 16,
         margin: 12,
