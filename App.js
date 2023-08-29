@@ -40,6 +40,7 @@ const NavigatorHeaderStyle = {
 function DrawerNavigator() {
   return(
     <Drawer.Navigator screenOptions={{
+      drawerStyle: { backgroundColor: PanelSettings.menuBG_Color },
       drawerActiveBackgroundColor: AppColors.red200,
       drawerActiveTintColor: PanelSettings.menuTextColor,
       headerTintColor: PanelSettings.headerTextColor,

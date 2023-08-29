@@ -5,7 +5,7 @@ export default PanelSettings = {
     headerAndStatusBarBG_Color: "white", // Renk
     menuTextColor: "black", // Renk
     headerTextColor: "black", // Renk
-    menuBG_Color: "", // Renk
+    menuBG_Color: "white", // Renk
     themePrimaryColor: "", // Renk
     moduleTitleTextColor: "", // Renk
     detailTextColor: "", // Renk
