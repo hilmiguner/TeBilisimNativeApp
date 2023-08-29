@@ -490,13 +490,15 @@ function MainScreen() {
                 </ExpandableList>
               </View>
             }
-            <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü">
-              <NumberCard cardData={trendNewsData[0]}/>
-              <NumberCard cardData={trendNewsData[1]}/>
-              <NumberCard cardData={trendNewsData[2]}/>
-              <NumberCard cardData={trendNewsData[3]}/>
-              <NumberCard cardData={trendNewsData[4]}/>
-            </ExpandableList>
+            { PanelSettings.trendNewsModule && 
+              <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü">
+                <NumberCard cardData={trendNewsData[0]}/>
+                <NumberCard cardData={trendNewsData[1]}/>
+                <NumberCard cardData={trendNewsData[2]}/>
+                <NumberCard cardData={trendNewsData[3]}/>
+                <NumberCard cardData={trendNewsData[4]}/>
+              </ExpandableList>
+            }
             { PanelSettings.localNewsModule && 
               <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü">
                 <View style={styles.localNewsContainer}>
