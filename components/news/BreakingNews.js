@@ -4,12 +4,16 @@ import { StyleSheet, Text, View } from "react-native";
 // Statik Değerler
 import AppColors from "../../constants/colors";
 
-// Uygulama Ayarları(API)
-import PanelSettings from "../../util/panelSettings";
+// Context
+import { Context } from "../../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
 
 function BreakingNews() {
+    const ctx = useContext(Context);
     return(
-        <View style={styles.rootContainer}>
+        <View style={[styles.rootContainer, { backgroundColor: ctx.panelSettings.themePrimaryColor }]}>
             <View>
                 <Text style={[styles.sonDakikaText, styles.sonText]}>SON</Text>
                 <Text style={styles.sonDakikaText}>DAKİKA</Text>
@@ -25,7 +29,6 @@ const styles = StyleSheet.create({
     rootContainer: {
         flexDirection: "row",
         width: "100%",
-        backgroundColor: PanelSettings.themePrimaryColor,
         paddingHorizontal: 12,
         paddingVertical: 16,
         alignItems: "center",

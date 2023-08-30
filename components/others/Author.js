@@ -5,16 +5,20 @@ import { StyleSheet, Text, Image, Pressable } from "react-native";
 import AppColors from "../../constants/colors";
 import imageMapping from "../../constants/imageMapping";
 
-// Uygulama Ayarları(API)
-import PanelSettings from "../../util/panelSettings";
+// Context
+import { Context } from "../../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
 
 function Author({ authorData }) {
     const image = imageMapping[authorData.imageName];
     const content = authorData.content;
     const authorName = authorData.authorName;
 
+    const ctx = useContext(Context);
     return(
-        <Pressable style={styles.rootContainer}>
+        <Pressable style={[styles.rootContainer, { borderBottomColor: ctx.panelSettings.themePrimaryColor }]}>
             <Image style={styles.image} source={image}/>
             <Text style={styles.text}>{content}</Text>
             <Text style={styles.text}>{authorName}</Text>
@@ -31,9 +35,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
         borderBottomWidth: 6,
-        borderBottomColor: PanelSettings.themePrimaryColor,
         width: 200,
-        //padding: 16,
         margin: 12,
     },
     image: {

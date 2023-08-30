@@ -11,7 +11,6 @@ import ExpandableList from "../components/others/ExpandableList";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
-import AppColors from "../constants/colors";
 import Card from "../components/others/Card";
 import NumberCard from "../components/others/NumberCard";
 import VerticalCard from "../components/others/VerticalCard";
@@ -25,8 +24,11 @@ import SliderHighlights from "../components/news/SliderHighlights";
 import Footer from "../components/others/Footer";
 import CurrencySlider from "../components/others/CurrencySlider";
 
-// Uygulama Ayarları(API)
-import PanelSettings from "../util/panelSettings";
+// Context
+import { Context } from "../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -452,12 +454,14 @@ function MainScreen() {
     },
   ];
 
+  const ctx = useContext(Context);
+
   return(
       <View style={styles.rootContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            { PanelSettings.breakingNewsModule && <BreakingNews/> }
+            { ctx.panelSettings.breakingNewsModule && <BreakingNews/> }
             <SliderNews/>
-            { PanelSettings.quintipleCuffsModule && 
+            { ctx.panelSettings.quintipleCuffsModule && 
               <View style={styles.carouselContainer}>
                 <SliderBannerAds/>
               </View>
@@ -465,7 +469,7 @@ function MainScreen() {
             <CurrencyAll/>
             <CurrencySlider />
             <SliderDotsNews data={sliderDotsNewsData}/>
-            { PanelSettings.dailyCuffsModule && 
+            { ctx.panelSettings.dailyCuffsModule && 
               <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
                 <SliderNews/>
               </ExpandableList>
@@ -481,8 +485,8 @@ function MainScreen() {
             <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
               <PhotoGallery data={photoGalleryData}/>
             </ExpandableList>
-            { PanelSettings.highlightedNewsModule && 
-              <View style={styles.highlightsContainer}>
+            { ctx.panelSettings.highlightedNewsModule && 
+              <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor, }}>
                 <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
                   <Card cardData={higlightsData[0]}/>
                   <Card cardData={higlightsData[1]}/>
@@ -490,7 +494,7 @@ function MainScreen() {
                 </ExpandableList>
               </View>
             }
-            { PanelSettings.trendNewsModule && 
+            { ctx.panelSettings.trendNewsModule && 
               <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü">
                 <NumberCard cardData={trendNewsData[0]}/>
                 <NumberCard cardData={trendNewsData[1]}/>
@@ -499,7 +503,7 @@ function MainScreen() {
                 <NumberCard cardData={trendNewsData[4]}/>
               </ExpandableList>
             }
-            { PanelSettings.localNewsModule && 
+            { ctx.panelSettings.localNewsModule && 
               <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü">
                 <View style={styles.localNewsContainer}>
                   <VerticalCard cardData={localNewsData[0]}/>
@@ -522,17 +526,17 @@ function MainScreen() {
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
-            { PanelSettings.highlightedNewsModule && 
-              <View style={styles.horizontalHighlightsContainer}>
+            { ctx.panelSettings.highlightedNewsModule && 
+              <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor }}>
                 <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
                   <SliderHighlights />
                 </ExpandableList>
               </View>
             }
-            <View style={styles.emptyArea}>
+            <View style={[styles.emptyArea, { borderColor: ctx.panelSettings.themePrimaryColor }]}>
               {/* Empty Area Above Footer */}
             </View>
-            <Footer>{PanelSettings.footerShortDescription}</Footer>
+            <Footer>{ctx.panelSettings.footerShortDescription}</Footer>
           </ScrollView>
       </View>
   );
@@ -553,9 +557,6 @@ const styles = StyleSheet.create({
     videoGalleryContainer: {
       backgroundColor: "black",
     },
-    highlightsContainer: {
-      backgroundColor: PanelSettings.themePrimaryColor,
-    },
     localNewsContainer: {
       flexDirection: "row",
       flex: 1,
@@ -566,12 +567,8 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       marginBottom: 12,
     },
-    horizontalHighlightsContainer: {
-      backgroundColor: PanelSettings.themePrimaryColor,
-    },
     emptyArea: {
       height: 200,
       borderBottomWidth: 3,
-      borderColor: PanelSettings.themePrimaryColor,
     },
 });

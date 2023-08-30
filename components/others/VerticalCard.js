@@ -5,21 +5,25 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import imageMapping from "../../constants/imageMapping";
 import AppColors from "../../constants/colors";
 
-// Uygulama Ayarları(API)
-import PanelSettings from "../../util/panelSettings";
+// Context
+import { Context } from "../../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
 
 function VerticalCard({ cardData }) {
     const image = imageMapping[cardData.imageName];
     const cityName = cardData.cityName;
     const newsTitle = cardData.newsTitle;
 
+    const ctx = useContext(Context);
     return(
         <View style={styles.rootContainer}>
-            <View style={styles.imageContainer}>
+            <View style={[styles.imageContainer, { borderBottomColor: ctx.panelSettings.themePrimaryColor }]}>
                 <Image style={styles.image} source={image}/>
             </View>
             <View style={styles.cityContainer}>
-                <Text style={styles.cityText}>{cityName}</Text>
+                <Text style={[styles.cityText, { color: ctx.panelSettings.themePrimaryColor }]}>{cityName}</Text>
             </View>
             <Text style={styles.titleText}>{newsTitle}</Text>
         </View>
@@ -35,7 +39,6 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         borderBottomWidth: 4,
-        borderBottomColor: PanelSettings.themePrimaryColor,
     },
     image: {
         width: "100%",
@@ -51,7 +54,6 @@ const styles = StyleSheet.create({
         borderBottomColor: AppColors.gray200,
     },
     cityText: {
-        color: PanelSettings.themePrimaryColor,
         fontWeight: "bold"
     },
     titleText: {

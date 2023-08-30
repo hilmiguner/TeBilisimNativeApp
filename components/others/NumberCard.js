@@ -4,8 +4,11 @@ import { Image, StyleSheet, Text, View } from "react-native";
 // Statik Değerler
 import imageMapping from "../../constants/imageMapping";
 
-// Uygulama Ayarları(API)
-import PanelSettings from "../../util/panelSettings";
+// Context
+import { Context } from "../../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
 
 function NumberCard({ cardData }) {
     const image = imageMapping[cardData.imageName];
@@ -14,12 +17,13 @@ function NumberCard({ cardData }) {
     const content = cardData.content;
     const cardLabel = cardData.cardLabel;
 
+    const ctx = useContext(Context);
     return(
         <View style={styles.rootContainer}>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={image}/>
                 <View style={styles.imageWhiteLabel}>
-                    <View style={styles.imageFrontLabel}>
+                    <View style={[styles.imageFrontLabel, { backgroundColor: ctx.panelSettings.themePrimaryColor }]}>
                         <Text style={styles.labelText}>{cardLabel}</Text>
                     </View>
                 </View>
@@ -66,7 +70,6 @@ const styles = StyleSheet.create({
         width: 40, 
         height: 40, 
         borderRadius: 20, 
-        backgroundColor: PanelSettings.themePrimaryColor, 
         overflow: "hidden", 
         justifyContent: "center", 
         alignItems: "center",

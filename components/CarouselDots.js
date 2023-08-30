@@ -7,11 +7,14 @@ import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
 // Statik Değerler
 import AppColors from '../constants/colors';
 
-// Uygulama Ayarları(API)
-import PanelSettings from "../util/panelSettings";
+// Context
+import { Context } from "../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
 
 function CarouselDots({ length, currentIndex }) {
-    
+    const ctx = useContext(Context);
     return(
         <View style={styles.rootContainer}>
             <AnimatedDotsCarousel
@@ -20,7 +23,7 @@ function CarouselDots({ length, currentIndex }) {
                 maxIndicators={length}
                 interpolateOpacityAndColor={true}
                 activeIndicatorConfig={{
-                    color: PanelSettings.themePrimaryColor,
+                    color: ctx.panelSettings.themePrimaryColor,
                     margin: 3,
                     opacity: 1,
                     size: 8,

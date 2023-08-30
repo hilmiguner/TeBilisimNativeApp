@@ -22,10 +22,9 @@ import { useNavigation } from "@react-navigation/native";
 // Context
 import { Context } from "../../store/context";
 
-
 function Weather({ weatherData }) {
     const [cityName, setCityName] = useState(null);
-    
+
     const ctx = useContext(Context);
     useEffect(() => {
         if(!ctx.currentCity) {
@@ -33,7 +32,7 @@ function Weather({ weatherData }) {
         }
         setCityName(ctx.currentCity);
     }, [ctx.currentCity]);
-    
+
     let cityContent;
     if(!cityName) {
         cityContent = <ActivityIndicator color="white"/>;

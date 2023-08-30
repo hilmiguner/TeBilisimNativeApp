@@ -7,17 +7,21 @@ import IconButton from "../IconButton";
 // Statik Değerler
 import AppColors from "../../constants/colors";
 
-// Uygulama Ayarları(API)
-import PanelSettings from "../../util/panelSettings";
+// Context
+import { Context } from "../../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
 
 function Footer({ children }) {
+    const ctx = useContext(Context);
     return(
         <View style={styles.rootContainer}>
             <View>
                 <Image style={styles.image} source={require("../../assets/images/logo.png")}/>
                 <Text style={styles.text}>{children}</Text>
             </View>
-            <View style={styles.socialMediaContainer}>
+            <View style={[styles.socialMediaContainer, { backgroundColor: ctx.panelSettings.themePrimaryColor }]}>
                 <View style={styles.socialMediaLogo}>
                     <IconButton icon="logo-facebook" color="black" size={24}/>
                 </View>
@@ -64,7 +68,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         justifyContent: "space-around",
-        backgroundColor: PanelSettings.themePrimaryColor,
         paddingHorizontal: 18,
     },
     socialMediaLogo: {
