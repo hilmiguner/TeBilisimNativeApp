@@ -455,7 +455,7 @@ function MainScreen() {
   ];
 
   const ctx = useContext(Context);
-
+  
   return(
       <View style={styles.rootContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
