@@ -15,7 +15,6 @@ import Card from "../components/others/Card";
 import NumberCard from "../components/others/NumberCard";
 import VerticalCard from "../components/others/VerticalCard";
 import Weather from "../components/others/Weather";
-import HorizontalCategories from "../components/others/HorizontalCategories";
 import PrayerTimes from "../components/others/PrayerTimes";
 import TopTabsLeague from "../components/others/TopTabsLeague";
 import LinearGradient from "react-native-linear-gradient";
@@ -467,25 +466,35 @@ function MainScreen() {
                 <SliderBannerAds/>
               </View>
             }
-            <CurrencyAll/>
-            <CurrencySlider />
+            { ctx.panelSettings.marketsModule &&
+              <>
+                <CurrencyAll/>
+                <CurrencySlider />
+              </>
+            }
             <SliderDotsNews data={sliderDotsNewsData}/>
             { ctx.panelSettings.dailyCuffsModule && 
               <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
                 <SliderNews/>
               </ExpandableList>
             }
-            <ExpandableList title="Yazarlar" expandButtonTitle="Tümü">
-              <Authors authorsList={authorsData}/>
-            </ExpandableList>
-            <View style={styles.videoGalleryContainer}>
-              <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü">
-                <SliderVideoGallery videoGalleryData={videoGalleryData}/>
+            { ctx.panelSettings.authorsModule && 
+              <ExpandableList title="Yazarlar" expandButtonTitle="Tümü">
+                <Authors authorsList={authorsData}/>
               </ExpandableList>
-            </View>
-            <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
-              <PhotoGallery data={photoGalleryData}/>
-            </ExpandableList>
+            }
+            { ctx.panelSettings.videosModule && 
+              <View style={styles.videoGalleryContainer}>
+                <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü">
+                  <SliderVideoGallery videoGalleryData={videoGalleryData}/>
+                </ExpandableList>
+              </View>
+            }
+            { ctx.panelSettings.galleriesModule && 
+              <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
+                <PhotoGallery data={photoGalleryData}/>
+              </ExpandableList>
+            }
             { ctx.panelSettings.highlightedNewsModule && 
               <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor, }}>
                 <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
@@ -516,13 +525,15 @@ function MainScreen() {
                 </View>
               </ExpandableList>
             }
-            <Weather weatherData={weatherData}/>
+            { ctx.panelSettings.weatherModule && <Weather weatherData={weatherData}/> }
             { ctx.panelSettings.tabbedNewsModule && <TabbedNews data={tempNewsData}/> }
             { ctx.panelSettings.prayerTimesModule && <PrayerTimes data={prayerTimesData}/> }
-            <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
-              <Text style={styles.leagueScoreText}>Puan Durumu</Text>
-              <TopTabsLeague data={leagueScoreData}/>
-            </LinearGradient>
+            { ctx.panelSettings.leagueScoreStatusModule && 
+              <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
+                <Text style={styles.leagueScoreText}>Puan Durumu</Text>
+                <TopTabsLeague data={leagueScoreData}/>
+              </LinearGradient>
+            }
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
             <ThreeNews data={tempNewsData}/>
