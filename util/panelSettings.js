@@ -36,12 +36,12 @@ function setSettings(API_data) {
         videosModule: true ? API_data.mobile_app_anasayfa_videolar == "true" : false, // "true" veya "false"
         galleriesModule: true ? API_data.mobile_app_anasayfa_galeriler == "true" : false, // "true" veya "false"
         leagueScoreStatusModule: true ? API_data.mobile_app_puandurumu == "true" : false, // "true" veya "false"
-        authorsDirectionType: "", // "Dikey" veya "Yatay"
-        videosDirectionType: "", // "Dikey" veya "Yatay"
-        galleriesDirectionType: "", // "Dikey" veya "Yatay"
-        highlightedNewsDirectionType: "", // "Dikey" veya "Yatay"
-        weatherAndMarketsDirectionType: "", // "Dikey" veya "Yatay"
-        otherNewsViewType: "", // "Özel" veya "Düz"
+        authorsDirectionType: API_data.mobile_app_anasayfa_yazarlar_tipi, // "vertical" veya "horizontal"
+        videosDirectionType: API_data.mobile_app_anasayfa_videolar_tipi, // "vertical" veya "horizontal"
+        galleriesDirectionType: API_data.mobile_app_anasayfa_galeriler_tipi, // "vertical" veya "horizontal"
+        highlightedNewsDirectionType: API_data.mobile_app_onecikanlar_tipi, // "vertical" veya "horizontal"
+        weatherAndMarketsDirectionType: API_data.mobile_app_hava_durumu_piyasalar_tipi, // "vertical" veya "horizontal"
+        otherNewsViewType: API_data.mobile_app_diger_haberler_tipi, // "custom" veya "flat"
         detailFontSize: "", // Sayı
         primaryFontFamily: "", // Font Family (sadece detaylar ve spot)
         secondaryFontFamily: "", // Font Family (modül ve detay başlıkları)
