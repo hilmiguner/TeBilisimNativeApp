@@ -10,10 +10,10 @@ function setSettings(API_data) {
         themePrimaryColor: API_data.primary_color, // Renk
         moduleTitleTextColor: API_data.title_font_color, // Renk
         detailTextColor: API_data.font_color, // Renk
-        adMobIosBannerID: "",
-        adMobAndroidBannerID: "",
-        adMobIosInterstitialID: "",
-        adMobAndroidInterstitialID: "",
+        adMobIosBannerID: API_data.mobile_app_ios_banner,
+        adMobAndroidBannerID: API_data.mobile_app_android_banner,
+        adMobIosInterstitialID: API_data.mobile_app_ios_interstitial,
+        adMobAndroidInterstitialID: API_data.mobile_app_android_interstitial,
         tvStreamLink: "",
         radioStreamLink: "",
         footerShortDescription: "Türkiye'nin en büyük haber sitesi, en kaliteli ve güncel haberleriyle artık karşınızda!",
