@@ -16,7 +16,7 @@ function setSettings(API_data) {
         adMobAndroidInterstitialID: API_data.mobile_app_android_interstitial,
         tvStreamLink: API_data.tv_link,
         radioStreamLink: API_data.fm_link,
-        footerShortDescription: "Türkiye'nin en büyük haber sitesi, en kaliteli ve güncel haberleriyle artık karşınızda!",
+        footerShortDescription: API_data.app_footer_description,
         breakingNewsModule: true, // "Açık" veya "Kapalı"
         biographyModule: "", // "Açık" veya "Kapalı"
         interviewModule: "", // "Açık" veya "Kapalı"
