@@ -42,7 +42,7 @@ function setSettings(API_data) {
         highlightedNewsDirectionType: API_data.mobile_app_onecikanlar_tipi, // "vertical" veya "horizontal"
         weatherAndMarketsDirectionType: API_data.mobile_app_hava_durumu_piyasalar_tipi, // "vertical" veya "horizontal"
         otherNewsViewType: API_data.mobile_app_diger_haberler_tipi, // "custom" veya "flat"
-        detailFontSize: "", // Sayı
+        detailFontSize: API_data.font_size, // Sayı
         primaryFontFamily: "", // Font Family (sadece detaylar ve spot)
         secondaryFontFamily: "", // Font Family (modül ve detay başlıkları)
         cuffImageHeight: "", // Sayı
