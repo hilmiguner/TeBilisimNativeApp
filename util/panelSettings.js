@@ -18,9 +18,9 @@ function setSettings(API_data) {
         radioStreamLink: API_data.fm_link,
         footerShortDescription: API_data.app_footer_description,
         breakingNewsModule: true ? API_data.mobile_app_son_dakika == "true" : false, // "true" veya "false"
-        biographyModule: "", // "true" veya "false"
-        interviewModule: "", // "true" veya "false"
-        quintipleCuffsModule: true, // "true" veya "false"
+        biographyModule: true ? API_data.mobile_app_biography == "true" : false, // "true" veya "false"
+        interviewModule: true ? API_data.mobile_app_interview == "true" : false, // "true" veya "false"
+        quintipleCuffsModule: true ? API_data.mobile_app_five_headline == "true" : false, // "true" veya "false"
         dailyCuffsModule: true, // "true" veya "false"
         highlightedNewsModule: true, // "true" veya "false"
         localNewsModule: true, // "true" veya "false"
