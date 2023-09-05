@@ -29,6 +29,7 @@ import { Context } from "../store/context";
 
 // React Native Hooks
 import { useContext } from "react";
+import TabbedNews from "../components/news/TabbedNews";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -455,7 +456,7 @@ function MainScreen() {
   ];
 
   const ctx = useContext(Context);
-  
+
   return(
       <View style={styles.rootContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -516,9 +517,8 @@ function MainScreen() {
               </ExpandableList>
             }
             <Weather weatherData={weatherData}/>
-            <HorizontalCategories/>
-            <ThreeNews data={tempNewsData}/>
-            <PrayerTimes data={prayerTimesData}/>
+            { ctx.panelSettings.tabbedNewsModule && <TabbedNews data={tempNewsData}/> }
+            { ctx.panelSettings.prayerTimesModule && <PrayerTimes data={prayerTimesData}/> }
             <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
               <Text style={styles.leagueScoreText}>Puan Durumu</Text>
               <TopTabsLeague data={leagueScoreData}/>

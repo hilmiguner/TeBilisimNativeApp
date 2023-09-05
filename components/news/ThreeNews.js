@@ -1,12 +1,13 @@
 // React Native Temel Paketler
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 // Oluşturulan Öğeler
 import ThreeNewsItem from "./ThreeNewsItem";
 
-function ThreeNews({ data }) {
+function ThreeNews({ data, title }) {
     return(
         <View style={styles.rootContainer}>
+            <Text>CURRENT TİTLE: {title}</Text>
             <View style={styles.bigPhotoContainer}>
                 <ThreeNewsItem itemData={data[0]} imageStyle={{ 
                     width: "100%",

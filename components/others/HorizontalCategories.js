@@ -7,7 +7,7 @@ import HorizontalCategory from "./HorizontalCategory";
 // React Native Hooks
 import { useState } from "react";
 
-function HorizontalCategories() {
+function HorizontalCategories({ tabChangeHandler }) {
     const templateData = [
         false,
         false,
@@ -24,10 +24,19 @@ function HorizontalCategories() {
         false,
         false,
     ]);
+    const titles = [
+        "Gündem",
+        "Siyaset",
+        "Dünya",
+        "Sağlık",
+        "Astroloji",
+        "Futbol",
+    ];
 
     function selectHandler(index) {
         templateData[index] = true;
         setIsSelectedData(templateData);
+        tabChangeHandler(titles[index]);
     }
 
     return(
