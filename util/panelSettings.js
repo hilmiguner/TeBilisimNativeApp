@@ -5,7 +5,7 @@ function setSettings(API_data) {
         iosStatusBarContentColor: API_data.mobile_app_ios_status_bar == "white" ? "light-content" : "dark-content", // "Beyaz" veya "Siyah"
         headerAndStatusBarBG_Color: API_data.mobile_app_bar_style_color, // Renk
         menuTextColor: API_data.mobile_app_menu_font_color, // Renk
-        headerTextColor: "black", // Renk
+        headerTextColor: API_data.mobile_app_bar_font_color, // Renk
         menuBG_Color: "white", // Renk
         themePrimaryColor: "#d65543", // Renk
         moduleTitleTextColor: "", // Renk
