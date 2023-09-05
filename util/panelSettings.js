@@ -9,7 +9,7 @@ function setSettings(API_data) {
         menuBG_Color: API_data.mobile_app_menu_style_color, // Renk
         themePrimaryColor: API_data.primary_color, // Renk
         moduleTitleTextColor: API_data.title_font_color, // Renk
-        detailTextColor: "", // Renk
+        detailTextColor: API_data.font_color, // Renk
         adMobIosBannerID: "",
         adMobAndroidBannerID: "",
         adMobIosInterstitialID: "",
