@@ -8,7 +8,7 @@ import SliderBannerAds from "../components/others/SliderBannerAds";
 import CurrencyAll from "../components/others/CurrencyAll";
 import SliderDotsNews from "../components/news/SliderDotsNews";
 import ExpandableList from "../components/others/ExpandableList";
-import SliderNews from "../components/news/SliderTopHeadlines";
+import SliderNews from "../components/news/SliderNews";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";

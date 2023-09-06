@@ -2,7 +2,10 @@
 import { StyleSheet, View, Image, FlatList, ActivityIndicator, Pressable, Text } from "react-native";
 
 // React Native Hooks
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+
+// Context
+import { Context } from "../../store/context";
 
 // API
 import newsApi from "../../util/newsApi";
@@ -10,18 +13,15 @@ import newsApi from "../../util/newsApi";
 // React Native Navigation
 import { useNavigation } from "@react-navigation/native";
 
-function pressHandler(navigation, id) {
-    navigation.navigate("NewsDetailsScreen", { newsID: id });
-}
-
 function RenderItem({ itemData }) {
     const navigation = useNavigation();
+    const ctx = useContext(Context);
     return(
         <View style={styles.itemRootContainer}>
-            <Pressable onPress={pressHandler.bind(this, navigation, itemData.id)}>
+            <Pressable onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.id)}>
                 <Image style={styles.itemImage} source={{ uri: itemData.image }}/>
             </Pressable>
-            <Pressable onPress={pressHandler.bind(this, navigation, itemData.id)}>
+            <Pressable onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.id)}>
                 <Text style={styles.itemTitle}>{itemData.title}</Text>
             </Pressable>
         </View>
@@ -49,16 +49,9 @@ function SliderTopHeadlines() {
         );
     }
     return(
-        <View>
-            {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.scrollView}>
-                <SliderNewsItem imageName="SliderNewsTop1" newsTitle="Yaz sıcakları bastırdı, şimdi yılan korkusu başladı"/>
-                <SliderNewsItem imageName="SliderNewsTop2" newsTitle="Sağlık Bakanlığı: SMA'lı aileler destek almalı"/>
-                <SliderNewsItem imageName="SliderNewsTop1" newsTitle="Yaz sıcakları bastırdı, şimdi yılan korkusu başladı"/>
-                <SliderNewsItem imageName="SliderNewsTop2" newsTitle="Sağlık Bakanlığı: SMA'lı aileler destek almalı"/>
-                <SliderNewsItem imageName="SliderNewsTop2" newsTitle="Sağlık Bakanlığı: SMA'lı aileler destek almalı"/>
-            </ScrollView> */}
+        <>
             { content }
-        </View>
+        </>
     );
 }
 

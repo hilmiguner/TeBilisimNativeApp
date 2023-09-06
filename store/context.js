@@ -9,6 +9,7 @@ export const Context = createContext({
     setCityCTX: (name) => {},
     getCityCTX: () => {},
     getPanelSettings: () => {},
+    navigateNewsDetailScreen: (navigation, id) => {},
 });
 
 function ContextProvider({ children }) {
@@ -27,12 +28,17 @@ function ContextProvider({ children }) {
         newsApi.getSettings().then((response) => setPanelSettings(setSettings(response)));
     }
 
+    function navigateNewsDetailScreen(navigation, id) {
+        navigation.navigate("NewsDetailsScreen", { newsID: id });
+    }
+
     const value = {
         currentCity: cityName,
         panelSettings: panelSettings,
         setCityCTX: setCityCTX,
         getCityCTX: getCityCTX,
         getPanelSettings: getPanelSettings,
+        navigateNewsDetailScreen: navigateNewsDetailScreen,
     };
 
     return <Context.Provider value={value}>{children}</Context.Provider>

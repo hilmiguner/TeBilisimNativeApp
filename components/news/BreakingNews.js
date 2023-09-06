@@ -19,15 +19,12 @@ import Carousel from "react-native-reanimated-carousel";
 // React Native Navigation
 import { useNavigation } from "@react-navigation/native";
 
-function pressHandler(navigation, id) {
-    navigation.navigate("NewsDetailsScreen", { newsID: id });
-}
-
 function RenderItem({ title, id }) {
     const navigation = useNavigation();
+    const ctx = useContext(Context);
 
     return(
-        <Pressable style={{ flex: 1, justifyContent: "center", alignItems: "stretch" }} onPress={pressHandler.bind(this, navigation, id)}>
+        <Pressable style={{ flex: 1, justifyContent: "center", alignItems: "stretch" }} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, id)}>
             <Text adjustsFontSizeToFit numberOfLines={3} style={styles.newsText}>{title}</Text>
         </Pressable>
     );
