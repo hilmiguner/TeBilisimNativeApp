@@ -55,6 +55,42 @@
 	<array>
 		<string>Ionicons.ttf</string>
 		<string>MaterialIcons.ttf</string>
+		<string>Jaldi-Bold.ttf</string>
+		<string>Jaldi-Regular.ttf</string>
+		<string>Manrope-Bold.ttf</string>
+		<string>Manrope-Regular.ttf</string>
+		<string>Merriweather-Bold.ttf</string>
+		<string>Merriweather-Regular.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>Oswald-Bold.ttf</string>
+		<string>Oswald-Regular.ttf</string>
+		<string>Poppins-Bold.ttf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Rubik-Bold.ttf</string>
+		<string>Rubik-Regular.ttf</string>
+		<string>Ubuntu-Bold.ttf</string>
+		<string>Ubuntu-Regular.ttf</string>
+		<string>JosefinSans-Bold.ttf</string>
+		<string>JosefinSans-Regular.ttf</string>
+		<string>LibreFranklin-Bold.ttf</string>
+		<string>LibreFranklin-Regular.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>PTSans-Bold.ttf</string>
+		<string>PTSans-Regular.ttf</string>
+		<string>RobotoSlab-Bold.ttf</string>
+		<string>RobotoSlab-Regular.ttf</string>
+		<string>TitilliumWeb-Bold.ttf</string>
+		<string>TitilliumWeb-Regular.ttf</string>
+		<string>WorkSans-Bold.ttf</string>
+		<string>WorkSans-Regular.ttf</string>
+		<string>SourceSansPro-Bold.otf</string>
+		<string>SourceSansPro-Regular.otf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

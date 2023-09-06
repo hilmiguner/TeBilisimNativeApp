@@ -1,3 +1,7 @@
+function fontConverter(apiFontName) {
+    return "".concat(...apiFontName.split(" "))
+}
+
 function setSettings(API_data) {
     PanelSettings = {
         oneSignalAppID: API_data.mobile_onesignal_app_id,
@@ -43,8 +47,8 @@ function setSettings(API_data) {
         weatherAndMarketsDirectionType: API_data.mobile_app_hava_durumu_piyasalar_tipi, // "vertical" veya "horizontal"
         otherNewsViewType: API_data.mobile_app_diger_haberler_tipi, // "custom" veya "flat"
         detailFontSize: API_data.font_size, // Sayı
-        primaryFontFamily: "", // Font Family (sadece detaylar ve spot)
-        secondaryFontFamily: "", // Font Family (modül ve detay başlıkları)
+        primaryFont: fontConverter(API_data.primary_font), // Font Family (sadece detaylar ve spot)
+        secondaryFont: fontConverter(API_data.secondary_font), // Font Family (modül ve detay başlıkları)
         cuffImageHeight: "", // Sayı
         cuffImageRatio: "", // Sayı
         detailTitleFontSize: "", // Sayı
