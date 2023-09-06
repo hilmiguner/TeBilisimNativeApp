@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, ScrollView } from "react-native";
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
 import SliderTopHeadlines from "../components/news/SliderTopHeadlines";
-import SliderBannerAds from "../components/others/SliderBannerAds";
+import SliderQuintipleHeadlines from "../components/others/SliderQuintipleHeadlines";
 import CurrencyAll from "../components/others/CurrencyAll";
 import SliderDotsNews from "../components/news/SliderDotsNews";
 import ExpandableList from "../components/others/ExpandableList";
@@ -23,13 +23,13 @@ import ThreeNews from "../components/news/ThreeNews";
 import SliderHighlights from "../components/news/SliderHighlights";
 import Footer from "../components/others/Footer";
 import CurrencySlider from "../components/others/CurrencySlider";
+import TabbedNews from "../components/news/TabbedNews";
 
 // Context
 import { Context } from "../store/context";
 
 // React Native Hooks
 import { useContext } from "react";
-import TabbedNews from "../components/news/TabbedNews";
 
 function MainScreen() {
   const sliderDotsNewsData = [
@@ -464,7 +464,7 @@ function MainScreen() {
             { ctx.panelSettings.topCuffsModule && <SliderTopHeadlines/> }
             { ctx.panelSettings.quintipleCuffsModule && 
               <View style={styles.carouselContainer}>
-                <SliderBannerAds/>
+                <SliderQuintipleHeadlines/>
               </View>
             }
             { ctx.panelSettings.marketsModule &&
