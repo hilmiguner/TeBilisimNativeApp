@@ -3,11 +3,12 @@ import { StyleSheet, View, Text, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
-import SliderNews from "../components/news/SliderNews";
+import SliderTopHeadlines from "../components/news/SliderTopHeadlines";
 import SliderBannerAds from "../components/others/SliderBannerAds";
 import CurrencyAll from "../components/others/CurrencyAll";
 import SliderDotsNews from "../components/news/SliderDotsNews";
 import ExpandableList from "../components/others/ExpandableList";
+import SliderNews from "../components/news/SliderTopHeadlines";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
@@ -460,7 +461,7 @@ function MainScreen() {
       <View style={styles.rootContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
             { ctx.panelSettings.breakingNewsModule && <BreakingNews/> }
-            <SliderNews/>
+            { ctx.panelSettings.topCuffsModule && <SliderTopHeadlines/> }
             { ctx.panelSettings.quintipleCuffsModule && 
               <View style={styles.carouselContainer}>
                 <SliderBannerAds/>
