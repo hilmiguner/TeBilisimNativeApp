@@ -49,12 +49,12 @@ function setSettings(API_data) {
         detailFontSize: API_data.font_size, // Sayı
         primaryFont: fontConverter(API_data.primary_font), // Font Family (sadece detaylar ve spot)
         secondaryFont: fontConverter(API_data.secondary_font), // Font Family (modül ve detay başlıkları)
-        cuffImageHeight: "", // Sayı
-        cuffImageRatio: "", // Sayı
-        detailTitleFontSize: "", // Sayı
-        mainPageCategoryIDs: "", // Dizi (Örneğin '1,4,5,123,5')
+        cuffImageHeight: API_data.mobile_app_headline_height, // Sayı
+        cuffImageRatio: API_data.mobile_app_ana_image_percent, // Sayı
+        detailTitleFontSize: API_data.detail_title_font_size, // Sayı
+        mainPageCategoryIDs: API_data.mobile_app_anasayfa_kategoriler_ids, // String (Örneğin '1,4,5,123,5')
         app_adsContentCode: "",
-        mainCuffLimit: "", // Sayı
+        mainCuffLimit: API_data.mobile_app_headline_limit, // Sayı
     };
 
     return PanelSettings;
