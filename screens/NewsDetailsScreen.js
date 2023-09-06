@@ -1,12 +1,35 @@
 // React Native Temel Paketler
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
-function NewsDetailsScreen() {
-    return(
-        <View style={styles.rootContainer}>
-            <Text style={styles.text}>Haber Detay Sayfası</Text>
-        </View>
+// React Native Hooks
+import { useEffect, useState } from "react";
+
+// API
+import newsApi from "../util/newsApi";
+
+function NewsDetailsScreen({ route }) {
+  const [newsData, setNewsData] = useState()
+  useEffect(() => {
+    if (route.params) {
+      newsApi.getNewsDetail(route.params.newsID).then((newsDetailData) => setNewsData(newsDetailData));
+    }
+  }, []);
+
+  let content = <ActivityIndicator />;
+  
+  if(newsData) {
+    content = (
+      <View>
+        <Text style={styles.text}>ID: {newsData.id}</Text>
+        <Text style={styles.text}>TITLE: {newsData.title}</Text>
+      </View>
     );
+  }
+  return(
+      <View style={styles.rootContainer}>
+          { content }
+      </View>
+  );
 }
 
 export default NewsDetailsScreen;
