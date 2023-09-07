@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, ActivityIndicator } from "react-native";
 
 // Oluşturulan Öğeler
 import CurrencyItem from "./CurrencyItem";
@@ -10,38 +10,41 @@ import AppColors from "../../constants/colors";
 // Linear Gradient Paketi
 import LinearGradient from "react-native-linear-gradient";
 
+// React Native Hooks
+import { useEffect, useState } from "react";
+
+// API
+import newsApi from "../../util/newsApi";
+
 function CurrencySlider() {
-    return(
-        <LinearGradient colors={["#541B8B", "#14035C"]} style={styles.rootContainer}>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.subcontainer}>
-                <CurrencyItem icon="attach-money" currentValue="26,34" deltaValue="%-3,14" size={24} color={AppColors.yellow} isIncreasing={false} currencyName="DOLAR" style={{ margin: 16 }}/>
-                <CurrencyItem icon="euro" currentValue="28,73" deltaValue="%-3,01" size={24} color={AppColors.yellow} isIncreasing={false} currencyName="EURO"  style={{ margin: 16 }}/>
-                <CurrencyItem icon="diamond" currentValue="970,64" deltaValue="%-99,34" size={24} color={AppColors.yellow} isIncreasing={false} currencyName="ALTIN"  style={{ margin: 16 }}/>
-                <CurrencyItem icon="currency-bitcoin" currentValue="26,400" deltaValue="%1,54" size={24} color={AppColors.yellow} isIncreasing={true} currencyName="BITCOIN"  style={{ margin: 16 }}/>
-                <CurrencyItem icon="currency-bitcoin" currentValue="1,672" deltaValue="%1,94" size={24} color={AppColors.yellow} isIncreasing={true} currencyName="ETHEREUM"  style={{ margin: 16 }}/>
-                <CurrencyItem icon="currency-bitcoin" currentValue="7721,74" deltaValue="%1,57" size={24} color={AppColors.yellow} isIncreasing={true} currencyName="BIST"  style={{ margin: 16 }}/>
+    const [currencyData, setCurrencyData] = useState();
+
+    useEffect(() => {
+        newsApi.getCurrency().then((apiData) => setCurrencyData(apiData));
+    }, []);
+
+    let content = <ActivityIndicator />;
+
+    if(currencyData) {
+        content = (
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                <CurrencyItem icon="attach-money" currentValue={currencyData.DOLAR.deger} deltaValue={"%" + currencyData.DOLAR.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.DOLAR.durum == "up" : false} currencyName="DOLAR" style={{ margin: 16 }}/>
+                <CurrencyItem icon="euro" currentValue={currencyData.EURO.deger} deltaValue={"%" + currencyData.EURO.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.EURO.durum == "up" : false} currencyName="EURO" style={{ margin: 16 }}/>
+                <CurrencyItem icon="diamond" currentValue={currencyData.ALTIN.deger} deltaValue={"%" + currencyData.ALTIN.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.ALTIN.durum == "up" : false} currencyName="ALTIN" style={{ margin: 16 }}/>
+                <CurrencyItem icon="currency-bitcoin" currentValue={currencyData.IMKB.deger} deltaValue={"%" + currencyData.IMKB.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.IMKB.durum == "up" : false} currencyName="IMKB" style={{ margin: 16 }}/>
+                <CurrencyItem icon="currency-bitcoin" currentValue={currencyData.BIST.deger} deltaValue={"%" + currencyData.BIST.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.BIST.durum == "up" : false} currencyName="BIST" style={{ margin: 16 }}/>
+                <CurrencyItem icon="currency-pound" currentValue={currencyData.STERLIN.deger} deltaValue={"%" + currencyData.STERLIN.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.STERLIN.durum == "up" : false} currencyName="STERLIN" style={{ margin: 16 }}/>
+                <CurrencyItem icon="currency-bitcoin" currentValue={currencyData.BTC.deger} deltaValue={"%" + currencyData.BTC.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.BTC.durum == "up" : false} currencyName="BITCOIN" style={{ margin: 16 }}/>
+                <CurrencyItem icon="currency-bitcoin" currentValue={currencyData.ETH.deger} deltaValue={"%" + currencyData.ETH.degisim} size={20} color={AppColors.yellow} isIncreasing={true ? currencyData.ETH.durum == "up" : false} currencyName="ETH" style={{ margin: 16 }}/>
             </ScrollView>
-            {/* <View style={styles.subcontainer}>
-                <CurrencyItem icon="attach-money" currentValue="26,34" deltaValue="%-3,14" size={24} color={AppColors.yellow} isIncreasing={true} currencyName="DOLAR"/>
-                <CurrencyItem icon="euro" currentValue="28,73" deltaValue="%-3,01" size={24} color={AppColors.yellow} isIncreasing={false} currencyName="EURO"/>
-                <CurrencyItem icon="diamond" currentValue="970,64" deltaValue="%-99,34" size={24} color={AppColors.yellow} isIncreasing={false} currencyName="ALTIN"/>
-            </View>
-            <View style={styles.subcontainer}>
-                <CurrencyItem icon="currency-bitcoin" currentValue="26,400" deltaValue="%1,54" size={24} color={AppColors.yellow} isIncreasing={true} currencyName="BITCOIN"/>
-                <CurrencyItem icon="currency-bitcoin" currentValue="1,672" deltaValue="%1,94" size={24} color={AppColors.yellow} isIncreasing={false} currencyName="ETHEREUM"/>
-                <CurrencyItem icon="currency-bitcoin" currentValue="7721,74" deltaValue="%1,57" size={24} color={AppColors.yellow} isIncreasing={false} currencyName="BIST"/>
-            </View> */}
+        );
+    }
+
+    return(
+        <LinearGradient colors={["#541B8B", "#14035C"]}>
+            { content }
         </LinearGradient>
     );
 }
 
 export default CurrencySlider;
-
-const styles = StyleSheet.create({
-    rootContainer: {
-    },
-    subcontainer: {
-        //flexDirection: "row",
-        //justifyContent: "space-between",
-    },
-});

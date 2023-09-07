@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     currentValueText: {
-        fontSize: 24,
+        fontSize: 20,
         textAlign: "center",
         color: "white",
         marginBottom: 12,
