@@ -3,7 +3,6 @@ import { StyleSheet, Text, Image, Pressable } from "react-native";
 
 // Statik Değerler
 import AppColors from "../../constants/colors";
-import imageMapping from "../../constants/imageMapping";
 
 // Context
 import { Context } from "../../store/context";
@@ -12,16 +11,12 @@ import { Context } from "../../store/context";
 import { useContext } from "react";
 
 function Author({ authorData }) {
-    const image = imageMapping[authorData.imageName];
-    const content = authorData.content;
-    const authorName = authorData.authorName;
-
     const ctx = useContext(Context);
     return(
         <Pressable style={[styles.rootContainer, { borderBottomColor: ctx.panelSettings.themePrimaryColor }]}>
-            <Image style={styles.image} source={image}/>
-            <Text style={styles.text}>{content}</Text>
-            <Text style={styles.text}>{authorName}</Text>
+            <Image style={styles.image} source={{ uri: authorData.resim }}/>
+            <Text style={styles.text}>{authorData.baslik}</Text>
+            <Text style={styles.text}>{authorData.yazaradi}</Text>
         </Pressable>
     );
 }
@@ -48,9 +43,8 @@ const styles = StyleSheet.create({
     text: {
         textAlign: "center",
         fontWeight: "bold",
-        flex: 1,
-        flexWrap: "wrap",
         marginVertical: 16,
+        marginHorizontal: 8,
         color: "black",
     },
 });

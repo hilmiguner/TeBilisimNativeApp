@@ -471,7 +471,7 @@ function MainScreen() {
             }
             { ctx.panelSettings.authorsModule && 
               <ExpandableList title="Yazarlar" expandButtonTitle="Tümü">
-                <Authors authorsList={authorsData}/>
+                <Authors/>
               </ExpandableList>
             }
             { ctx.panelSettings.videosModule && 
