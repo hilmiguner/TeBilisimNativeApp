@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, FlatList, ActivityIndicator } from "react-native";
+import { StyleSheet, ActivityIndicator, View, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
 import SliderDailyNewsItem from "./SliderDailyNewsItem";
@@ -21,13 +21,13 @@ function SliderDailyNews() {
 
     if(dailyNewsData) {
         content = (
-            <FlatList 
-                horizontal showsHorizontalScrollIndicator={false} 
-                style={styles.flatList} 
-                data={dailyNewsData}
-                keyExtractor={(item) => item.reference_id}
-                renderItem={({item}) => <SliderDailyNewsItem itemData={item}/>}
-            />
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollView}>
+                {dailyNewsData.map((item) => (
+                    <View key={item.reference_id}>
+                        <SliderDailyNewsItem itemData={item}/>
+                    </View>
+                ))}
+            </ScrollView>
         );
     }
     return content;
@@ -36,7 +36,7 @@ function SliderDailyNews() {
 export default SliderDailyNews;
 
 const styles = StyleSheet.create({
-    flatList: {
+    scrollView: {
         paddingHorizontal: 8,
         paddingTop: 24,
     },

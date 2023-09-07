@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         resizeMode: "stretch",
     },
     text: {
-        color: AppColors.gray500,
+        color: "black",
         fontSize: 20,
         flex: 1,
         flexWrap: "wrap",

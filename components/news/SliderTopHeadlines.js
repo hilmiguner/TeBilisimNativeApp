@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, Image, FlatList, ActivityIndicator, Pressable, Text } from "react-native";
+import { StyleSheet, View, Image, ScrollView, ActivityIndicator, Pressable, Text } from "react-native";
 
 // React Native Hooks
 import { useEffect, useState, useContext } from "react";
@@ -38,14 +38,13 @@ function SliderTopHeadlines() {
 
     if(topHeadlines) {
         content = (
-            <FlatList
-                data={topHeadlines}
-                keyExtractor={(item) => item.id}
-                renderItem={(item) => <RenderItem itemData={item.item}/>}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                style={styles.flatList}
-            />
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollView}>
+                {topHeadlines.map((item) => (
+                    <View key={item.id}>
+                        <RenderItem itemData={item}/>
+                    </View>
+                ))}
+            </ScrollView>
         );
     }
     return(
@@ -58,7 +57,7 @@ function SliderTopHeadlines() {
 export default SliderTopHeadlines;
 
 const styles = StyleSheet.create({
-    flatList: {
+    scrollView: {
         paddingHorizontal: 8,
         paddingVertical: 24,
     },
