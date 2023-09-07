@@ -32,49 +32,6 @@ import { Context } from "../store/context";
 import { useContext } from "react";
 
 function MainScreen() {
-  const authorsData = [
-    {
-      key: 1,
-      imageName: "Author1",
-      content: "Neden mutsuz insanlar ülkesiyiz?",
-      authorName: "UĞUR DÜNDAR",
-    },
-    {
-      key: 2,
-      imageName: "Author2",
-      content: "Çürümüş bir şeyler dönüyor ortalıkta",
-      authorName: "AHMET HAKAN ÇOŞKUN",
-    },
-    {
-      key: 3,
-      imageName: "Author1",
-      content: "Neden mutsuz insanlar ülkesiyiz?",
-      authorName: "UĞUR DÜNDAR",
-    },
-    {
-      key: 4,
-      imageName: "Author2",
-      content: "Çürümüş bir şeyler dönüyor ortalıkta",
-      authorName: "AHMET HAKAN ÇOŞKUN",
-    },
-  ];
-  const videoGalleryData = [
-    {
-      key: 1,
-      imageName: "VideoGallery1",
-      title: "Kastamonu'da selde mahsur kalan hasta helikopterle kurtarıldı",
-    },
-    {
-      key: 2,
-      imageName: "VideoGallery2",
-      title: "İstanbul'da toplu taşımada kredi kartıyla ödeme ücretleri vatandaşı isyan ettirdi",
-    },
-    {
-      key: 3,
-      imageName: "VideoGallery3",
-      title: "Emekli maaşlarına düzenleme sinyali! Bakan ekim ayını işaret etti",
-    },
-  ];
   const photoGalleryData = [
     {
       key: 1,
@@ -477,7 +434,7 @@ function MainScreen() {
             { ctx.panelSettings.videosModule && 
               <View style={styles.videoGalleryContainer}>
                 <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü">
-                  <SliderVideoGallery videoGalleryData={videoGalleryData}/>
+                  <SliderVideoGallery/>
                 </ExpandableList>
               </View>
             }

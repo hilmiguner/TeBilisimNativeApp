@@ -1,25 +1,19 @@
 // React Native Temel Paketler
 import { StyleSheet, View, Pressable, Image, Text } from "react-native";
 
-// Statik Değerler
-import imageMapping from "../../constants/imageMapping";
-
 // Vector Icons Paketleri
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 function SliderVideoGalleryItem({ videoData }) {
-    const image = imageMapping[videoData.imageName];
-    const title = videoData.title;
-
     return(
         <Pressable style={styles.rootContainer}>
             <View>
-                <Image style={styles.image} source={image}/>
+                <Image style={styles.image} source={{ uri: videoData.resim }}/>
                 <View style={styles.iconContainer}>
                     <Ionicons name="play-circle-outline" color="white" size={56}/>
                 </View>
             </View>
-            <Text style={styles.text}>{title}</Text>
+            <Text style={styles.text}>{videoData.baslik}</Text>
         </Pressable>
     );
 }

@@ -1,17 +1,32 @@
 // React Native Temel Paketler
-import { StyleSheet, View, FlatList } from "react-native";
+import { ActivityIndicator, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
 import SliderVideoGalleryItem from "./SliderVideoGalleryItem";
 
-function SliderVideoGallery({ videoGalleryData }) {
-    return(
-        <FlatList
-            data={videoGalleryData}
-            renderItem={( video ) => <SliderVideoGalleryItem videoData={video.item}/>}
-            horizontal={true}
-        />
-    );
+// React Native Hooks
+import { useEffect, useState } from "react";
+
+// API
+import newsApi from "../../util/newsApi";
+
+function SliderVideoGallery() {
+    const [videosData, setVideosData] = useState();
+
+    useEffect(() => {
+        newsApi.getHomeVideos().then((apiData) => setVideosData(apiData));
+    }, []);
+
+    let content = <ActivityIndicator />;
+
+    if(videosData) {
+        content = (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                { videosData.map((videoData) => <SliderVideoGalleryItem videoData={videoData}/>)}
+            </ScrollView>
+        );
+    }
+    return content;
 }
 
 export default SliderVideoGallery;
