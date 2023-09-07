@@ -1,25 +1,29 @@
 // React Native Temel Paketler
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-// Statik Değerler
-import imageMapping from "../../constants/imageMapping";
+// Context
+import { Context } from "../../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
+
+// React Native Navigation
+import { useNavigation } from "@react-navigation/native";
 
 function Card({ cardData }) {
-    const image = imageMapping[cardData.imageName];
-    const title = cardData.title;
-    const titleColor = cardData.titleColor;
-    const content = cardData.content;
+    const ctx = useContext(Context);
+    const navigation = useNavigation();
 
     return(
-        <View style={styles.rootContainer}>
-            <Image style={styles.image} source={image}/>
+        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.id)}>
+            <Image style={styles.image} source={{ uri: cardData.topheadline }}/>
             <View style={styles.textContainer}>
-                <Text style={[styles.title, { color: titleColor }]}>{title}</Text>
+                <Text style={[styles.title, { color: cardData.category.color }]}>{cardData.category.name}</Text>
                 <View>
-                    <Text style={styles.content}>{content}</Text>
+                    <Text style={styles.content}>{cardData.name}</Text>
                 </View>
             </View>
-        </View>
+        </Pressable>
     );
 }
 

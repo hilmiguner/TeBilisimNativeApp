@@ -12,7 +12,6 @@ import SliderDailyNews from "../components/news/SliderDailyNews";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
-import Card from "../components/others/Card";
 import NumberCard from "../components/others/NumberCard";
 import VerticalCard from "../components/others/VerticalCard";
 import Weather from "../components/others/Weather";
@@ -30,6 +29,7 @@ import { Context } from "../store/context";
 
 // React Native Hooks
 import { useContext } from "react";
+import VerticalFeatured from "../components/news/VerticalFeatured";
 
 function MainScreen() {
   const higlightsData = [
@@ -428,9 +428,7 @@ function MainScreen() {
             { ctx.panelSettings.highlightedNewsModule && 
               <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor, }}>
                 <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
-                  <Card cardData={higlightsData[0]}/>
-                  <Card cardData={higlightsData[1]}/>
-                  <Card cardData={higlightsData[2]}/>
+                  <VerticalFeatured/>
                 </ExpandableList>
               </View>
             }
