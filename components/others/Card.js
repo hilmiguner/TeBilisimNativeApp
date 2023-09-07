@@ -18,7 +18,7 @@ function Card({ cardData }) {
         <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.id)}>
             <Image style={styles.image} source={{ uri: cardData.topheadline }}/>
             <View style={styles.textContainer}>
-                <Text style={[styles.title, { color: cardData.category.color }]}>{cardData.category.name}</Text>
+                <Text style={[styles.title, { color: cardData.category.color ? cardData.category.color : "black" }]}>{cardData.category.name}</Text>
                 <View>
                     <Text style={styles.content}>{cardData.name}</Text>
                 </View>
