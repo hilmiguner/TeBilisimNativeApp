@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, FlatList, ActivityIndicator } from "react-native";
+import { StyleSheet, FlatList, ActivityIndicator } from "react-native";
 
 // Oluşturulan Öğeler
 import SliderDailyNewsItem from "./SliderDailyNewsItem";
@@ -28,8 +28,6 @@ function SliderDailyNews() {
                 keyExtractor={(item) => item.reference_id}
                 renderItem={({item}) => <SliderDailyNewsItem itemData={item}/>}
             />
-                // <SliderDailyNewsItem imageName="SliderNewsTop1" newsTitle="Yaz sıcakları bastırdı, şimdi yılan korkusu başladı"/>
-                // <SliderDailyNewsItem imageName="SliderNewsTop2" newsTitle="Sağlık Bakanlığı: SMA'lı aileler destek almalı"/>
         );
     }
     return content;
