@@ -5,13 +5,13 @@ import { View, Dimensions, StyleSheet } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 
 // Oluşturulan Öğeler
-import SliderDotsNewsItem from "./SliderDotsNewsItem";
+import MainHeadlinesItem from "./MainHeadlinesItem";
 import CarouselDots from "../CarouselDots";
 
 // React Native Hooks
 import { useState } from "react";
 
-function SliderDotsNews({ data }) {
+function MainHeadlines({ data }) {
     const width = Dimensions.get('window').width;
 
     const dataLength = data.length;
@@ -30,14 +30,14 @@ function SliderDotsNews({ data }) {
                 scrollAnimationDuration={100}
                 onSnapToItem={(index) => setCurrentIndex(index)}
                 defaultIndex={currentIndex}
-                renderItem={({ index }) => <SliderDotsNewsItem itemData={data[index]}/>}
+                renderItem={({ index }) => <MainHeadlinesItem itemData={data[index]}/>}
             />
             <CarouselDots length={dataLength} currentIndex={currentIndex}/>
         </View>
     );
 }  
 
-export default SliderDotsNews;
+export default MainHeadlines;
 
 const styles = StyleSheet.create({
     rootContainer: {

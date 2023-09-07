@@ -14,7 +14,7 @@ import { TapGestureHandler } from "react-native-gesture-handler";
 // React Native Navigation
 import { useNavigation } from "@react-navigation/native";
 
-function SliderDotsNewsItem({ itemData }) {
+function MainHeadlinesItem({ itemData }) {
     const imageSource = itemData.imageSource;
     const image = imageMapping[imageSource];
     const imageWidth = Image.resolveAssetSource(image).width;
@@ -48,7 +48,7 @@ function SliderDotsNewsItem({ itemData }) {
     );
 }
 
-export default SliderDotsNewsItem;
+export default MainHeadlinesItem;
 
 const styles = StyleSheet.create({
     rootContainer: { 

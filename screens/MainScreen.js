@@ -6,7 +6,7 @@ import BreakingNews from "../components/news/BreakingNews";
 import SliderTopHeadlines from "../components/news/SliderTopHeadlines";
 import SliderQuintipleHeadlines from "../components/others/SliderQuintipleHeadlines";
 import CurrencyAll from "../components/others/CurrencyAll";
-import SliderDotsNews from "../components/news/SliderDotsNews";
+import MainHeadlines from "../components/news/MainHeadlines";
 import ExpandableList from "../components/others/ExpandableList";
 import SliderNews from "../components/news/SliderNews";
 import Authors from "../components/others/Authors";
@@ -473,7 +473,7 @@ function MainScreen() {
                 <CurrencySlider />
               </>
             }
-            <SliderDotsNews data={sliderDotsNewsData}/>
+            <MainHeadlines data={sliderDotsNewsData}/>
             { ctx.panelSettings.dailyCuffsModule && 
               <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
                 <SliderNews/>
