@@ -32,16 +32,6 @@ import { Context } from "../store/context";
 import { useContext } from "react";
 
 function MainScreen() {
-  const sliderDotsNewsData = [
-    { 
-      imageSource: "SliderDots1", 
-      newsTitle: "Türk sinemasının efsane ismi Cüneyt Arkın hayatını kaybetti"
-    },
-    { 
-      imageSource: "SliderDots2", 
-      newsTitle: "Konut satışları temmuzda %16,7 artarak 109 bini aştı"
-    }
-  ];
   const authorsData = [
     {
       key: 1,
@@ -473,7 +463,7 @@ function MainScreen() {
                 <CurrencySlider />
               </>
             }
-            <MainHeadlines data={sliderDotsNewsData}/>
+            <MainHeadlines/>
             { ctx.panelSettings.dailyCuffsModule && 
               <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
                 <SliderNews/>

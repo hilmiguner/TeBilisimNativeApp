@@ -1,9 +1,6 @@
 // React Native Temel Paketler
 import { StyleSheet, Text, Image, Dimensions, View } from "react-native";
 
-// Statik Değerler
-import imageMapping from "../../constants/imageMapping";
-
 // Linear Gradient Paketi
 import LinearGradient from "react-native-linear-gradient";
 import { rgbaColor } from "react-native-reanimated";
@@ -14,28 +11,33 @@ import { TapGestureHandler } from "react-native-gesture-handler";
 // React Native Navigation
 import { useNavigation } from "@react-navigation/native";
 
-function MainHeadlinesItem({ itemData }) {
-    const imageSource = itemData.imageSource;
-    const image = imageMapping[imageSource];
-    const imageWidth = Image.resolveAssetSource(image).width;
-    const imageHeight = Image.resolveAssetSource(image).height;
+// Context
+import { Context } from "../../store/context";
 
-    const newsTitle = itemData.newsTitle;
+// React Native Hooks
+import { useContext } from "react";
+
+function MainHeadlinesItem({ itemData }) {
+    const image = itemData.image;
+
+    const newsTitle = itemData.title;
 
     const screenWidth = Dimensions.get('window').width;
 
     const imageStyle = {
         width: screenWidth, 
-        height: (imageHeight*screenWidth)/imageWidth,
+        height: screenWidth * (1080/1920),
         zIndex: 0,
     };
 
     const navigation = useNavigation();
 
+    const ctx = useContext(Context);
+
     return(
-        <TapGestureHandler onActivated={() => navigation.navigate("NewsDetailsScreen")}>
+        <TapGestureHandler onActivated={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.reference_id)}>
             <View>
-                <Image style={imageStyle} source={image}/>
+                <Image style={imageStyle} source={{ uri: image }}/>
                 <LinearGradient 
                     style={styles.textContainer}
                     colors={[rgbaColor(0, 0, 0, 0), "black"]}

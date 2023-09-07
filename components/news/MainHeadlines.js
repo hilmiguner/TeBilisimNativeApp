@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { View, Dimensions, StyleSheet } from "react-native";
+import { View, Dimensions, StyleSheet, ActivityIndicator } from "react-native";
 
 // Carousel Paketi
 import Carousel from "react-native-reanimated-carousel";
@@ -9,30 +9,46 @@ import MainHeadlinesItem from "./MainHeadlinesItem";
 import CarouselDots from "../CarouselDots";
 
 // React Native Hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function MainHeadlines({ data }) {
+// API
+import newsApi from "../../util/newsApi";
+
+function MainHeadlines() {
     const width = Dimensions.get('window').width;
 
-    const dataLength = data.length;
-
+    const [mainHeadlinesData, setMainHeadlinesData] = useState();
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        newsApi.getHeadlineNews().then((apiData) => setMainHeadlinesData(apiData));
+    }, []);
+
+    let content = <ActivityIndicator />;
+
+    if(mainHeadlinesData) {
+        content = (
+            <>
+                <Carousel
+                    width={width}
+                    height={(1080/1920) * width}
+                    data={mainHeadlinesData}
+                    panGestureHandlerProps={{
+                        activeOffsetX: [-10, 10],
+                    }}
+                    scrollAnimationDuration={100}
+                    onSnapToItem={(index) => setCurrentIndex(index)}
+                    defaultIndex={currentIndex}
+                    renderItem={({ index }) => <MainHeadlinesItem itemData={mainHeadlinesData[index]}/>}
+                />
+                <CarouselDots length={mainHeadlinesData.length} currentIndex={currentIndex}/>
+            </>
+        );
+    }
 
     return(
         <View style={styles.rootContainer}>
-            <Carousel
-                width={width}
-                height={(1080/1920) * width}
-                data={data}
-                panGestureHandlerProps={{
-                    activeOffsetX: [-10, 10],
-                }}
-                scrollAnimationDuration={100}
-                onSnapToItem={(index) => setCurrentIndex(index)}
-                defaultIndex={currentIndex}
-                renderItem={({ index }) => <MainHeadlinesItem itemData={data[index]}/>}
-            />
-            <CarouselDots length={dataLength} currentIndex={currentIndex}/>
+            { content }
         </View>
     );
 }  
