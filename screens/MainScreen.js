@@ -386,6 +386,10 @@ function MainScreen() {
   ];
 
   const ctx = useContext(Context);
+  
+  let currencyContent;
+  if(ctx.panelSettings.weatherAndMarketsDirectionType == "vertical") currencyContent = <CurrencyAll/>
+  else currencyContent = <CurrencySlider/>
 
   return(
       <View style={styles.rootContainer}>
@@ -397,12 +401,7 @@ function MainScreen() {
                 <SliderQuintipleHeadlines/>
               </View>
             }
-            { ctx.panelSettings.marketsModule &&
-              <>
-                <CurrencyAll/>
-                <CurrencySlider/>
-              </>
-            }
+            { currencyContent }
             <MainHeadlines/>
             { ctx.panelSettings.dailyCuffsModule && 
               <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">

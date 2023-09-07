@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ActivityIndicator, ScrollView } from "react-native";
+import { ActivityIndicator, ScrollView, View } from "react-native";
 
 // Oluşturulan Öğeler
 import Author from "./Author";
@@ -22,7 +22,11 @@ function Authors() {
     if(authors) {
         content = (
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                { authors.map((authorItem) => <Author authorData={authorItem}/>) }
+                { authors.map((authorItem) => (
+                    <View key={authorItem.id}>
+                        <Author authorData={authorItem}/>
+                    </View>
+                )) }
             </ScrollView>
         );
     }

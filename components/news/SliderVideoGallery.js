@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ActivityIndicator, ScrollView } from "react-native";
+import { ActivityIndicator, ScrollView, View } from "react-native";
 
 // Oluşturulan Öğeler
 import SliderVideoGalleryItem from "./SliderVideoGalleryItem";
@@ -22,7 +22,11 @@ function SliderVideoGallery() {
     if(videosData) {
         content = (
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                { videosData.map((videoData) => <SliderVideoGalleryItem videoData={videoData}/>)}
+                { videosData.map((videoData) => (
+                    <View key={videoData.id}>
+                        <SliderVideoGalleryItem videoData={videoData}/>
+                    </View>
+                ))}
             </ScrollView>
         );
     }
