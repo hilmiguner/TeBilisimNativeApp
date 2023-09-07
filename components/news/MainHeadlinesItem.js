@@ -43,7 +43,7 @@ function MainHeadlinesItem({ itemData }) {
                     colors={[rgbaColor(0, 0, 0, 0), "black"]}
                     locations={[0, 0.6]}
                 >
-                    <Text style={styles.newsTitle}>{newsTitle}</Text>
+                    { ctx.panelSettings.mainCuffTitles && <Text style={styles.newsTitle}>{newsTitle}</Text> }
                 </LinearGradient>
             </View>
         </TapGestureHandler>
