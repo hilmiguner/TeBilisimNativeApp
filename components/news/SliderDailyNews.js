@@ -2,20 +2,20 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
-import SliderNewsItem from "./SliderNewsItem";
+import SliderDailyNewsItem from "./SliderDailyNewsItem";
 
-function SliderNews() {
+function SliderDailyNews() {
     return(
         <View>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.scrollView}>
-                <SliderNewsItem imageName="SliderNewsTop1" newsTitle="Yaz sıcakları bastırdı, şimdi yılan korkusu başladı"/>
-                <SliderNewsItem imageName="SliderNewsTop2" newsTitle="Sağlık Bakanlığı: SMA'lı aileler destek almalı"/>
+                <SliderDailyNewsItem imageName="SliderNewsTop1" newsTitle="Yaz sıcakları bastırdı, şimdi yılan korkusu başladı"/>
+                <SliderDailyNewsItem imageName="SliderNewsTop2" newsTitle="Sağlık Bakanlığı: SMA'lı aileler destek almalı"/>
             </ScrollView>
         </View>
     );
 }
 
-export default SliderNews;
+export default SliderDailyNews;
 
 const styles = StyleSheet.create({
     scrollView: {

@@ -8,7 +8,7 @@ import SliderQuintipleHeadlines from "../components/others/SliderQuintipleHeadli
 import CurrencyAll from "../components/others/CurrencyAll";
 import MainHeadlines from "../components/news/MainHeadlines";
 import ExpandableList from "../components/others/ExpandableList";
-import SliderNews from "../components/news/SliderNews";
+import SliderDailyNews from "../components/news/SliderDailyNews";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
@@ -460,13 +460,13 @@ function MainScreen() {
             { ctx.panelSettings.marketsModule &&
               <>
                 <CurrencyAll/>
-                <CurrencySlider />
+                <CurrencySlider/>
               </>
             }
             <MainHeadlines/>
             { ctx.panelSettings.dailyCuffsModule && 
               <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
-                <SliderNews/>
+                <SliderDailyNews/>
               </ExpandableList>
             }
             { ctx.panelSettings.authorsModule && 
