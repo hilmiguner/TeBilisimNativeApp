@@ -169,6 +169,18 @@ const getFeatured = async () => {
     }
 }
 
+const getHomeFeatured = async () => {
+    try {
+        const response = await apiClient.get(`/?featured&limit=3&v=${getCurrentTime()}`)
+        if (response) {
+            return response.data
+        }
+    } catch (error) {
+        console.log('Haberler alınırken bir hata oluştu.', error.message);
+        return [];
+    }
+}
+
 const getTopHeadlineNews = async () => {
     try {
         const response = await apiClient.get(`/?ust_mansetler&start=0&limit=10&v=${getCurrentTime()}`)
@@ -559,6 +571,7 @@ export default {
     getPrayerTimes,
     getCurrency,
     getFeatured,
+    getHomeFeatured,
     getWeather,
     getNewsDetail,
     getSimiliarNews,
