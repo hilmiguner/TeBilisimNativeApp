@@ -3,7 +3,6 @@ import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 // Statik Değerler
 import imageMapping from "../../constants/imageMapping";
-import AppColors from "../../constants/colors";
 
 // React Navigation
 import { useNavigation } from "@react-navigation/native";
