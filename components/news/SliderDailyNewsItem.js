@@ -1,30 +1,30 @@
 // React Native Temel Paketler
-import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, View, Pressable } from "react-native";
 
 // Statik Değerler
-import imageMapping from "../../constants/imageMapping";
 import AppColors from "../../constants/colors";
 
 // React Navigation
 import { useNavigation } from "@react-navigation/native";
 
-function SliderDailyNewsItem({ imageName, newsTitle }) {
-    const imagePath = imageMapping[imageName];
+// Context
+import { Context } from "../../store/context";
 
+// React Navigation Hooks
+import { useContext } from "react";
+
+function SliderDailyNewsItem({ itemData }) {
     const navigation = useNavigation();
-
-    function newsOnPressHandler() {
-        navigation.navigate("NewsDetailsScreen");
-    }
+    const ctx = useContext(Context);
 
     return(
         <View style={styles.rootContainer}>
-            <TouchableOpacity onPress={newsOnPressHandler}>
-                <Image style={styles.image} source={imagePath}/>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={newsOnPressHandler}>
-                <Text style={styles.text}>{newsTitle}</Text>
-            </TouchableOpacity>
+            <Pressable onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.reference_id)}>
+                <Image style={styles.image} source={{ uri: itemData.image }}/>
+            </Pressable>
+            <Pressable onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.reference_id)}>
+                <Text style={styles.text}>{itemData.name}</Text>
+            </Pressable>
         </View>
     );
 }
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: AppColors.gray500,
-        fontSize: 24,
+        fontSize: 20,
         flex: 1,
         flexWrap: "wrap",
     },
