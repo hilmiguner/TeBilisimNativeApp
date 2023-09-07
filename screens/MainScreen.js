@@ -32,23 +32,6 @@ import { Context } from "../store/context";
 import { useContext } from "react";
 
 function MainScreen() {
-  const photoGalleryData = [
-    {
-      key: 1,
-      imageName: "PhotoGallery1",
-      title: "Avusturya ile Avustralya'yı karıştıran Kiss grubu büyük gafa imza attı"
-    },
-    {
-      key: 2,
-      imageName: "PhotoGallery2",
-      title: "21 yaşındaki Meksikalı şarkıcı kocası tarafından öldürüldü"
-    },
-    {
-      key: 3,
-      imageName: "PhotoGallery3",
-      title: "Taylor Swift Yüksek Mahkeme ile ilgili endişelerini paylaştı"
-    },
-  ];
   const higlightsData = [
     {
       key: 1,
@@ -440,7 +423,7 @@ function MainScreen() {
             }
             { ctx.panelSettings.galleriesModule && 
               <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
-                <PhotoGallery data={photoGalleryData}/>
+                <PhotoGallery/>
               </ExpandableList>
             }
             { ctx.panelSettings.highlightedNewsModule && 

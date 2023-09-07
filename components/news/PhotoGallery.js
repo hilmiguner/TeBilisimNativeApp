@@ -1,14 +1,29 @@
 // React Native Temel Paketler
-import { StyleSheet, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 // Oluşturulan Öğeler
 import PhotoGalleryItem from "./PhotoGalleryItem";
 
-function PhotoGallery({ data }) {
-    return(
+// React Native Hooks
+import { useEffect, useState } from "react";
+
+// API
+import newsApi from "../../util/newsApi";
+
+function PhotoGallery() {
+    const [galleryData, setGalleryData] = useState();
+
+    useEffect(() => {
+        newsApi.getHomeGalleries().then((apiData) => setGalleryData(apiData));
+    }, []);
+
+    let content = <ActivityIndicator />;
+
+    if(galleryData) {
+        content = (
         <View style={styles.rootContainer}>
             <View style={styles.bigPhotoContainer}>
-                <PhotoGalleryItem itemData={data[0]} imageStyle={{ 
+                <PhotoGalleryItem itemData={galleryData[0]} imageStyle={{ 
                     width: "100%",
                     height: 200,
                     resizeMode: "cover",
@@ -17,7 +32,7 @@ function PhotoGallery({ data }) {
             </View>
             <View style={styles.photosContainer}>
                 <View style={{ flex: 1 }}>
-                    <PhotoGalleryItem itemData={data[1]} imageStyle={{
+                    <PhotoGalleryItem itemData={galleryData[1]} imageStyle={{
                         width: "100%",
                         height: 150,
                         resizeMode: "cover",
@@ -25,7 +40,7 @@ function PhotoGallery({ data }) {
                     }}/>
                 </View>
                 <View style={{ flex: 1 }}>
-                    <PhotoGalleryItem itemData={data[2]} imageStyle={{
+                    <PhotoGalleryItem itemData={galleryData[2]} imageStyle={{
                         width: "100%",
                         height: 150,
                         resizeMode: "cover",
@@ -34,7 +49,9 @@ function PhotoGallery({ data }) {
                 </View>
             </View>
         </View>
-    );
+        );
+    }
+    return content;
 }
 
 export default PhotoGallery;

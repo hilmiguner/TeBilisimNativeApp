@@ -1,25 +1,19 @@
 // React Native Temel Paketler
 import { Image, StyleSheet, Text, View } from "react-native";
 
-// Statik Değerler
-import imageMapping from "../../constants/imageMapping";
-
 // Vector Icons Paketleri
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 function PhotoGalleryItem({ itemData, imageStyle }) {
-    const image = imageMapping[itemData.imageName];
-    const title = itemData.title;
-
     return(
         <View style={styles.rootContainer}>
             <View>
-                <Image style={[styles.image, imageStyle]} source={image}/>
+                <Image style={[styles.image, imageStyle]} source={{ uri: itemData.kapak }}/>
                 <View style={styles.iconContainer}>
                     <Ionicons name="camera" color="white" size={38}/>
                 </View>
             </View>
-            <Text style={styles.text}>{title}</Text>
+            <Text style={styles.text}>{itemData.baslik}</Text>
         </View>
     );
 }
