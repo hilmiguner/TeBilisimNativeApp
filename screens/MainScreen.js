@@ -30,6 +30,7 @@ import { Context } from "../store/context";
 import { useContext } from "react";
 import VerticalFeatured from "../components/news/VerticalFeatured";
 import TrendNews from "../components/news/TrendNews";
+import LocalNews from "../components/news/LocalNews";
 
 function MainScreen() {
   const higlightsData = [
@@ -439,14 +440,7 @@ function MainScreen() {
             }
             { ctx.panelSettings.localNewsModule && 
               <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü">
-                <View style={styles.localNewsContainer}>
-                  <VerticalCard cardData={localNewsData[0]}/>
-                  <VerticalCard cardData={localNewsData[1]}/>
-                </View>
-                <View style={styles.localNewsContainer}>
-                  <VerticalCard cardData={localNewsData[2]}/>
-                  <VerticalCard cardData={localNewsData[3]}/>
-                </View>
+                <LocalNews/>
               </ExpandableList>
             }
             { ctx.panelSettings.weatherModule && <Weather weatherData={weatherData}/> }
@@ -491,10 +485,6 @@ const styles = StyleSheet.create({
     },
     videoGalleryContainer: {
       backgroundColor: "black",
-    },
-    localNewsContainer: {
-      flexDirection: "row",
-      flex: 1,
     },
     leagueScoreText: {
       color: "white",

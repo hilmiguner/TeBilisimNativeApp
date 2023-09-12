@@ -1,8 +1,7 @@
 // React Native Temel Paketler
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 // Statik Değerler
-import imageMapping from "../../constants/imageMapping";
 import AppColors from "../../constants/colors";
 
 // Context
@@ -11,22 +10,22 @@ import { Context } from "../../store/context";
 // React Native Hooks
 import { useContext } from "react";
 
-function VerticalCard({ cardData }) {
-    const image = imageMapping[cardData.imageName];
-    const cityName = cardData.cityName;
-    const newsTitle = cardData.newsTitle;
+// React Native Navigation
+import { useNavigation } from "@react-navigation/native";
 
+function VerticalCard({ cardData }) {
     const ctx = useContext(Context);
+    const navigation = useNavigation();
     return(
-        <View style={styles.rootContainer}>
+        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.reference_id)}>
             <View style={[styles.imageContainer, { borderBottomColor: ctx.panelSettings.themePrimaryColor }]}>
-                <Image style={styles.image} source={image}/>
+                <Image style={styles.image} source={{ uri: cardData.image }}/>
             </View>
             <View style={styles.cityContainer}>
-                <Text style={[styles.cityText, { color: ctx.panelSettings.themePrimaryColor }]}>{cityName}</Text>
+                <Text style={[styles.cityText, { color: ctx.panelSettings.themePrimaryColor }]}>İSTANBUL(SABİT)</Text>
             </View>
-            <Text style={styles.titleText}>{newsTitle}</Text>
-        </View>
+            <Text style={styles.titleText}>{cardData.name}</Text>
+        </Pressable>
     );
 }
 
