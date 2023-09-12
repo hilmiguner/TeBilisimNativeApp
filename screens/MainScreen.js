@@ -12,7 +12,6 @@ import SliderDailyNews from "../components/news/SliderDailyNews";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
-import NumberCard from "../components/others/NumberCard";
 import VerticalCard from "../components/others/VerticalCard";
 import Weather from "../components/others/Weather";
 import PrayerTimes from "../components/others/PrayerTimes";
@@ -30,6 +29,7 @@ import { Context } from "../store/context";
 // React Native Hooks
 import { useContext } from "react";
 import VerticalFeatured from "../components/news/VerticalFeatured";
+import TrendNews from "../components/news/TrendNews";
 
 function MainScreen() {
   const higlightsData = [
@@ -434,11 +434,7 @@ function MainScreen() {
             }
             { ctx.panelSettings.trendNewsModule && 
               <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü">
-                <NumberCard cardData={trendNewsData[0]}/>
-                <NumberCard cardData={trendNewsData[1]}/>
-                <NumberCard cardData={trendNewsData[2]}/>
-                <NumberCard cardData={trendNewsData[3]}/>
-                <NumberCard cardData={trendNewsData[4]}/>
+                <TrendNews/>
               </ExpandableList>
             }
             { ctx.panelSettings.localNewsModule && 
