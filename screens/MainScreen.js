@@ -12,7 +12,6 @@ import SliderDailyNews from "../components/news/SliderDailyNews";
 import Authors from "../components/others/Authors";
 import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
-import VerticalCard from "../components/others/VerticalCard";
 import Weather from "../components/others/Weather";
 import PrayerTimes from "../components/others/PrayerTimes";
 import TopTabsLeague from "../components/others/TopTabsLeague";
@@ -33,106 +32,6 @@ import TrendNews from "../components/news/TrendNews";
 import LocalNews from "../components/news/LocalNews";
 
 function MainScreen() {
-  const higlightsData = [
-    {
-      key: 1,
-      imageName: "Highlight1",
-      title: "Dünya",
-      titleColor: "#CF1A00",
-      content: "Putin'den flaş Ukrayna uyarısı: Gerekirse kullanırız!"
-    },
-    {
-      key: 2,
-      imageName: "Highlight2",
-      title: "Teknoloji",
-      titleColor: "#41ADC6",
-      content: "Elon Musk'ın Twitter planı ne?"
-    },
-    {
-      key: 3,
-      imageName: "Highlight3",
-      title: "Kayseri",
-      titleColor: "#640090",
-      content: "Talas'ta Ağaç Seferberliği"
-    },
-  ];
-  const trendNewsData = [
-    {
-      cardLabel: "01",
-      imageName: "TrendNews1",
-      title: "Magazin",
-      titleColor: "#BC68C0",
-      content: "Sitemli mesaj: Çekirdek ailemi dağıttılar!",
-    },
-    {
-      cardLabel: "02",
-      imageName: "TrendNews2",
-      title: "Magazin",
-      titleColor: "#BC68C0",
-      content: "Büyük aşk bu noktaya geldi: İddiaların arkası kesilmiyor",
-    },
-    {
-      cardLabel: "03",
-      imageName: "TrendNews3",
-      title: "Tarih",
-      titleColor: "#5DB3BE",
-      content: "Ortadoğu'nun Sınırlarını Çizen Kadın: Gertrude Bell Kimdir?",
-    },
-    {
-      cardLabel: "04",
-      imageName: "TrendNews4",
-      title: "Spor",
-      titleColor: "#62C28C",
-      content: "Christiano Ronaldo'dan 50 Efsane Gol",
-    },
-    {
-      cardLabel: "05",
-      imageName: "TrendNews5",
-      title: "Sağlık",
-      titleColor: "#55AC05",
-      content: "Soğan sağlığa pek çok açıdan fayda sağlıyor",
-    },
-  ];
-  const localNewsData = [
-    {
-      imageName: "LocalNews1",
-      cityName: "Adana", 
-      newsTitle: "Erdoğan'ın müjdesini verdiği petrolün çıkarıldığı saha!",
-    },
-    {
-      imageName: "LocalNews2",
-      cityName: "Trabzon", 
-      newsTitle: "'Sörloth ile anlaşıldı' yazdılar! Yıllık dev maaş belirlendi!",
-    },
-    {
-      imageName: "LocalNews3",
-      cityName: "Amasya", 
-      newsTitle: "Yıllar sonra büyüdüğü mahalleye döndü",
-    },
-    {
-      imageName: "LocalNews4",
-      cityName: "Artvin", 
-      newsTitle: "Hububatçılardan 5 ayda 4.5 milyar dolarlık ihracat",
-    },
-  ];
-  const weatherData = {
-    cityName: "İstanbul",
-    currentIcon: "cloudy-outline",
-    status: "Parçalı Bulutlu",
-    degree: "19",
-    oneDayAfterName: "Cumartesi",
-    oneDayAfterStatus: "Parçalı Bulutlu",
-    oneDayAfterDegree: "19",
-    oneDayAfterIcon: "cloudy-outline",
-    twoDayAfterName: "Pazar",
-    twoDayAfterStatus: "Güneşli",
-    twoDayAfterDegree: "23",
-    twoDayAfterIcon: "sunny-outline",
-    threeDayAfterName: "Pazartesi",
-    threeDayAfterStatus: "Yağmurlu",
-    threeDayAfterDegree: "17",
-    threeDayAfterIcon: "rainy-outline",
-  };
   const tempNewsData = [
     {
       imageName: "TempNews1",
@@ -443,7 +342,7 @@ function MainScreen() {
                 <LocalNews/>
               </ExpandableList>
             }
-            { ctx.panelSettings.weatherModule && <Weather weatherData={weatherData}/> }
+            { ctx.panelSettings.weatherModule && <Weather/> }
             { ctx.panelSettings.tabbedNewsModule && <TabbedNews data={tempNewsData}/> }
             { ctx.panelSettings.prayerTimesModule && <PrayerTimes data={prayerTimesData}/> }
             { ctx.panelSettings.leagueScoreStatusModule && 
