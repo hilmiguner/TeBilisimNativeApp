@@ -32,11 +32,6 @@ import LocalNews from "../components/news/LocalNews";
 import OtherNews from "../components/news/OtherNews";
 
 function MainScreen() {
-  const prayerTimesData = {
-    cityName: "İstanbul",
-    statusText: "Öğle Vaktine Kalan Süre",
-    remainingTime: "02:23:46",
-  };
   const leagueScoreData = [
     {
       key: 1,
@@ -330,7 +325,7 @@ function MainScreen() {
             }
             { ctx.panelSettings.weatherModule && <Weather/> }
             { ctx.panelSettings.tabbedNewsModule && <TabbedNews/> }
-            { ctx.panelSettings.prayerTimesModule && <PrayerTimes data={prayerTimesData}/> }
+            { ctx.panelSettings.prayerTimesModule && <PrayerTimes/> }
             { ctx.panelSettings.leagueScoreStatusModule && 
               <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
                 <Text style={styles.leagueScoreText}>Puan Durumu</Text>

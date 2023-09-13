@@ -21,10 +21,47 @@ import { useNavigation } from "@react-navigation/native";
 import { Context } from "../../store/context";
 
 // CountDown Paketi
-import CountDown from 'react-native-countdown-component';
+import CountDown from "react-native-countdown-component";
 
-function PrayerTimes({ data }) {
+// API
+import newsApi from "../../util/newsApi";
+
+function turkishtoEnglish(turkishText) {
+    return turkishText.replace('Ğ','g')
+        .replace('Ü','u')
+        .replace('Ş','s')
+        .replace('I','i')
+        .replace('İ','i')
+        .replace('Ö','o')
+        .replace('Ç','c')
+        .replace('ğ','g')
+ 		.replace('ü','u')
+        .replace('ş','s')
+        .replace('ı','i')
+        .replace('ö','o')
+        .replace('ç','c');
+};
+
+function msToSeconds(ms) {
+    return ms / 1000;
+}
+
+function whichTimeInterval(timeIntervals, currentDateTime) {
+    let respondData = "next-day";
+    Object.keys(timeIntervals).every(key => {
+        const deltaMilliseconds = (timeIntervals[key]) - currentDateTime;
+        if(deltaMilliseconds > 0) {
+            respondData = {nextIntervalKey: key, seconds: msToSeconds(deltaMilliseconds)};
+            return false
+        }
+        return true
+    });
+    return respondData;   
+}
+
+function PrayerTimes() {
     const [cityName, setCityName] = useState(null);
+    const [prayerTimes, setPrayerTimes] = useState(null);
 
     const ctx = useContext(Context);
     useEffect(() => {
@@ -32,6 +69,10 @@ function PrayerTimes({ data }) {
             ctx.getCityCTX();
         }
         setCityName(ctx.currentCity);
+        setPrayerTimes(null);
+        if(ctx.currentCity) {
+            newsApi.getPrayerTimes(turkishtoEnglish(ctx.currentCity)).then((respondData) => setPrayerTimes(respondData));
+        }
     }, [ctx.currentCity]);
 
     let cityContent;
@@ -40,6 +81,61 @@ function PrayerTimes({ data }) {
     }
     else {
         cityContent = <Text style={styles.cityName}>{cityName}</Text>;
+    }
+
+    let mainContent = <ActivityIndicator />;
+    if(prayerTimes) {
+        const currentDateTime = new Date();
+        const currentDate = currentDateTime.toISOString().split("T")[0];
+        const imsak = new Date(`${currentDate}T${prayerTimes.imsak}:00`);
+        const gunes = new Date(`${currentDate}T${prayerTimes.gunes}:00`);
+        const ogle = new Date(`${currentDate}T${prayerTimes.ogle}:00`);
+        const ikindi = new Date(`${currentDate}T${prayerTimes.ikindi}:00`);
+        const aksam = new Date(`${currentDate}T${prayerTimes.aksam}:00`);
+        const yatsi = new Date(`${currentDate}T${prayerTimes.yatsi}:00`);
+
+        const timeIntervals = {
+            imsak: imsak,
+            gunes: gunes,
+            ogle: ogle,
+            ikindi: ikindi,
+            aksam: aksam,
+            yatsi: yatsi,
+        };
+
+        const nextTimeData = whichTimeInterval(timeIntervals, currentDateTime);
+        mainContent = (
+            <>
+                <View style={styles.statusContainer}>
+                    <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>
+                        {cityContent}
+                    </TouchableOpacity>
+                    <Text style={styles.statusText}>{`${nextTimeData.nextIntervalKey.charAt(0).toUpperCase()}${nextTimeData.nextIntervalKey.slice(1)} vaktine kalan süre`}</Text>
+                    <CountDown 
+                        until={nextTimeData.seconds}
+                        size={30}
+                        timeToShow={["H","M","S"]}
+                        timeLabels={{}}
+                        showSeparator={true}
+                        digitStyle={{ backgroundColor: null }}
+                        digitTxtStyle={{ color: AppColors.yellow }}
+                        separatorStyle={{ color: AppColors.yellow }}
+                    />
+                </View>
+                <View style={styles.otherTimesMainContainer}>
+                    <View style={styles.otherTimesContainer}>
+                        <PrayerTimesItem timePeriodText="İMSAK" time={prayerTimes.imsak} isCurrentTime={true ? nextTimeData.nextIntervalKey == "imsak" : null}/>
+                        <PrayerTimesItem timePeriodText="GÜNEŞ" time={prayerTimes.gunes} isCurrentTime={true ? nextTimeData.nextIntervalKey == "gunes" : null}/>
+                        <PrayerTimesItem timePeriodText="ÖĞLE" time={prayerTimes.ogle} isCurrentTime={true ? nextTimeData.nextIntervalKey == "ogle" : null}/>
+                    </View>
+                    <View style={styles.otherTimesContainer}>
+                        <PrayerTimesItem timePeriodText="İKİNDİ" time={prayerTimes.ikindi} isCurrentTime={true ? nextTimeData.nextIntervalKey == "ikindi" : null}/>
+                        <PrayerTimesItem timePeriodText="AKŞAM" time={prayerTimes.aksam} isCurrentTime={true ? nextTimeData.nextIntervalKey == "aksam" : null}/>
+                        <PrayerTimesItem timePeriodText="YATSI" time={prayerTimes.yatsi} isCurrentTime={true ? nextTimeData.nextIntervalKey == "yatsi" : null}/>
+                    </View>
+                </View>
+            </>
+        );
     }
 
     const navigation = useNavigation();
@@ -59,34 +155,7 @@ function PrayerTimes({ data }) {
                 <Text style={styles.title}>Namaz Vakitleri</Text>
                 <IconButton icon="location" color={AppColors.yellow} size={24} onPress={locationIconHandler}/>
             </View>
-            <View style={styles.statusContainer}>
-                <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>
-                    {cityContent}
-                </TouchableOpacity>
-                <Text style={styles.statusText}>{data.statusText}</Text>
-                <CountDown 
-                until={2*(60*60) + 23*(60) + 46}
-                size={30}
-                timeToShow={["H","M","S"]}
-                timeLabels={{}}
-                showSeparator={true}
-                digitStyle={{ backgroundColor: null }}
-                digitTxtStyle={{ color: AppColors.yellow }}
-                separatorStyle={{ color: AppColors.yellow }}
-                />
-            </View>
-            <View style={styles.otherTimesMainContainer}>
-                <View style={styles.otherTimesContainer}>
-                    <PrayerTimesItem timePeriodText="İMSAK" time="04:48"/>
-                    <PrayerTimesItem timePeriodText="GÜNEŞ" time="04:48" isCurrentTime={true}/>
-                    <PrayerTimesItem timePeriodText="ÖĞLE" time="04:48"/>
-                </View>
-                <View style={styles.otherTimesContainer}>
-                    <PrayerTimesItem timePeriodText="İKİNDİ" time="04:48"/>
-                    <PrayerTimesItem timePeriodText="AKŞAM" time="04:48"/>
-                    <PrayerTimesItem timePeriodText="YATSI" time="04:48"/>
-                </View>
-            </View>
+            {mainContent}
         </LinearGradient>
     );
 }
