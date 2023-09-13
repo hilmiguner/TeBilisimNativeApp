@@ -16,7 +16,6 @@ import Weather from "../components/others/Weather";
 import PrayerTimes from "../components/others/PrayerTimes";
 import TopTabsLeague from "../components/others/TopTabsLeague";
 import LinearGradient from "react-native-linear-gradient";
-import ThreeNews from "../components/news/ThreeNews";
 import SliderHighlights from "../components/news/SliderHighlights";
 import Footer from "../components/others/Footer";
 import CurrencySlider from "../components/others/CurrencySlider";
@@ -30,22 +29,9 @@ import { useContext } from "react";
 import VerticalFeatured from "../components/news/VerticalFeatured";
 import TrendNews from "../components/news/TrendNews";
 import LocalNews from "../components/news/LocalNews";
+import OtherNews from "../components/news/OtherNews";
 
 function MainScreen() {
-  const tempNewsData = [
-    {
-      imageName: "TempNews1",
-      title: "Bakan Soylu bu mesajla duyurdu: 'Hepsi ele geçirildi!'",
-    },
-    {
-      imageName: "TempNews2",
-      title: "Bu gece yarısı motorine büyük indirim",
-    },
-    {
-      imageName: "TempNews3",
-      title: "Maduro 4 yıl sonra Beştepe'de",
-    },
-  ];
   const prayerTimesData = {
     cityName: "İstanbul",
     statusText: "Öğle Vaktine Kalan Süre",
@@ -343,7 +329,7 @@ function MainScreen() {
               </ExpandableList>
             }
             { ctx.panelSettings.weatherModule && <Weather/> }
-            { ctx.panelSettings.tabbedNewsModule && <TabbedNews data={tempNewsData}/> }
+            { ctx.panelSettings.tabbedNewsModule && <TabbedNews/> }
             { ctx.panelSettings.prayerTimesModule && <PrayerTimes data={prayerTimesData}/> }
             { ctx.panelSettings.leagueScoreStatusModule && 
               <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
@@ -351,9 +337,7 @@ function MainScreen() {
                 <TopTabsLeague data={leagueScoreData}/>
               </LinearGradient>
             }
-            <ThreeNews data={tempNewsData}/>
-            <ThreeNews data={tempNewsData}/>
-            <ThreeNews data={tempNewsData}/>
+            <OtherNews/>
             { ctx.panelSettings.highlightedNewsModule && 
               <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor }}>
                 <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>

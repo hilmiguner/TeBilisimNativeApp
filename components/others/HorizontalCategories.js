@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
 import HorizontalCategory from "./HorizontalCategory";
@@ -7,46 +7,36 @@ import HorizontalCategory from "./HorizontalCategory";
 // React Native Hooks
 import { useState } from "react";
 
-function HorizontalCategories({ tabChangeHandler }) {
-    const templateData = [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-    ];
-    const [isSelectedData, setIsSelectedData] = useState([
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-    ]);
-    const titles = [
-        "Gündem",
-        "Siyaset",
-        "Dünya",
-        "Sağlık",
-        "Astroloji",
-        "Futbol",
-    ];
+// API
+import newsApi from "../../util/newsApi";
 
-    function selectHandler(index) {
-        templateData[index] = true;
-        setIsSelectedData(templateData);
-        tabChangeHandler(titles[index]);
+function HorizontalCategories({ categories, tabChangeHandler }) {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    function selectHandler(index, id) {
+        newsApi.getCategoryNews(id).then((newsData) => {
+            if(newsData.length > 3) {
+                newsData = newsData.slice(0, 3);
+            }
+            tabChangeHandler();
+            tabChangeHandler(newsData);
+            setSelectedIndex(index);
+        });
     }
 
     return(
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <HorizontalCategory title="Gündem" isSelected={isSelectedData[0]} onPress={selectHandler.bind(this, 0)}/>
-            <HorizontalCategory title="Siyaset" isSelected={isSelectedData[1]} onPress={selectHandler.bind(this, 1)}/>
-            <HorizontalCategory title="Dünya" isSelected={isSelectedData[2]} onPress={selectHandler.bind(this, 2)}/>
-            <HorizontalCategory title="Sağlık" isSelected={isSelectedData[3]} onPress={selectHandler.bind(this, 3)}/>
-            <HorizontalCategory title="Astroloji" isSelected={isSelectedData[4]} onPress={selectHandler.bind(this, 4)}/>
-            <HorizontalCategory title="Futbol" isSelected={isSelectedData[5]} onPress={selectHandler.bind(this, 5)}/>
+            {categories.map((categoryData, index) => {
+                return (
+                        <View key={index}>
+                            <HorizontalCategory 
+                                title={categoryData.baslik} 
+                                isSelected={true ? index == selectedIndex : false} 
+                                onPress={selectHandler.bind(this, index, categoryData.id)}
+                            />
+                        </View>
+                       )
+            })}
         </ScrollView>
     );
 }

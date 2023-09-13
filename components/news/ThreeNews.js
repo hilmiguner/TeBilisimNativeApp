@@ -1,39 +1,64 @@
 // React Native Temel Paketler
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 // Oluşturulan Öğeler
 import ThreeNewsItem from "./ThreeNewsItem";
 
-function ThreeNews({ data, title }) {
-    return(
-        <View style={styles.rootContainer}>
-            <Text>CURRENT TİTLE: {title}</Text>
-            <View style={styles.bigPhotoContainer}>
-                <ThreeNewsItem itemData={data[0]} imageStyle={{ 
+function ThreeNews({ data }) {
+    let secondNews;
+    if(data.length >= 2) {
+        secondNews = (
+            <View style={{ flex: 1 }}>
+                <ThreeNewsItem itemData={data[1]} imageStyle={{
                     width: "100%",
                     height: 200,
                     resizeMode: "cover",
-                    borderRadius: 6,}}
-                />
+                    borderRadius: 6,
+                }}/>
             </View>
-            <View style={styles.photosContainer}>
-                <View style={{ flex: 1 }}>
-                    <ThreeNewsItem itemData={data[1]} imageStyle={{
-                        width: "100%",
-                        height: 150,
-                        resizeMode: "cover",
-                        borderRadius: 6,
-                    }}/>
-                </View>
-                <View style={{ flex: 1 }}>
-                    <ThreeNewsItem itemData={data[2]} imageStyle={{
-                        width: "100%",
-                        height: 150,
-                        resizeMode: "cover",
-                        borderRadius: 6,
-                    }}/>
-                </View>
+        );
+    }
+    
+    let thirdNews;
+    if(data.length == 3) {
+        thirdNews = (
+            <View style={{ flex: 1 }}>
+                <ThreeNewsItem itemData={data[2]} imageStyle={{
+                    width: "100%",
+                    height: 200,
+                    resizeMode: "cover",
+                    borderRadius: 6,
+                }}/>
             </View>
+        );
+    }
+
+    let content = (
+        <View style={styles.noNewsTextContaniner}>
+            <Text style={styles.noNewsText}>Mevcut Haber Bulunamadı</Text>
+        </View>
+    );
+    if(data.length >= 1) {
+        content = (
+            <>
+                <View style={styles.bigPhotoContainer}>
+                    <ThreeNewsItem itemData={data[0]} imageStyle={{ 
+                        width: "100%",
+                        height: 200,
+                        resizeMode: "cover",
+                        borderRadius: 6,}}
+                    />
+                </View>
+                <View style={styles.photosContainer}>
+                    {secondNews}
+                    {thirdNews}
+                </View>
+            </>
+        );
+    }
+    return(
+        <View style={styles.rootContainer}>
+            {content}
         </View>
     );
 }
@@ -50,5 +75,11 @@ const styles = StyleSheet.create({
     photosContainer: {
         width: "100%",
         flexDirection: "row",
+    },
+    noNewsTextContaniner: {
+        alignSelf: "center",
+    },
+    noNewsText: {
+        fontWeight: "bold",
     },
 });
