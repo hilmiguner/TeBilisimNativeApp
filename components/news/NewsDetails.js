@@ -67,9 +67,9 @@ function NewsDetails({ data }) {
     return (
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
-                <Text>{categoryText}</Text>
-                <Text>{data.title}</Text>
-                <Text>{data.spot}</Text>
+                <Text style={styles.categoryText}>{categoryText}</Text>
+                <Text style={styles.titleText}>{data.title}</Text>
+                <Text style={styles.spotText}>{data.spot}</Text>
                 <Text>{newsDateTime.toLocaleDateString("tr-TR" , { dateStyle: "long"})}</Text>
             </View>
             <Image style={styles.image} source={{ uri: data.image }}/>
@@ -87,7 +87,7 @@ function NewsDetails({ data }) {
                     maximumValue={32}
                     minimumTrackTintColor={ctx.panelSettings.themePrimaryColor}
                     step={1}
-                    onValueChange={onFontSizeChangeHandler}
+                    onSlidingComplete={onFontSizeChangeHandler}
                     tapToSeek={true}
                 />
             </View>
@@ -115,6 +115,18 @@ const styles = StyleSheet.create({
     },
     topTextContainer: {
         padding: 12,
+    },
+    categoryText: {
+        marginBottom: 18,
+    },
+    titleText: {
+        fontWeight: "bold",
+        fontSize: 24,
+        marginBottom: 8,
+    },
+    spotText: {
+        fontSize: 18,
+        marginBottom: 18,
     },
     image: {
         width: screenWidth,

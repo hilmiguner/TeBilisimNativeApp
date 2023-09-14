@@ -95,6 +95,14 @@ function MainContent() {
                     <Stack.Screen 
                     name="NewsDetailsScreen" 
                     component={NewsDetailsScreen}
+                    options={{
+                        headerTitle: (_) =>
+                            <Image source={require("./assets/images/logo.png")} style={{
+                                width: 112,
+                                height: 30,
+                                resizeMode: 'stretch',
+                            }}/>,
+                    }}
                     />
                     <Stack.Screen 
                     name="CitySelectionScreen" 
