@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
@@ -14,8 +14,6 @@ import SliderVideoGallery from "../components/news/SliderVideoGallery";
 import PhotoGallery from "../components/news/PhotoGallery";
 import Weather from "../components/others/Weather";
 import PrayerTimes from "../components/others/PrayerTimes";
-import TopTabsLeague from "../components/others/TopTabsLeague";
-import LinearGradient from "react-native-linear-gradient";
 import SliderHighlights from "../components/news/SliderHighlights";
 import Footer from "../components/others/Footer";
 import CurrencySlider from "../components/others/CurrencySlider";
@@ -30,6 +28,7 @@ import VerticalFeatured from "../components/news/VerticalFeatured";
 import TrendNews from "../components/news/TrendNews";
 import LocalNews from "../components/news/LocalNews";
 import OtherNews from "../components/news/OtherNews";
+import LeagueScoreModule from "../components/others/LeagueScoreModule";
 
 function MainScreen() {
   const leagueScoreData = [
@@ -327,10 +326,7 @@ function MainScreen() {
             { ctx.panelSettings.tabbedNewsModule && <TabbedNews/> }
             { ctx.panelSettings.prayerTimesModule && <PrayerTimes/> }
             { ctx.panelSettings.leagueScoreStatusModule && 
-              <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
-                <Text style={styles.leagueScoreText}>Puan Durumu</Text>
-                <TopTabsLeague data={leagueScoreData}/>
-              </LinearGradient>
+              <LeagueScoreModule data={leagueScoreData}/>
             }
             <OtherNews/>
             { ctx.panelSettings.highlightedNewsModule && 
@@ -363,12 +359,6 @@ const styles = StyleSheet.create({
     },
     videoGalleryContainer: {
       backgroundColor: "black",
-    },
-    leagueScoreText: {
-      color: "white",
-      fontSize: 24,
-      fontWeight: "bold",
-      marginBottom: 12,
     },
     emptyArea: {
       height: 200,
