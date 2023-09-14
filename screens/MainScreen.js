@@ -325,10 +325,7 @@ function MainScreen() {
             { ctx.panelSettings.weatherModule && <Weather/> }
             { ctx.panelSettings.tabbedNewsModule && <TabbedNews/> }
             { ctx.panelSettings.prayerTimesModule && <PrayerTimes/> }
-            { ctx.panelSettings.leagueScoreStatusModule && 
-              <LeagueScoreModule data={leagueScoreData}/>
-            }
-            <OtherNews/>
+            { ctx.panelSettings.leagueScoreStatusModule && <LeagueScoreModule data={leagueScoreData}/> }
             { ctx.panelSettings.highlightedNewsModule && 
               <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor }}>
                 <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
@@ -336,9 +333,11 @@ function MainScreen() {
                 </ExpandableList>
               </View>
             }
-            <View style={[styles.emptyArea, { borderColor: ctx.panelSettings.themePrimaryColor }]}>
-              {/* Empty Area Above Footer */}
-            </View>
+            <OtherNews/>
+            {/* <View style={[styles.emptyArea, { borderColor: ctx.panelSettings.themePrimaryColor }]}>
+              Empty Area Above Footer
+            </View> */}
+            <View style={{ borderBottomWidth: 6, borderBottomColor: ctx.panelSettings.themePrimaryColor }}></View>
             <Footer>{ctx.panelSettings.footerShortDescription}</Footer>
           </ScrollView>
       </View>
