@@ -18,7 +18,7 @@ function VerticalFeatured() {
     }, []);
 
     let content = <ActivityIndicator />;
-
+    
     if(featuredData) {
         content = (
             <>

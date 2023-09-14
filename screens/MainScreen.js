@@ -18,17 +18,17 @@ import SliderHighlights from "../components/news/SliderHighlights";
 import Footer from "../components/others/Footer";
 import CurrencySlider from "../components/others/CurrencySlider";
 import TabbedNews from "../components/news/TabbedNews";
+import VerticalFeatured from "../components/news/VerticalFeatured";
+import TrendNews from "../components/news/TrendNews";
+import LocalNews from "../components/news/LocalNews";
+import OtherNews from "../components/news/OtherNews";
+import LeagueScoreModule from "../components/others/LeagueScoreModule";
 
 // Context
 import { Context } from "../store/context";
 
 // React Native Hooks
 import { useContext } from "react";
-import VerticalFeatured from "../components/news/VerticalFeatured";
-import TrendNews from "../components/news/TrendNews";
-import LocalNews from "../components/news/LocalNews";
-import OtherNews from "../components/news/OtherNews";
-import LeagueScoreModule from "../components/others/LeagueScoreModule";
 
 function MainScreen() {
   const leagueScoreData = [
