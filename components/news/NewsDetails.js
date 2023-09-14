@@ -31,12 +31,15 @@ function NewsDetails({ data }) {
     const tagStyles = {
         "p": {
             fontSize: fontSizes.smallTextFontSize,
+            color: "black",
         },
         "li": {
             fontSize: fontSizes.smallTextFontSize,
+            color: "black",
         },
         "strong": {
             fontSize: fontSizes.bigTextFontSize,
+            color: "black",
         },
     };
 
@@ -69,7 +72,7 @@ function NewsDetails({ data }) {
             <View style={styles.topTextContainer}>
                 <Text style={styles.categoryText}>{categoryText}</Text>
                 <Text style={styles.titleText}>{data.title}</Text>
-                <Text style={styles.spotText}>{data.spot}</Text>
+                <Text style={[styles.spotText, { display: data.spot ? "flex" : "none" }]}>{data.spot}</Text>
                 <Text>{newsDateTime.toLocaleDateString("tr-TR" , { dateStyle: "long"})}</Text>
             </View>
             <Image style={styles.image} source={{ uri: data.image }}/>
@@ -86,6 +89,7 @@ function NewsDetails({ data }) {
                     minimumValue={18}
                     maximumValue={32}
                     minimumTrackTintColor={ctx.panelSettings.themePrimaryColor}
+                    maximumTrackTintColor="#DDDCDB"
                     step={1}
                     onSlidingComplete={onFontSizeChangeHandler}
                     tapToSeek={true}
@@ -118,15 +122,18 @@ const styles = StyleSheet.create({
     },
     categoryText: {
         marginBottom: 18,
+        color: "black",
     },
     titleText: {
         fontWeight: "bold",
         fontSize: 24,
-        marginBottom: 8,
+        marginBottom: 18,
+        color: "black",
     },
     spotText: {
         fontSize: 18,
         marginBottom: 18,
+        color: "black",
     },
     image: {
         width: screenWidth,
@@ -147,6 +154,7 @@ const styles = StyleSheet.create({
     },
     sliderText: {
         textAlign: "center",
+        color: "black",
     },
     renderHtmlContainer: {
         padding: 8,
