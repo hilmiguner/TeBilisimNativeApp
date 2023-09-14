@@ -83,7 +83,7 @@ function NewsDetails({ data }) {
                 <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5"/>
             </View>
-            <View style={{ padding: 8, display: showingSlider ? "flex" : "none" }}>
+            <View style={{ height: showingSlider ? null : 0, overflow: "hidden" }}>
                 <Text style={styles.sliderText}>Yazı boyutunu değiştirmek için sürükle</Text>
                 <Slider   
                     minimumValue={18}
