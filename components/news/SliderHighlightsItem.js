@@ -1,29 +1,27 @@
 // React Native Temel Paketler
-import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-
-// Statik Değerler
-import imageMapping from "../../constants/imageMapping";
+import { Image, StyleSheet, Text, View, Pressable } from "react-native";
 
 // React Navigation
 import { useNavigation } from "@react-navigation/native";
 
-function SliderHighlightsItem({ imageName, newsTitle }) {
-    const imagePath = imageMapping[imageName];
+// Context
+import { Context } from "../../store/context";
 
+// React Native Hooks
+import { useContext } from "react";
+
+function SliderHighlightsItem({ data }) {
+    const ctx = useContext(Context);
     const navigation = useNavigation();
-
-    function newsOnPressHandler() {
-        navigation.navigate("NewsDetailsScreen");
-    }
 
     return(
         <View style={styles.rootContainer}>
-            <TouchableOpacity onPress={newsOnPressHandler}>
-                <Image style={styles.image} source={imagePath}/>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={newsOnPressHandler}>
-                <Text style={styles.text}>{newsTitle}</Text>
-            </TouchableOpacity>
+            <Pressable onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, data.id)}>
+                <Image style={styles.image} source={{ uri: data.image}}/>
+            </Pressable>
+            <Pressable onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, data.id)}>
+                <Text style={styles.text}>{data.name}</Text>
+            </Pressable>
         </View>
     );
 }
