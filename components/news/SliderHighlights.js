@@ -21,7 +21,7 @@ function SliderHighlights() {
     if(highlightNews) {
         content = (
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.scrollView}>
-                {highlightNews.map((data) => <SliderHighlightsItem data={data}/>)}
+                {highlightNews.map((data) => <View key={data.id}><SliderHighlightsItem data={data}/></View>)}
             </ScrollView>
         );
     }
