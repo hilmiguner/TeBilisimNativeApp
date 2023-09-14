@@ -153,7 +153,7 @@ function PrayerTimes() {
         <LinearGradient style={styles.rootContainer} colors={["#78318D", "#3F6A8B"]}>
             <View style={styles.headBar}>
                 <Text style={styles.title}>Namaz Vakitleri</Text>
-                <IconButton icon="location" color={AppColors.yellow} size={24} onPress={locationIconHandler}/>
+                <IconButton iconBundle="Ionicons" icon="location" color={AppColors.yellow} size={24} onPress={locationIconHandler}/>
             </View>
             {mainContent}
         </LinearGradient>

@@ -83,7 +83,7 @@ function Weather() {
         <LinearGradient style={styles.rootContainer} colors={["#4593BC", "#2A6B8D"]}>
             <View style={styles.headBar}>
                 <Text style={styles.title}>Hava Durumu</Text>
-                <IconButton icon="location" color={AppColors.yellow} size={24} onPress={locationIconHandler}/>
+                <IconButton iconBundle="Ionicons" icon="location" color={AppColors.yellow} size={24} onPress={locationIconHandler}/>
             </View>
             <View style={styles.statusContainer}>
                 <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>

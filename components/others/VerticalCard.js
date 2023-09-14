@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
-        resizeMode: "cover"
     },
     cityContainer: {
         marginTop: 8,

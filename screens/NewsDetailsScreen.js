@@ -1,11 +1,14 @@
 // React Native Temel Paketler
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, ScrollView } from "react-native";
 
 // React Native Hooks
 import { useEffect, useState } from "react";
 
 // API
 import newsApi from "../util/newsApi";
+
+// Oluşturulan Öğeler
+import NewsDetails from "../components/news/NewsDetails";
 
 function NewsDetailsScreen({ route }) {
   const [newsData, setNewsData] = useState()
@@ -15,20 +18,14 @@ function NewsDetailsScreen({ route }) {
     }
   }, []);
 
-  let content = <ActivityIndicator />;
-  
+  let detailsContent = <ActivityIndicator />;
   if(newsData) {
-    content = (
-      <View>
-        <Text style={styles.text}>ID: {newsData.id}</Text>
-        <Text style={styles.text}>TITLE: {newsData.title}</Text>
-      </View>
-    );
+    detailsContent = <NewsDetails data={newsData}/>
   }
   return(
-      <View style={styles.rootContainer}>
-          { content }
-      </View>
+      <ScrollView style={styles.rootContainer}>
+        {detailsContent}
+      </ScrollView>
   );
 }
 
@@ -37,13 +34,5 @@ export default NewsDetailsScreen;
 const styles = StyleSheet.create({
     rootContainer: {
       flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    text: {
-      textAlign: "center",
-      fontSize: 24,
-      fontWeight: "bold",
-      color: "black",
     },
 });

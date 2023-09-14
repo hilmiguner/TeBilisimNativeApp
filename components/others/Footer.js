@@ -23,19 +23,19 @@ function Footer({ children }) {
             </View>
             <View style={[styles.socialMediaContainer, { backgroundColor: ctx.panelSettings.themePrimaryColor }]}>
                 <View style={styles.socialMediaLogo}>
-                    <IconButton icon="logo-facebook" color="black" size={24}/>
+                    <IconButton iconBundle="Ionicons" icon="logo-facebook" color="black" size={24}/>
                 </View>
                 <View style={styles.socialMediaLogo}>
-                    <IconButton icon="logo-twitter" color="black" size={24}/>
+                    <IconButton iconBundle="Ionicons" icon="logo-twitter" color="black" size={24}/>
                 </View>
                 <View style={styles.socialMediaLogo}>
-                    <IconButton icon="logo-instagram" color="black" size={24}/>
+                    <IconButton iconBundle="Ionicons" icon="logo-instagram" color="black" size={24}/>
                 </View>
                 <View style={styles.socialMediaLogo}>
-                    <IconButton icon="logo-youtube" color="black" size={24}/>
+                    <IconButton iconBundle="Ionicons" icon="logo-youtube" color="black" size={24}/>
                 </View>
                 <View style={styles.socialMediaLogo}>
-                    <IconButton icon="logo-linkedin" color="black" size={24}/>
+                    <IconButton iconBundle="Ionicons" icon="logo-linkedin" color="black" size={24}/>
                 </View>
             </View>
             <Text style={{ textAlign: "center", padding: 16, color: AppColors.gray500 }}>Copyright © 2023. Her hakkı saklıdır.</Text>
