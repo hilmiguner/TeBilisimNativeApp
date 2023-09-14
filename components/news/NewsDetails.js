@@ -8,12 +8,21 @@ import BorderButton from "../BorderButton";
 // Render HTML
 import RenderHTML from "react-native-render-html";
 
+// Slider
+import Slider from "@react-native-community/slider";
+
 // React Native Hooks
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+// Context
+import { Context } from "../../store/context";
 
 const screenWidth = Dimensions.get("window").width;
 function NewsDetails({ data }) {
-    const [fontSizes, setFontSized] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
+    const [fontSizes, setFontSizes] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
+    const [showingSlider, setShowingSlider] = useState(false);
+
+    const ctx = useContext(Context);
 
     const newsDateTime = new Date(data.date);
     const htmlSource = { html: data.detail };
@@ -47,7 +56,14 @@ function NewsDetails({ data }) {
         }
     };
 
-    
+    function fontSizeButtonHandler() {
+        setShowingSlider((currentValue) => !currentValue);
+    }
+
+    function onFontSizeChangeHandler(fontSize) {
+        setFontSizes({ smallTextFontSize: fontSize, bigTextFontSize: fontSize+2 });
+    }
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
@@ -61,8 +77,19 @@ function NewsDetails({ data }) {
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-facebook" color="#4474AE"/>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-twitter" color="#4B9EC5"/>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-whatsapp" color="#54B635"/>
-                <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272"/>
+                <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5"/>
+            </View>
+            <View style={{ padding: 8, display: showingSlider ? "flex" : "none" }}>
+                <Text style={styles.sliderText}>Yazı boyutunu değiştirmek için sürükle</Text>
+                <Slider   
+                    minimumValue={18}
+                    maximumValue={32}
+                    minimumTrackTintColor={ctx.panelSettings.themePrimaryColor}
+                    step={1}
+                    onValueChange={onFontSizeChangeHandler}
+                    tapToSeek={true}
+                />
             </View>
             <View style={styles.renderHtmlContainer}>
                 <RenderHTML tagsStyles={tagStyles} classesStyles={classesStyles} source={htmlSource} contentWidth={screenWidth}/>
@@ -81,6 +108,7 @@ const styles = StyleSheet.create({
     rootContainer: {
         width: "100%",
         height: "100%",
+        marginBottom: 12,
         backgroundColor: "white",
         flex: 1,
         justifyContent: "center",
@@ -97,13 +125,16 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 8,
-        marginBottom: 4,
+        marginBottom: 24,
         elevation: 8,
         backgroundColor: "white",
         shadowColor: "black",
         shadowRadius: 8,
         shadowOpacity: 0.5,
         shadowOffset: { height: 5, width: 0 },
+    },
+    sliderText: {
+        textAlign: "center",
     },
     renderHtmlContainer: {
         padding: 8,
