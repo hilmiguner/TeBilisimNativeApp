@@ -6,15 +6,18 @@ import setSettings from "../util/panelSettings";
 export const Context = createContext({
     currentCity: "",
     panelSettings: "",
+    fontSizes: {},
     setCityCTX: (name) => {},
     getCityCTX: () => {},
     getPanelSettings: () => {},
+    manageFontSizes: (fontSizes) => {},
     navigateNewsDetailScreen: (navigation, id) => {},
 });
 
 function ContextProvider({ children }) {
     const [cityName, setCityName] = useState();
     const [panelSettings, setPanelSettings] = useState();
+    const [fontSizes, setFontSizes] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
 
     function setCityCTX(name) {
         setCityName(name);
@@ -28,6 +31,10 @@ function ContextProvider({ children }) {
         newsApi.getSettings().then((response) => setPanelSettings(setSettings(response)));
     }
 
+    function manageFontSizes(fontSize) {
+        setFontSizes({ smallTextFontSize: fontSize, bigTextFontSize: fontSize+2 });
+    }
+
     function navigateNewsDetailScreen(navigation, id) {
         navigation.navigate("NewsDetailsScreen", { newsID: id });
     }
@@ -35,9 +42,11 @@ function ContextProvider({ children }) {
     const value = {
         currentCity: cityName,
         panelSettings: panelSettings,
+        fontSizes: fontSizes,
         setCityCTX: setCityCTX,
         getCityCTX: getCityCTX,
         getPanelSettings: getPanelSettings,
+        manageFontSizes: manageFontSizes,
         navigateNewsDetailScreen: navigateNewsDetailScreen,
     };
 

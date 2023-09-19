@@ -19,7 +19,7 @@ import { Context } from "../../store/context";
 
 const screenWidth = Dimensions.get("window").width;
 function NewsDetails({ data }) {
-    const [fontSizes, setFontSizes] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
+    // const [fontSizes, setFontSizes] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
     const [showingSlider, setShowingSlider] = useState(false);
 
     const ctx = useContext(Context);
@@ -30,15 +30,15 @@ function NewsDetails({ data }) {
 
     const tagStyles = {
         "p": {
-            fontSize: fontSizes.smallTextFontSize,
+            fontSize: ctx.fontSizes.smallTextFontSize,
             color: "black",
         },
         "li": {
-            fontSize: fontSizes.smallTextFontSize,
+            fontSize: ctx.fontSizes.smallTextFontSize,
             color: "black",
         },
         "strong": {
-            fontSize: fontSizes.bigTextFontSize,
+            fontSize: ctx.fontSizes.bigTextFontSize,
             color: "black",
         },
     };
@@ -64,7 +64,7 @@ function NewsDetails({ data }) {
     }
 
     function onFontSizeChangeHandler(fontSize) {
-        setFontSizes({ smallTextFontSize: fontSize, bigTextFontSize: fontSize+2 });
+        ctx.manageFontSizes(fontSize);
     }
 
     return (
@@ -88,6 +88,7 @@ function NewsDetails({ data }) {
                 <Slider   
                     minimumValue={18}
                     maximumValue={32}
+                    value={ctx.fontSizes.smallTextFontSize}
                     minimumTrackTintColor={ctx.panelSettings.themePrimaryColor}
                     maximumTrackTintColor="#DDDCDB"
                     step={1}
