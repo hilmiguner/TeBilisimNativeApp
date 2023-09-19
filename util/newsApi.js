@@ -385,9 +385,20 @@ const getNewsDetail = async (id) => {
     }
 }
 
+// const getSimiliarNews = async (catid,id) => {
+//     try {
+//         const response = await apiClient.get(`/?ilgilihaberler&catid=${catid}&haberid=${id}&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Detay alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getSimiliarNews = async (catid,id) => {
     try {
-        const response = await apiClient.get(`/?ilgilihaberler&catid=${catid}&haberid=${id}&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?ilgilihaberler&catid=${catid}&haberid=${id}`)
         if (response) {
             return response.data
         }
