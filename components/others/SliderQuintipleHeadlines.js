@@ -38,6 +38,7 @@ function SliderQuintipleHeadlines() {
 
     if(quintipleHeadlines) {
         content = (
+            quintipleHeadlines.length > 0 ? 
             <Carousel
                 width={width-32}
                 height={width * (2/7)}
@@ -50,6 +51,8 @@ function SliderQuintipleHeadlines() {
                 }}
                 renderItem={({ index }) => <RenderItem imageUri={quintipleHeadlines[index].fives} id={quintipleHeadlines[index].id}/> }
             />
+            :
+            null
         );
     }
 
