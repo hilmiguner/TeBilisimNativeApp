@@ -2,42 +2,57 @@
 import { ActivityIndicator, StyleSheet, ScrollView } from "react-native";
 
 // React Native Hooks
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 
 // API
 import newsApi from "../util/newsApi";
 
 // Oluşturulan Öğeler
 import NewsDetails from "../components/news/NewsDetails";
+import SimiliarNews from "../components/news/SimiliarNews";
+import IconButton from "../components/IconButton";
 
-function NewsDetailsScreen({ route }) {
+// Context
+import { Context } from "../store/context";
+
+function NewsDetailsScreen({ navigation, route }) {
   const [newsData, setNewsData] = useState()
+
+  const ctx = useContext(Context);
+
+  function goMainScreenIconButtonHandler() {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'DrawerMainScreen' }],
+    });
+  }
+
+  useLayoutEffect(() => {
+    if(navigation.getState().index > 1) {
+      navigation.setOptions({
+        headerRight: (_) => <IconButton icon="home" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={goMainScreenIconButtonHandler} iconBundle="Ionicons"/>,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (route.params) {
-      newsApi.getNewsDetail(route.params.newsID).then((newsDetailData) => {
-        newsApi.getSimiliarNews(newsDetailData.catid, newsDetailData.id).then((respondData) => newsApi.getNewsDetail(respondData[0].id).then((otherNewsData) => {
-          setNewsData({
-            newsData: newsDetailData,
-            otherNewsData: otherNewsData,
-          });
-        }));
-      });
+      newsApi.getNewsDetail(route.params.newsID).then((respondData) => setNewsData(respondData));
     }
   }, []);
 
 
   let detailsContent = <ActivityIndicator />;
-  let otherNewsContent = <ActivityIndicator />;
+  let similiarNewsContent1 = <ActivityIndicator />;
   if(newsData) {
-    detailsContent = <NewsDetails data={newsData.newsData}/>
-    otherNewsContent = <NewsDetails data={newsData.otherNewsData}/>
+    detailsContent = <NewsDetails data={newsData}/>
+    similiarNewsContent1 = <SimiliarNews categoryId={newsData.catid} newsId={newsData.id}/>
   }
 
   return(
       <ScrollView style={styles.rootContainer}>
         {detailsContent}
-        {otherNewsContent}
+        {similiarNewsContent1}
       </ScrollView>
   );
 }

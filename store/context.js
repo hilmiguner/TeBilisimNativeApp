@@ -11,7 +11,7 @@ export const Context = createContext({
     getCityCTX: () => {},
     getPanelSettings: () => {},
     manageFontSizes: (fontSizes) => {},
-    navigateNewsDetailScreen: (navigation, id) => {},
+    navigateNewsDetailScreen: (navigation, id, isPushing) => {},
 });
 
 function ContextProvider({ children }) {
@@ -35,8 +35,13 @@ function ContextProvider({ children }) {
         setFontSizes({ smallTextFontSize: fontSize, bigTextFontSize: fontSize+2 });
     }
 
-    function navigateNewsDetailScreen(navigation, id) {
-        navigation.navigate("NewsDetailsScreen", { newsID: id });
+    function navigateNewsDetailScreen(navigation, id, isPushing) {
+        if(isPushing) {
+            navigation.push("NewsDetailsScreen", { newsID: id });
+        }
+        else {
+            navigation.navigate("NewsDetailsScreen", { newsID: id });
+        }
     }
 
     const value = {

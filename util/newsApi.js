@@ -408,6 +408,18 @@ const getSimiliarNews = async (catid,id) => {
     }
 }
 
+const getThreeSimiliarNews = async (catid,id) => {
+    try {
+        const response = await axios.get(`${Url}_api?ilgilihaberler&catid=${catid}&haberid=${id}&offset=0&limit=3`)
+        if (response) {
+            return response.data
+        }
+    } catch (error) {
+        console.log('Detay alınırken bir hata oluştu.', error.message);
+        return [];
+    }
+}
+
 const getNextNews = async (id) => {
     try {
         const response = await apiClient.get(`/?sonrakihaber=${id}&v=${getCurrentTime()}`)
@@ -785,6 +797,7 @@ export default {
     getWeather,
     getNewsDetail,
     getSimiliarNews,
+    getThreeSimiliarNews,
     getNextNews,
     getVideoDetail,
     getArticleDetail,

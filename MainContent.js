@@ -49,7 +49,7 @@ function DrawerNavigator() {
         }}>
         <Drawer.Screen name='MainScreen' component={MainScreen} options={({ navigation }) => ({
             headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
-            headerLeft: (_) => <IconButton icon="menu" size={32} color={AppColors.gray300} onPress={navigation.toggleDrawer}/>,
+            headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
             headerTitle: (_) =>
             <Image source={require("./assets/images/logo.png")} style={{
                 width: 112,
@@ -102,6 +102,7 @@ function MainContent() {
                                 height: 30,
                                 resizeMode: 'stretch',
                             }}/>,
+                        headerBackTitleVisible: false,
                     }}
                     />
                     <Stack.Screen 
