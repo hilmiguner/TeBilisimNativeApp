@@ -14,11 +14,30 @@ function Card({ cardData }) {
     const ctx = useContext(Context);
     const navigation = useNavigation();
 
+    let categoryName;
+    try {
+        categoryName = cardData.category.name;
+    }
+    catch(error) {
+        categoryName = null;
+    }
+
+    let categoryColor;
+    if(categoryName) {
+        try {
+            categoryColor = cardData.category.color;
+            if(!categoryColor) categoryColor = "black";
+        }
+        catch(error) {
+            categoryColor = "black";
+        }
+    }
+
     return(
         <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.id)}>
             <Image style={styles.image} source={{ uri: cardData.topheadline }}/>
             <View style={styles.textContainer}>
-                <Text style={[styles.title, { color: cardData.category.color ? cardData.category.color : "black" }]}>{cardData.category.name}</Text>
+                {categoryName && <Text style={[styles.title, { color: categoryColor }]}>{categoryName}</Text>}
                 <View>
                     <Text style={styles.content}>{cardData.name}</Text>
                 </View>

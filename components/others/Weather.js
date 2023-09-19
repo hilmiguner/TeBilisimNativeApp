@@ -59,11 +59,12 @@ function Weather() {
 
     let weatherContent = <ActivityIndicator />;
     if(weatherData) {
+        const weatherDataToday = Array.isArray(weatherData) ? weatherData[0] : weatherData;
         weatherContent = (
             <>
-                <Ionicons name={ iconParser(weatherData.icon) } color={AppColors.yellow} size={32} style={styles.currentIcon}/>
-                <Text style={styles.currentStatusText}>{weatherData.desc}</Text>
-                <Text style={styles.currentDegreeText}>{weatherData.degree + " C°"}</Text>
+                <Ionicons name={ iconParser(weatherDataToday.icon) } color={AppColors.yellow} size={32} style={styles.currentIcon}/>
+                <Text style={styles.currentStatusText}>{weatherDataToday.desc}</Text>
+                <Text style={styles.currentDegreeText}>{weatherDataToday.degree + " C°"}</Text>
             </>
         );
     }

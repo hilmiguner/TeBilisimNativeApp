@@ -18,14 +18,17 @@ function SliderDailyNews() {
     }, []);
     
     let content = <ActivityIndicator />;
-
+    
     if(dailyNewsData) {
         content = (
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollView}>
                 {dailyNewsData.map((item) => (
+                    item.reference_id ? 
                     <View key={item.reference_id}>
                         <SliderDailyNewsItem itemData={item}/>
                     </View>
+                    :
+                    null
                 ))}
             </ScrollView>
         );

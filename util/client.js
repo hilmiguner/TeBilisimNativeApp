@@ -1,8 +1,8 @@
 import axios from 'axios';
 // import UrlStore from '../../UrlStore';
 
-export const Url = "https://hayathaber.com/";
-// const Url = "https://turkgun.com/";
+// export const Url = "https://hayathaber.com/";
+export const Url = "https://turkgun.com/";
 
 export default axios.create({
     baseURL:`${Url}_api/`,
