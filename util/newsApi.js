@@ -1,4 +1,5 @@
-import apiClient from './client';
+import axios from 'axios';
+import apiClient, { Url } from './client';
 import { Dimensions } from 'react-native';
 
 const {width, height} = Dimensions.get('screen');
@@ -13,9 +14,20 @@ const getCurrentTime = () => {
     return year+''+month+''+day+''+hours+''+minutes;
 }
 
+// const getSettings = async () => {
+//     try {
+//         const response = await apiClient.get(`/?ayarlar&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Ayarlar alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getSettings = async () => {
     try {
-        const response = await apiClient.get(`/?ayarlar&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?ayarlar`);
         if (response) {
             return response.data
         }
@@ -37,9 +49,20 @@ const getStories = async () => {
     }
 }
 
+// const getHeadlineNews = async () => {
+//     try {
+//         const response = await apiClient.get(`/?mansetler&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getHeadlineNews = async () => {
     try {
-        const response = await apiClient.get(`/?mansetler&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?mansetler`);
         if (response) {
             return response.data
         }
@@ -49,9 +72,20 @@ const getHeadlineNews = async () => {
     }
 }
 
+// const getQuintetHeadlineNews = async () => {
+//     try {
+//         const response = await apiClient.get(`/?beslimanset&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getQuintetHeadlineNews = async () => {
     try {
-        const response = await apiClient.get(`/?beslimanset&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?beslimanset`);
         if (response) {
             return response.data
         }
@@ -61,9 +95,20 @@ const getQuintetHeadlineNews = async () => {
     }
 }
 
+// const getDailyHeadlineNews = async () => {
+//     try {
+//         const response = await apiClient.get(`/?daily_headline&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getDailyHeadlineNews = async () => {
     try {
-        const response = await apiClient.get(`/?daily_headline&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?daily_headline`);
         if (response) {
             return response.data
         }
@@ -85,9 +130,20 @@ const getTrends = async () => {
     }
 }
 
+// const getAuthors = async () => {
+//     try {
+//         const response = await apiClient.get(`/?yazarlar&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getAuthors = async () => {
     try {
-        const response = await apiClient.get(`/?yazarlar&v=${getCurrentTime()}`)
+        const response = await apiClient.get(`${Url}_api?yazarlar`);
         if (response) {
             return response.data
         }
@@ -133,9 +189,20 @@ const getLatestArticles = async (id) => {
     }
 }
 
+// const getBreakingNews = async () => {
+//     try {
+//         const response = await apiClient.get(`/?sondakika&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getBreakingNews = async () => {
     try {
-        const response = await apiClient.get(`/?sondakika&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?sondakika`);
         if (response) {
             return response.data
         }
@@ -157,9 +224,20 @@ const getLocalNews = async () => {
     }
 }
 
+// const getFeatured = async () => {
+//     try {
+//         const response = await apiClient.get(`/?featured&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getFeatured = async () => {
     try {
-        const response = await apiClient.get(`/?featured&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?featured`);
         if (response) {
             return response.data
         }
@@ -169,9 +247,20 @@ const getFeatured = async () => {
     }
 }
 
+// const getHomeFeatured = async () => {
+//     try {
+//         const response = await apiClient.get(`/?featured&limit=3&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getHomeFeatured = async () => {
     try {
-        const response = await apiClient.get(`/?featured&limit=3&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?featured`);
         if (response) {
             return response.data
         }
@@ -181,9 +270,20 @@ const getHomeFeatured = async () => {
     }
 }
 
+// const getTopHeadlineNews = async () => {
+//     try {
+//         const response = await apiClient.get(`/?ust_mansetler&start=0&limit=10&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getTopHeadlineNews = async () => {
     try {
-        const response = await apiClient.get(`/?ust_mansetler&start=0&limit=10&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?ust_mansetler&start=0&limit=10`);
         if (response) {
             return response.data
         }
@@ -193,9 +293,20 @@ const getTopHeadlineNews = async () => {
     }
 }
 
+// const getPrayerTimes = async (city) => {
+//     try {
+//         const response = await apiClient.get(`/?namaz&city=${city}&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Veriler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getPrayerTimes = async (city) => {
     try {
-        const response = await apiClient.get(`/?namaz&city=${city}&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?namaz&city=${city}`);
         if (response) {
             return response.data
         }
@@ -205,9 +316,20 @@ const getPrayerTimes = async (city) => {
     }
 }
 
+// const getCurrency = async () => {
+//     try {
+//         const response = await apiClient.get(`/?piyasalar&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Veriler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getCurrency = async () => {
     try {
-        const response = await apiClient.get(`/?piyasalar&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?piyasalar`);
         if (response) {
             return response.data
         }
@@ -217,9 +339,20 @@ const getCurrency = async () => {
     }
 }
 
+// const getWeather = async (city) => {
+//     try {
+//         const response = await apiClient.get(`/?hava&city=${city}&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Veriler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getWeather = async (city) => {
     try {
-        const response = await apiClient.get(`/?hava&city=${city}&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?hava&city=${city}`);
         if (response) {
             return response.data
         }
@@ -229,9 +362,20 @@ const getWeather = async (city) => {
     }
 }
 
+// const getNewsDetail = async (id) => {
+//     try {
+//         const response = await apiClient.get(`/?id=${id}&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Detay alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getNewsDetail = async (id) => {
     try {
-        const response = await apiClient.get(`/?id=${id}&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?id=${id}`);
         if (response) {
             return response.data
         }
@@ -313,9 +457,20 @@ const getVideoDetail = async (id) => {
     }
 }
 
+// const getOtherNews = async () => {
+//     try {
+//         const response = await apiClient.get(`/?diger_haberler&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getOtherNews = async () => {
     try {
-        const response = await apiClient.get(`/?diger_haberler&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?diger_haberler`);
         if (response) {
             return response.data
         }
@@ -337,9 +492,20 @@ const getHomeCategoryNews = async (id) => {
     }
 }
 
+// const getCategoryNews = async (id) => {
+//     try {
+//         const response = await apiClient.get(`/?category=${id}&offset=0&limit=10&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Haberler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getCategoryNews = async (id) => {
     try {
-        const response = await apiClient.get(`/?category=${id}&offset=0&limit=10&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?category=${id}&offset=0&limit=10`);
         if (response) {
             return response.data
         }
@@ -361,9 +527,20 @@ const getCategoryOtherNews = async (hta,page) => {
     }
 }
 
+// const getCategories = async () => {
+//     try {
+//         const response = await apiClient.get(`/?categories&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Kategoriler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getCategories = async () => {
     try {
-        const response = await apiClient.get(`/?categories&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?categories`);
         if (response) {
             return response.data
         }
@@ -385,9 +562,20 @@ const getGalleries = async () => {
     }
 }
 
+// const getHomeGalleries = async () => {
+//     try {
+//         const response = await apiClient.get(`/?galleries&limit=3&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Galeriler alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getHomeGalleries = async () => {
     try {
-        const response = await apiClient.get(`/?galleries&limit=3&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?galleries`);
         if (response) {
             return response.data
         }
@@ -409,9 +597,20 @@ const getVideos = async (page) => {
     }
 }
 
+// const getHomeVideos = async () => {
+//     try {
+//         const response = await apiClient.get(`/?videos&limit=3&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Videolar alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getHomeVideos = async () => {
     try {
-        const response = await apiClient.get(`/?videos&limit=3&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api?videos&limit=3`);
         if (response) {
             return response.data
         }
