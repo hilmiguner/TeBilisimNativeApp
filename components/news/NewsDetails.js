@@ -19,7 +19,6 @@ import { Context } from "../../store/context";
 
 const screenWidth = Dimensions.get("window").width;
 function NewsDetails({ data }) {
-    // const [fontSizes, setFontSizes] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
     const [showingSlider, setShowingSlider] = useState(false);
 
     const ctx = useContext(Context);
@@ -71,6 +70,7 @@ function NewsDetails({ data }) {
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
                 <Text style={styles.categoryText}>{categoryText}</Text>
+                <Text style={styles.categoryText}>{newsDateTime.toLocaleString()}</Text>
                 <Text style={styles.titleText}>{data.title}</Text>
                 <Text style={[styles.spotText, { display: data.spot ? "flex" : "none" }]}>{data.spot}</Text>
                 <Text>{newsDateTime.toLocaleDateString("tr-TR" , { dateStyle: "long"})}</Text>
