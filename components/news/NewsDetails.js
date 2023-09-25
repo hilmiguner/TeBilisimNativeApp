@@ -4,12 +4,10 @@ import { Image, View, Text, StyleSheet, Dimensions } from "react-native";
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
 import BorderButton from "../BorderButton";
+import FontModal from "../others/FontModal";
 
 // Render HTML
 import RenderHTML from "react-native-render-html";
-
-// Slider
-import Slider from "@react-native-community/slider";
 
 // React Native Hooks
 import { useState, useContext } from "react";
@@ -62,10 +60,6 @@ function NewsDetails({ data }) {
         setShowingSlider((currentValue) => !currentValue);
     }
 
-    function onFontSizeChangeHandler(fontSize) {
-        ctx.manageFontSizes(fontSize);
-    }
-
     return (
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
@@ -83,19 +77,7 @@ function NewsDetails({ data }) {
                 <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5"/>
             </View>
-            <View style={{ height: showingSlider ? null : 0, overflow: "hidden" }}>
-                <Text style={styles.sliderText}>Yazı boyutunu değiştirmek için sürükle</Text>
-                <Slider   
-                    minimumValue={18}
-                    maximumValue={32}
-                    value={ctx.fontSizes.smallTextFontSize}
-                    minimumTrackTintColor={ctx.panelSettings.themePrimaryColor}
-                    maximumTrackTintColor="#DDDCDB"
-                    step={1}
-                    onSlidingComplete={onFontSizeChangeHandler}
-                    tapToSeek={true}
-                />
-            </View>
+            <FontModal isVisible={showingSlider} closeModalHandler={fontSizeButtonHandler}/>
             <View style={styles.renderHtmlContainer}>
                 <RenderHTML tagsStyles={tagStyles} classesStyles={classesStyles} source={htmlSource} contentWidth={screenWidth}/>
             </View>
@@ -152,6 +134,19 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         shadowOpacity: 0.5,
         shadowOffset: { height: 5, width: 0 },
+    },
+    modalContainer: {
+        flex: 1,
+    },
+    modalStyle: {
+        justifyContent: "flex-end",
+        margin: 0,
+    },
+    modalInternalContainer: {
+        backgroundColor: "white",
+        borderRadius: 8,
+        padding: 24,
+        width: screenWidth
     },
     sliderText: {
         textAlign: "center",
