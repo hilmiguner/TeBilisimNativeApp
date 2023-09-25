@@ -20,33 +20,41 @@ function SimiliarNews({ categoryId, newsId }) {
     const navigation = useNavigation();
 
     useEffect(() => {
-        newsApi.getThreeSimiliarNews(categoryId, newsId).then((respondData) => setNewsData(respondData));
+        newsApi.getFourSimiliarNews(categoryId, newsId).then((respondData) => setNewsData(respondData));
     }, []);
 
     let content = <ActivityIndicator/>;
     if(newsData) {
         content = (
             <View style={styles.rootContainer}>
-                {newsData[0] &&
-                    <Pressable style={[styles.rowContainer, { margin: 12, backgroundColor: "white" }]} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[0].id, true)}>
-                        <Image style={styles.oneImage} source={{ uri: newsData[0].resim }}/>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.title}>{newsData[0].baslik}</Text>
-                        </View>
-                    </Pressable>
-                }
-                {(newsData[1] || newsData[2]) &&
+                {(newsData[0] || newsData[1]) &&
                     <View style={styles.rowContainer}>
-                        {newsData[1] &&
+                        {newsData[0] &&
                             <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[1].id, true)}>
-                                <Image style={styles.twoImages} source={{ uri: newsData[1].resim }}/>
+                                <Image style={styles.image} source={{ uri: newsData[0].resim }}/>
+                                <Text style={styles.title}>{newsData[0].baslik}</Text>
+                            </Pressable>
+                        }
+                        {newsData[1] &&
+                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[2].id, true)}>
+                                <Image style={styles.image} source={{ uri: newsData[1].resim }}/>
                                 <Text style={styles.title}>{newsData[1].baslik}</Text>
                             </Pressable>
                         }
+                    </View>
+                }
+                {(newsData[2] || newsData[3]) &&
+                    <View style={styles.rowContainer}>
                         {newsData[2] &&
-                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[2].id, true)}>
-                                <Image style={styles.twoImages} source={{ uri: newsData[2].resim }}/>
+                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[1].id, true)}>
+                                <Image style={styles.image} source={{ uri: newsData[2].resim }}/>
                                 <Text style={styles.title}>{newsData[2].baslik}</Text>
+                            </Pressable>
+                        }
+                        {newsData[3] &&
+                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[2].id, true)}>
+                                <Image style={styles.image} source={{ uri: newsData[3].resim }}/>
+                                <Text style={styles.title}>{newsData[3].baslik}</Text>
                             </Pressable>
                         }
                     </View>
@@ -72,25 +80,16 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         margin: 4,
     },
-    oneImage: {
-        width: 175,
-        height: 200,
-        resizeMode: "cover",
-    },
-    twoImages: {
+    image: {
         width: "100%",
         height: 150,
         resizeMode: "cover",
-    },
-    textContainer: {
-        flex: 1,
-        justifyContent: "center"
     },
     title: {
         flexWrap: "wrap",
         color: "black",
         fontWeight: "bold",
-        fontSize: 20,
+        fontSize: 18,
         margin: 12,
     },
     smallContainer: {

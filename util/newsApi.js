@@ -408,9 +408,9 @@ const getSimiliarNews = async (catid,id) => {
     }
 }
 
-const getThreeSimiliarNews = async (catid,id) => {
+const getFourSimiliarNews = async (catid,id) => {
     try {
-        const response = await axios.get(`${Url}_api?ilgilihaberler&catid=${catid}&haberid=${id}&offset=0&limit=3`)
+        const response = await axios.get(`${Url}_api?ilgilihaberler&catid=${catid}&haberid=${id}&offset=0&limit=4`)
         if (response) {
             return response.data
         }
@@ -797,7 +797,7 @@ export default {
     getWeather,
     getNewsDetail,
     getSimiliarNews,
-    getThreeSimiliarNews,
+    getFourSimiliarNews,
     getNextNews,
     getVideoDetail,
     getArticleDetail,
