@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image, ActivityIndicator, View, StatusBar } from "react-native";
+import { Image, ActivityIndicator, View, StatusBar, Pressable } from "react-native";
 
 // Drawer Paketi için Gerekli Paket
 import 'react-native-gesture-handler';
@@ -50,12 +50,20 @@ function DrawerNavigator() {
         <Drawer.Screen name='MainScreen' component={MainScreen} options={({ navigation }) => ({
             headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
             headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
-            headerTitle: (_) =>
-            <Image source={require("./assets/images/logo.png")} style={{
-                width: 112,
-                height: 30,
-                resizeMode: 'stretch',
-            }}/>,
+            headerTitle: (_) => (
+                <Pressable onPress={() => {
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'DrawerMainScreen' }],
+                    });
+                }}>
+                    <Image source={require("./assets/images/logo.png")} style={{
+                        width: 112,
+                        height: 30,
+                        resizeMode: 'stretch',
+                    }}/>
+                </Pressable>
+            ),
             headerTitleAlign: "center",
             headerRight: (_) => <IconButton icon="search" size={32} color={AppColors.gray300}/>,
         })}/>
@@ -95,15 +103,23 @@ function MainContent() {
                     <Stack.Screen 
                     name="NewsDetailsScreen" 
                     component={NewsDetailsScreen}
-                    options={{
-                        headerTitle: (_) =>
-                            <Image source={require("./assets/images/logo.png")} style={{
-                                width: 112,
-                                height: 30,
-                                resizeMode: 'stretch',
-                            }}/>,
+                    options={({ navigation}) =>( {
+                        headerTitle: (_) => (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'DrawerMainScreen' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
                         headerBackTitleVisible: false,
-                    }}
+                    })}
                     />
                     <Stack.Screen 
                     name="CitySelectionScreen" 
