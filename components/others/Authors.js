@@ -14,7 +14,14 @@ function Authors() {
     const [authors, setAuthors] = useState()
 
     useEffect(() => {
-        newsApi.getAuthors().then((apiData) => setAuthors(apiData));
+        newsApi.getAuthors().then((apiData) => {
+            if(apiData.length > 5) {
+                setAuthors(apiData.slice(0, 5))
+            }
+            else {
+                setAuthors(apiData)
+            }
+        });
     }, []);
 
     let content = <ActivityIndicator />;

@@ -10,13 +10,13 @@ import { Context } from "../../store/context";
 // React Native Hooks
 import { useContext } from "react";
 
-function ExpandableList({ children, title, expandButtonTitle, titleTextStyle, buttonTextStyle }) {
+function ExpandableList({ children, title, expandButtonTitle, titleTextStyle, buttonTextStyle, onPress }) {
     const ctx = useContext(Context);
     return(
         <View style={styles.rootContainer}>
             <View style={styles.titleContainer}>
                 <Text style={[styles.title, { color: ctx.panelSettings.moduleTitleTextColor }, titleTextStyle]}>{title}</Text>
-                <TextButton textStyle={[{ color: ctx.panelSettings.moduleTitleTextColor }, buttonTextStyle]} onPress={null}>{expandButtonTitle}</TextButton>
+                <TextButton textStyle={[{ color: ctx.panelSettings.moduleTitleTextColor }, buttonTextStyle]} onPress={onPress}>{expandButtonTitle}</TextButton>
             </View>
             {children}
         </View>

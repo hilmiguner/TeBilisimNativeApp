@@ -30,7 +30,7 @@ import { Context } from "../store/context";
 // React Native Hooks
 import { useContext } from "react";
 
-function MainScreen() {
+function MainScreen({ navigation }) {
   const leagueScoreData = [
     {
       key: 1,
@@ -265,6 +265,8 @@ function MainScreen() {
     },
   ];
 
+  const drawerNav = navigation.getParent();
+
   const ctx = useContext(Context);
   
   let currencyContent;
@@ -289,7 +291,7 @@ function MainScreen() {
               </ExpandableList>
             }
             { ctx.panelSettings.authorsModule && 
-              <ExpandableList title="Yazarlar" expandButtonTitle="Tümü">
+              <ExpandableList title="Yazarlar" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("AuthorsScreen")}>
                 <Authors/>
               </ExpandableList>
             }
