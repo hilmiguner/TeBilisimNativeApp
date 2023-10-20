@@ -13,6 +13,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainScreen from "./screens/MainScreen";
 import NewsDetailsScreen from './screens/NewsDetailsScreen';
 import CitySelectionScreen from "./screens/CitySelectionScreen";
+import PhotoGalleryScreen from "./screens/PhotoGalleryScreen";
+import VideoGalleryScreen from "./screens/VideoGalleryScreen";
+import AuthorsScreen from "./screens/AuthorsScreen";
 
 // Oluşturulan Öğeler
 import IconButton from './components/IconButton';
@@ -39,7 +42,6 @@ function StackNavigator() {
     const ctx = useContext(Context);
     return(
         <Stack.Navigator screenOptions={({navigation}) => ({
-            headerStyle: { backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color },
             headerTintColor: ctx.panelSettings.headerTextColor,
             headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
             headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
@@ -67,31 +69,17 @@ function StackNavigator() {
                 name="NewsDetailsScreen" 
                 component={NewsDetailsScreen}
                 options={({ navigation}) =>( {
-                    headerTitle: (_) => (
-                        <Pressable onPress={() => {
-                            navigation.reset({
-                                index: 0,
-                                routes: [{ name: 'MainScreen' }],
-                            });
-                        }}>
-                            <Image source={require("./assets/images/logo.png")} style={{
-                                width: 112,
-                                height: 30,
-                                resizeMode: 'stretch',
-                            }}/>
-                        </Pressable>
-                    ),
                     headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
                     headerBackTitleVisible: false,
                 })}
             />
             <Stack.Screen 
-            name="CitySelectionScreen" 
-            component={CitySelectionScreen}
-            options={{ 
-            presentation: "modal",
-            title: "Şehir Seç" 
-            }}
+                name="CitySelectionScreen" 
+                component={CitySelectionScreen}
+                options={{ 
+                    presentation: "modal",
+                    title: "Şehir Seç" 
+                }}
             />
         </Stack.Navigator>
     );
@@ -115,15 +103,40 @@ function MainContent() {
             <>
                 <StatusBar barStyle={ctx.panelSettings.iosStatusBarContentColor} backgroundColor={ctx.panelSettings.mobile_app_bar_style_color}/>
                 <NavigationContainer>  
-                    <Drawer.Navigator screenOptions={{
+                    <Drawer.Navigator screenOptions={({navigation}) => ({
                         headerShown: false,
-                        drawerStyle: { backgroundColor: ctx.panelSettings.menuBG_Color },
+                        headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
                         drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
+
                         // drawerActiveTintColor: ctx.panelSettings.menuTextColor,
                         drawerActiveTintColor: "white",
+
                         headerTintColor: ctx.panelSettings.headerTextColor,
-                    }}>
-                        <Drawer.Screen name='StackNavigator' component={StackNavigator}/>
+                        headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        headerTitle: (_) => (
+                            <Pressable onPress={() => {
+                                navigation.navigate("StackNavigator");
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                    })}>
+                        <Drawer.Screen name='StackNavigator' component={StackNavigator} options={{
+                            drawerLabel: "ANASAYFA",
+                        }}/>
+                        <Drawer.Screen name='PhotoGalleryScreen' component={PhotoGalleryScreen} options={{ 
+                            drawerLabel: "FOTO GALERİ",
+                        }}/>
+                        <Drawer.Screen name='VideoGalleryScreen' component={VideoGalleryScreen} options={{ 
+                            drawerLabel: "VİDEO GALERİ",
+                        }}/>
+                        <Drawer.Screen name='AuthorsScreen' component={AuthorsScreen} options={{ 
+                            drawerLabel: "YAZARLARIMIZ",
+                        }}/>
                     </Drawer.Navigator>
                 </NavigationContainer>
             </>
