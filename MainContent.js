@@ -17,9 +17,6 @@ import CitySelectionScreen from "./screens/CitySelectionScreen";
 // Oluşturulan Öğeler
 import IconButton from './components/IconButton';
 
-// Statik Değerler
-import AppColors from './constants/colors';
-
 // Context
 import { Context } from "./store/context";
 
@@ -38,23 +35,19 @@ const NavigatorHeaderStyle = {
   shadowRadius: 6,
 };
 
-function DrawerNavigator() {
+function StackNavigator() {
     const ctx = useContext(Context);
     return(
-        <Drawer.Navigator screenOptions={{
-          drawerStyle: { backgroundColor: ctx.panelSettings.menuBG_Color },
-          drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
-          drawerActiveTintColor: ctx.panelSettings.menuTextColor,
-          headerTintColor: ctx.panelSettings.headerTextColor,
-        }}>
-        <Drawer.Screen name='MainScreen' component={MainScreen} options={({ navigation }) => ({
+        <Stack.Navigator screenOptions={({navigation}) => ({
+            headerStyle: { backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color },
+            headerTintColor: ctx.panelSettings.headerTextColor,
             headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
             headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
             headerTitle: (_) => (
                 <Pressable onPress={() => {
                     navigation.reset({
                         index: 0,
-                        routes: [{ name: 'DrawerMainScreen' }],
+                        routes: [{ name: 'MainScreen' }],
                     });
                 }}>
                     <Image source={require("./assets/images/logo.png")} style={{
@@ -64,10 +57,43 @@ function DrawerNavigator() {
                     }}/>
                 </Pressable>
             ),
-            headerTitleAlign: "center",
-            headerRight: (_) => <IconButton icon="search" size={32} color={AppColors.gray300}/>,
-        })}/>
-        </Drawer.Navigator>
+            })}
+        >
+            <Stack.Screen 
+                name="MainScreen" 
+                component={MainScreen}
+            />
+            <Stack.Screen 
+                name="NewsDetailsScreen" 
+                component={NewsDetailsScreen}
+                options={({ navigation}) =>( {
+                    headerTitle: (_) => (
+                        <Pressable onPress={() => {
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'MainScreen' }],
+                            });
+                        }}>
+                            <Image source={require("./assets/images/logo.png")} style={{
+                                width: 112,
+                                height: 30,
+                                resizeMode: 'stretch',
+                            }}/>
+                        </Pressable>
+                    ),
+                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                    headerBackTitleVisible: false,
+                })}
+            />
+            <Stack.Screen 
+            name="CitySelectionScreen" 
+            component={CitySelectionScreen}
+            options={{ 
+            presentation: "modal",
+            title: "Şehir Seç" 
+            }}
+            />
+        </Stack.Navigator>
     );
 }
 
@@ -89,47 +115,16 @@ function MainContent() {
             <>
                 <StatusBar barStyle={ctx.panelSettings.iosStatusBarContentColor} backgroundColor={ctx.panelSettings.mobile_app_bar_style_color}/>
                 <NavigationContainer>  
-                <Stack.Navigator screenOptions={{
-                    headerStyle: { backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color },
-                    headerTintColor: ctx.panelSettings.headerTextColor,
-                }}>
-                    <Stack.Screen 
-                    name="DrawerMainScreen" 
-                    component={DrawerNavigator}
-                    options={{
-                    headerShown: false,
-                    }}
-                    />
-                    <Stack.Screen 
-                    name="NewsDetailsScreen" 
-                    component={NewsDetailsScreen}
-                    options={({ navigation}) =>( {
-                        headerTitle: (_) => (
-                            <Pressable onPress={() => {
-                                navigation.reset({
-                                    index: 0,
-                                    routes: [{ name: 'DrawerMainScreen' }],
-                                });
-                            }}>
-                                <Image source={require("./assets/images/logo.png")} style={{
-                                    width: 112,
-                                    height: 30,
-                                    resizeMode: 'stretch',
-                                }}/>
-                            </Pressable>
-                        ),
-                        headerBackTitleVisible: false,
-                    })}
-                    />
-                    <Stack.Screen 
-                    name="CitySelectionScreen" 
-                    component={CitySelectionScreen}
-                    options={{ 
-                    presentation: "modal",
-                    title: "Şehir Seç" 
-                    }}
-                    />
-                </Stack.Navigator>
+                    <Drawer.Navigator screenOptions={{
+                        headerShown: false,
+                        drawerStyle: { backgroundColor: ctx.panelSettings.menuBG_Color },
+                        drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
+                        // drawerActiveTintColor: ctx.panelSettings.menuTextColor,
+                        drawerActiveTintColor: "white",
+                        headerTintColor: ctx.panelSettings.headerTextColor,
+                    }}>
+                        <Drawer.Screen name='StackNavigator' component={StackNavigator}/>
+                    </Drawer.Navigator>
                 </NavigationContainer>
             </>
         );

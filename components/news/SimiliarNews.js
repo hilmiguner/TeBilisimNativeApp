@@ -30,13 +30,13 @@ function SimiliarNews({ categoryId, newsId }) {
                 {(newsData[0] || newsData[1]) &&
                     <View style={styles.rowContainer}>
                         {newsData[0] &&
-                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[1].id, true)}>
+                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[0].id, true)}>
                                 <Image style={styles.image} source={{ uri: newsData[0].resim }}/>
                                 <Text style={styles.title}>{newsData[0].baslik}</Text>
                             </Pressable>
                         }
                         {newsData[1] &&
-                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[2].id, true)}>
+                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[1].id, true)}>
                                 <Image style={styles.image} source={{ uri: newsData[1].resim }}/>
                                 <Text style={styles.title}>{newsData[1].baslik}</Text>
                             </Pressable>
@@ -46,13 +46,13 @@ function SimiliarNews({ categoryId, newsId }) {
                 {(newsData[2] || newsData[3]) &&
                     <View style={styles.rowContainer}>
                         {newsData[2] &&
-                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[1].id, true)}>
+                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[2].id, true)}>
                                 <Image style={styles.image} source={{ uri: newsData[2].resim }}/>
                                 <Text style={styles.title}>{newsData[2].baslik}</Text>
                             </Pressable>
                         }
                         {newsData[3] &&
-                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[2].id, true)}>
+                            <Pressable style={styles.smallContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, newsData[3].id, true)}>
                                 <Image style={styles.image} source={{ uri: newsData[3].resim }}/>
                                 <Text style={styles.title}>{newsData[3].baslik}</Text>
                             </Pressable>

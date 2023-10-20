@@ -10,7 +10,6 @@ import newsApi from "../util/newsApi";
 // Oluşturulan Öğeler
 import NewsDetails from "../components/news/NewsDetails";
 import SimiliarNews from "../components/news/SimiliarNews";
-import IconButton from "../components/IconButton";
 
 // Context
 import { Context } from "../store/context";
@@ -19,21 +18,6 @@ function NewsDetailsScreen({ navigation, route }) {
   const [newsData, setNewsData] = useState()
 
   const ctx = useContext(Context);
-
-  function goMainScreenIconButtonHandler() {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'DrawerMainScreen' }],
-    });
-  }
-
-  useLayoutEffect(() => {
-    if(navigation.getState().index > 1) {
-      navigation.setOptions({
-        headerRight: (_) => <IconButton icon="home" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={goMainScreenIconButtonHandler} iconBundle="Ionicons"/>,
-      });
-    }
-  }, []);
 
   useEffect(() => {
     if (route.params) {
