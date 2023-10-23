@@ -12,6 +12,7 @@ export const Context = createContext({
     getPanelSettings: () => {},
     manageFontSizes: (fontSizes) => {},
     navigateNewsDetailScreen: (navigation, id, isPushing) => {},
+    navigateArticleDetailScreen: (navigation, id, isPushing) => {},
 });
 
 function ContextProvider({ children }) {
@@ -44,6 +45,15 @@ function ContextProvider({ children }) {
         }
     }
 
+    function navigateArticleDetailScreen(navigation, id, isPushing) {
+        if(isPushing) {
+            navigation.push("ArticleDetailsScreen", { articleID: id });
+        }
+        else {
+            navigation.navigate("ArticleDetailsScreen", { articleID: id });
+        }
+    }
+
     const value = {
         currentCity: cityName,
         panelSettings: panelSettings,
@@ -53,6 +63,7 @@ function ContextProvider({ children }) {
         getPanelSettings: getPanelSettings,
         manageFontSizes: manageFontSizes,
         navigateNewsDetailScreen: navigateNewsDetailScreen,
+        navigateArticleDetailScreen: navigateArticleDetailScreen,
     };
 
     return <Context.Provider value={value}>{children}</Context.Provider>

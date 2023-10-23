@@ -2,7 +2,7 @@
 import { ActivityIndicator, StyleSheet, ScrollView } from "react-native";
 
 // React Native Hooks
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // API
 import newsApi from "../util/newsApi";
@@ -11,13 +11,8 @@ import newsApi from "../util/newsApi";
 import NewsDetails from "../components/news/NewsDetails";
 import SimiliarNews from "../components/news/SimiliarNews";
 
-// Context
-import { Context } from "../store/context";
-
-function NewsDetailsScreen({ navigation, route }) {
+function NewsDetailsScreen({ route }) {
   const [newsData, setNewsData] = useState()
-
-  const ctx = useContext(Context);
 
   useEffect(() => {
     if (route.params) {

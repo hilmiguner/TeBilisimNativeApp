@@ -10,10 +10,15 @@ import { Context } from "../../store/context";
 // React Native Hooks
 import { useContext } from "react";
 
+// React Native Navigation
+import { useNavigation } from "@react-navigation/native";
+
 function Author({ authorData }) {
     const ctx = useContext(Context);
+
+    const navigation = useNavigation();
     return(
-        <Pressable style={[styles.rootContainer, { borderBottomColor: ctx.panelSettings.themePrimaryColor }]}>
+        <Pressable style={[styles.rootContainer, { borderBottomColor: ctx.panelSettings.themePrimaryColor }]} onPress={ctx.navigateArticleDetailScreen.bind(this, navigation, authorData.son_makale_id)}>
             <Image style={styles.image} source={{ uri: authorData.resim }}/>
             <Text style={styles.text}>{authorData.baslik}</Text>
             <Text style={styles.text}>{authorData.yazaradi}</Text>

@@ -16,14 +16,13 @@ import { useState, useContext } from "react";
 import { Context } from "../../store/context";
 
 const screenWidth = Dimensions.get("window").width;
-function NewsDetails({ data }) {
+function ArticleDetails({ data }) {
     const [showingSlider, setShowingSlider] = useState(false);
 
     const ctx = useContext(Context);
 
     const newsDateTime = new Date(data.date);
     const htmlSource = { html: data.detail };
-    const categoryText = data.category ?  `HABERLER/${data.category.toUpperCase()}` : "Kategorisiz Haber";
 
     const tagStyles = {
         "p": {
@@ -63,7 +62,6 @@ function NewsDetails({ data }) {
     return (
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
-                <Text style={styles.categoryText}>{categoryText}</Text>
                 <Text style={styles.categoryText}>{newsDateTime.toLocaleString()}</Text>
                 <Text style={styles.titleText}>{data.title}</Text>
                 <Text style={[styles.spotText, { display: data.spot ? "flex" : "none" }]}>{data.spot}</Text>
@@ -89,7 +87,7 @@ function NewsDetails({ data }) {
     );
 }
 
-export default NewsDetails;
+export default ArticleDetails;
 
 const styles = StyleSheet.create({
     rootContainer: {

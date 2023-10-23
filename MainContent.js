@@ -25,6 +25,7 @@ import { Context } from "./store/context";
 
 // React Native Hooks
 import { useContext, useEffect } from "react";
+import ArticleDetailsScreen from "./screens/ArticleDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -74,12 +75,59 @@ function StackNavigator() {
                 })}
             />
             <Stack.Screen 
+                name="ArticleDetailsScreen" 
+                component={ArticleDetailsScreen}
+                options={({ navigation}) =>( {
+                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                    headerBackTitleVisible: false,
+                })}
+            />
+            <Stack.Screen 
                 name="CitySelectionScreen" 
                 component={CitySelectionScreen}
                 options={{ 
                     presentation: "modal",
                     title: "Şehir Seç" 
                 }}
+            />
+        </Stack.Navigator>
+    );
+}
+
+function AuthorsStackNavigator() {
+    const ctx = useContext(Context);
+    return(
+        <Stack.Navigator screenOptions={({navigation}) => ({
+            headerTintColor: ctx.panelSettings.headerTextColor,
+            headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
+            headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+            headerTitle: (_) => (
+                <Pressable onPress={() => {
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'MainScreen' }],
+                    });
+                }}>
+                    <Image source={require("./assets/images/logo.png")} style={{
+                        width: 112,
+                        height: 30,
+                        resizeMode: 'stretch',
+                    }}/>
+                </Pressable>
+            ),
+            })}
+        >
+            <Stack.Screen 
+                name="AuthorsScreen" 
+                component={AuthorsScreen}
+            />
+            <Stack.Screen 
+                name="ArticleDetailsScreen" 
+                component={ArticleDetailsScreen}
+                options={({ navigation}) =>( {
+                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                    headerBackTitleVisible: false,
+                })}
             />
         </Stack.Navigator>
     );
@@ -134,7 +182,7 @@ function MainContent() {
                         <Drawer.Screen name='VideoGalleryScreen' component={VideoGalleryScreen} options={{ 
                             drawerLabel: "VİDEO GALERİ",
                         }}/>
-                        <Drawer.Screen name='AuthorsScreen' component={AuthorsScreen} options={{ 
+                        <Drawer.Screen name='AuthorsStackNavigator' component={AuthorsStackNavigator} options={{ 
                             drawerLabel: "YAZARLARIMIZ",
                         }}/>
                     </Drawer.Navigator>
