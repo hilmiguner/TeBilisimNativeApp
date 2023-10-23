@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ActivityIndicator, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -104,13 +104,14 @@ function PrayerTimes() {
         };
 
         const nextTimeData = whichTimeInterval(timeIntervals, currentDateTime);
+        const statusText = nextTimeData != "next-day" ? `${nextTimeData.nextIntervalKey.charAt(0).toUpperCase()}${nextTimeData.nextIntervalKey.slice(1)} vaktine kalan süre` : nextTimeData;
         mainContent = (
             <>
                 <View style={styles.statusContainer}>
                     <TouchableOpacity style={styles.cityNameContainer} onPress={citySelectorHandler}>
                         {cityContent}
                     </TouchableOpacity>
-                    <Text style={styles.statusText}>{`${nextTimeData.nextIntervalKey.charAt(0).toUpperCase()}${nextTimeData.nextIntervalKey.slice(1)} vaktine kalan süre`}</Text>
+                    <Text style={styles.statusText}>{statusText}</Text>
                     <CountDown 
                         until={nextTimeData.seconds}
                         size={30}
