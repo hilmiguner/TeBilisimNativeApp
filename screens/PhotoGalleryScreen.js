@@ -1,16 +1,37 @@
 // React Native Temel Paketler
-import { useLayoutEffect } from "react";
-import { Text, View } from "react-native";
+import { ActivityIndicator, ScrollView, StyleSheet } from "react-native";
+
+// React Native Hooks
+import { useEffect, useLayoutEffect, useState } from "react";
+
+// API
+import newsApi from "../util/newsApi";
+import CarouselGallery from "../components/others/CarouselGallery";
+import OtherGalleries from "../components/others/OtherGalleries";
 
 function PhotoGalleryScreen({ navigation }) {
+    const [galleries, setGalleries] = useState();
     useLayoutEffect(() => {
         navigation.setOptions({headerShown: true});
     }, []);
-    return(
-        <View>
-            <Text>Photo Gallery Screen !!!</Text>
-        </View>
-    );
+
+    useEffect(() => {
+        newsApi.getGalleries().then((respondData) => setGalleries(respondData));
+    }, []);
+
+    let content = <ActivityIndicator/>;
+
+    if(galleries) {
+        const carouselGallery = galleries.length > 10 ? galleries.slice(0, 10) : galleries;
+        const otherGalleries = galleries.length > 10 ? galleries.slice(10, galleries.length) : null;
+        content = (
+            <ScrollView>
+                <CarouselGallery galleries={carouselGallery}/>
+                { otherGalleries && <OtherGalleries galleriesData={otherGalleries}/> }
+            </ScrollView>
+        );   
+    }
+    return content;
 }
 
 export default PhotoGalleryScreen;

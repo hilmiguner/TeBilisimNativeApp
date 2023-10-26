@@ -303,7 +303,7 @@ function MainScreen({ navigation }) {
               </View>
             }
             { ctx.panelSettings.galleriesModule && 
-              <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü">
+              <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("PhotoGalleryStackNavigator")}>
                 <PhotoGallery/>
               </ExpandableList>
             }
