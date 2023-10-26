@@ -60,6 +60,7 @@ function StackNavigator() {
                     }}/>
                 </Pressable>
             ),
+            headerBackVisible: false,
             })}
         >
             <Stack.Screen 
@@ -115,6 +116,7 @@ function AuthorsStackNavigator() {
                     }}/>
                 </Pressable>
             ),
+            headerBackVisible: false,
             })}
         >
             <Stack.Screen 
