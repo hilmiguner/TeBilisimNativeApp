@@ -13,11 +13,11 @@ import { useNavigation } from "@react-navigation/native";
 // Vector Icons Paketleri
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-function ThreeGalleryItem({ itemData, imageStyle }) {
+function ThreeVideoGalleryItem({ itemData, imageStyle }) {
     const ctx = useContext(Context);
     const navigation = useNavigation();
 
-    const image = itemData.kapak;
+    const image = itemData.resim;
     const title = itemData.baslik;
     return(
         // <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.id)}>
@@ -25,7 +25,7 @@ function ThreeGalleryItem({ itemData, imageStyle }) {
             <View>
                 <Image style={[styles.image, imageStyle]} source={{ uri: image }}/>
                 <View style={styles.iconContainer}>
-                    <Ionicons name="camera" color="white" size={38}/>
+                    <Ionicons name="play-circle-outline" color="white" size={38}/>
                 </View>
             </View>
             <Text style={styles.text}>{title}</Text>
@@ -33,7 +33,7 @@ function ThreeGalleryItem({ itemData, imageStyle }) {
     );
 }
 
-export default ThreeGalleryItem;
+export default ThreeVideoGalleryItem;
 
 const styles = StyleSheet.create({
     rootContainer: {

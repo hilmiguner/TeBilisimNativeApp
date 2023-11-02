@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ActivityIndicator, ScrollView, StyleSheet } from "react-native";
+import { ActivityIndicator, ScrollView } from "react-native";
 
 // React Native Hooks
 import { useEffect, useLayoutEffect, useState } from "react";

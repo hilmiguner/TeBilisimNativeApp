@@ -291,13 +291,13 @@ function MainScreen({ navigation }) {
               </ExpandableList>
             }
             { ctx.panelSettings.authorsModule && 
-              <ExpandableList title="Yazarlar" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("AuthorsScreen")}>
+              <ExpandableList title="Yazarlar" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("AuthorsStackNavigator")}>
                 <Authors/>
               </ExpandableList>
             }
             { ctx.panelSettings.videosModule && 
               <View style={styles.videoGalleryContainer}>
-                <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü">
+                <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("VideoGalleryStackNavigator")}>
                   <SliderVideoGallery/>
                 </ExpandableList>
               </View>

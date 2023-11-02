@@ -171,6 +171,44 @@ function PhotoGalleryStackNavigator() {
     );
 }
 
+function VideoGalleryStackNavigator() {
+    const ctx = useContext(Context);
+    return(
+        <Stack.Navigator screenOptions={({navigation}) => ({
+            headerTintColor: ctx.panelSettings.headerTextColor,
+            headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
+            headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+            headerTitle: (_) => (
+                <Pressable onPress={() => {
+                    mainDrawerNavigation = navigation.getParent();
+                    mainDrawerNavigation.jumpTo("StackNavigator")
+                }}>
+                    <Image source={require("./assets/images/logo.png")} style={{
+                        width: 112,
+                        height: 30,
+                        resizeMode: 'stretch',
+                    }}/>
+                </Pressable>
+            ),
+            headerBackVisible: false,
+            })}
+        >
+            <Stack.Screen 
+                name="VideoGalleryScreen" 
+                component={VideoGalleryScreen}
+            />
+            <Stack.Screen 
+                name="NewsDetailsScreen" 
+                component={NewsDetailsScreen}
+                options={({ navigation}) =>( {
+                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                    headerBackTitleVisible: false,
+                })}
+            />
+        </Stack.Navigator>
+    );
+}
+
 function MainContent() {
     const ctx = useContext(Context);
     useEffect(() => {
@@ -217,7 +255,7 @@ function MainContent() {
                         <Drawer.Screen name='PhotoGalleryStackNavigator' component={PhotoGalleryStackNavigator} options={{ 
                             drawerLabel: "FOTO GALERİ",
                         }}/>
-                        <Drawer.Screen name='VideoGalleryScreen' component={VideoGalleryScreen} options={{ 
+                        <Drawer.Screen name='VideoGalleryStackNavigator' component={VideoGalleryStackNavigator} options={{ 
                             drawerLabel: "VİDEO GALERİ",
                         }}/>
                         <Drawer.Screen name='AuthorsStackNavigator' component={AuthorsStackNavigator} options={{ 
