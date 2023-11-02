@@ -6,6 +6,9 @@ import IconButton from "../IconButton";
 import BorderButton from "../BorderButton";
 import FontModal from "../others/FontModal";
 
+// Video
+import Video from "react-native-video";
+
 // Render HTML
 import RenderHTML from "react-native-render-html";
 
@@ -69,7 +72,12 @@ function VideoDetails({ data }) {
                 <Text style={[styles.spotText, { display: data.spot ? "flex" : "none" }]}>{data.spot}</Text>
                 <Text>{newsDateTime.toLocaleDateString("tr-TR" , { dateStyle: "long"})}</Text>
             </View>
-            <Image style={styles.image} source={{ uri: data.image }}/>
+            <Video 
+                source={{uri:data.dosya}}
+                controls={true}
+                paused={true}
+                style={styles.backgroundVideo}
+            />
             <View style={styles.toolsContainer}>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-facebook" color="#4474AE"/>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-twitter" color="#4B9EC5"/>
@@ -118,10 +126,9 @@ const styles = StyleSheet.create({
         marginBottom: 18,
         color: "black",
     },
-    image: {
+    backgroundVideo: {
         width: screenWidth,
-        height: screenWidth*(4/7),
-        resizeMode: "cover",
+        height: (1080*screenWidth)/1920,
     },
     toolsContainer: {
         flexDirection: "row",
