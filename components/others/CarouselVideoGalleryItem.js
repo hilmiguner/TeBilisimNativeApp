@@ -35,8 +35,7 @@ function CarouselVideoGalleryItem({ itemData }) {
     const ctx = useContext(Context);
 
     return(
-        // <TapGestureHandler onActivated={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.id)}>
-        <TapGestureHandler onActivated={null}>
+        <TapGestureHandler onActivated={ctx.navigateVideoDetailScreen.bind(this, navigation, itemData.id)}>
             <View>
                 <Image style={imageStyle} source={{ uri: image }}/>
                 <LinearGradient 

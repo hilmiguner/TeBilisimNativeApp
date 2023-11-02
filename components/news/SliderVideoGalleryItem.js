@@ -4,9 +4,20 @@ import { StyleSheet, View, Pressable, Image, Text } from "react-native";
 // Vector Icons Paketleri
 import Ionicons from "react-native-vector-icons/Ionicons";
 
+// Context
+import { Context } from "../../store/context";
+
+// React Native Hooks
+import { useContext } from "react";
+
+// React Native Navigation
+import { useNavigation } from "@react-navigation/native";
+
 function SliderVideoGalleryItem({ videoData }) {
+    const ctx = useContext(Context);
+    const navigation = useNavigation();
     return(
-        <Pressable style={styles.rootContainer}>
+        <Pressable style={styles.rootContainer} onPress={ctx.navigateVideoDetailScreen.bind(this, navigation, videoData.id)}>
             <View>
                 <Image style={styles.image} source={{ uri: videoData.resim }}/>
                 <View style={styles.iconContainer}>

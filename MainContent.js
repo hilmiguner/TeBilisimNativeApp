@@ -26,6 +26,7 @@ import { Context } from "./store/context";
 // React Native Hooks
 import { useContext, useEffect } from "react";
 import ArticleDetailsScreen from "./screens/ArticleDetailsScreen";
+import VideoDetailsScreen from "./screens/VideoDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -78,6 +79,14 @@ function StackNavigator() {
             <Stack.Screen 
                 name="ArticleDetailsScreen" 
                 component={ArticleDetailsScreen}
+                options={({ navigation}) =>( {
+                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                    headerBackTitleVisible: false,
+                })}
+            />
+            <Stack.Screen 
+                name="VideoDetailsScreen" 
+                component={VideoDetailsScreen}
                 options={({ navigation}) =>( {
                     headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
                     headerBackTitleVisible: false,
@@ -198,8 +207,8 @@ function VideoGalleryStackNavigator() {
                 component={VideoGalleryScreen}
             />
             <Stack.Screen 
-                name="NewsDetailsScreen" 
-                component={NewsDetailsScreen}
+                name="VideoDetailsScreen" 
+                component={VideoDetailsScreen}
                 options={({ navigation}) =>( {
                     headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
                     headerBackTitleVisible: false,

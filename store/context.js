@@ -13,6 +13,7 @@ export const Context = createContext({
     manageFontSizes: (fontSizes) => {},
     navigateNewsDetailScreen: (navigation, id, isPushing) => {},
     navigateArticleDetailScreen: (navigation, id, isPushing) => {},
+    navigateVideoDetailScreen: (navigation, id, isPushing) => {},
 });
 
 function ContextProvider({ children }) {
@@ -54,6 +55,15 @@ function ContextProvider({ children }) {
         }
     }
 
+    function navigateVideoDetailScreen(navigation, id, isPushing) {
+        if(isPushing) {
+            navigation.push("VideoDetailsScreen", { videoID: id });
+        }
+        else {
+            navigation.navigate("VideoDetailsScreen", { videoID: id });
+        }
+    }
+
     const value = {
         currentCity: cityName,
         panelSettings: panelSettings,
@@ -64,6 +74,7 @@ function ContextProvider({ children }) {
         manageFontSizes: manageFontSizes,
         navigateNewsDetailScreen: navigateNewsDetailScreen,
         navigateArticleDetailScreen: navigateArticleDetailScreen,
+        navigateVideoDetailScreen: navigateVideoDetailScreen,
     };
 
     return <Context.Provider value={value}>{children}</Context.Provider>
