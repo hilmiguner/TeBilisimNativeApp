@@ -18,8 +18,8 @@ import { useState, useContext } from "react";
 // Context
 import { Context } from "../../store/context";
 
-const screenWidth = Dimensions.get("window").width;
 function VideoDetails({ data }) {
+    const screenWidth = Dimensions.get("window").width;
     const [showingSlider, setShowingSlider] = useState(false);
 
     const ctx = useContext(Context);
@@ -76,7 +76,11 @@ function VideoDetails({ data }) {
                 source={{uri:data.dosya}}
                 controls={true}
                 paused={true}
-                style={styles.backgroundVideo}
+                resizeMode="contain"
+                style={{
+                    width: screenWidth,
+                    height: (1080*screenWidth)/1920,
+                }}
             />
             <View style={styles.toolsContainer}>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-facebook" color="#4474AE"/>
@@ -125,10 +129,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: 18,
         color: "black",
-    },
-    backgroundVideo: {
-        width: screenWidth,
-        height: (1080*screenWidth)/1920,
     },
     toolsContainer: {
         flexDirection: "row",
