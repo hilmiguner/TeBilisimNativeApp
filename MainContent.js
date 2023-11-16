@@ -28,6 +28,7 @@ import { useContext, useEffect } from "react";
 import ArticleDetailsScreen from "./screens/ArticleDetailsScreen";
 import VideoDetailsScreen from "./screens/VideoDetailsScreen";
 import DailyNewsScreen from "./screens/DailyNewsScreen";
+import FeaturedNewsScreen from "./screens/FeaturedNewsScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -104,6 +105,14 @@ function StackNavigator() {
             <Stack.Screen 
                 name="DailyNewsScreen" 
                 component={DailyNewsScreen}
+                options={({ navigation}) =>( {
+                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                    headerBackTitleVisible: false,
+                })}
+            />
+            <Stack.Screen 
+                name="FeaturedNewsScreen" 
+                component={FeaturedNewsScreen}
                 options={({ navigation}) =>( {
                     headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
                     headerBackTitleVisible: false,

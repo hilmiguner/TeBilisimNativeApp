@@ -309,7 +309,7 @@ function MainScreen({ navigation }) {
             }
             { ctx.panelSettings.highlightedNewsModule && 
               <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor, }}>
-                <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }}>
+                <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} onPress={() => navigation.navigate("FeaturedNewsScreen")}>
                   <VerticalFeatured/>
                 </ExpandableList>
               </View>
