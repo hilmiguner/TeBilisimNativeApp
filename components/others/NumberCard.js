@@ -15,28 +15,8 @@ function NumberCard({ cardData, index }) {
 
     const navigation = useNavigation();
 
-    let categoryName;
-    try {
-        categoryName = cardData.category[0].name;
-    }
-    catch(error) {
-        categoryName = null;
-    }
-
-    categoryName = "test"
-
-    let categoryColor;
-    if(categoryName) {
-        try {
-            categoryColor = cardData.category[0].color;
-            if(!categoryColor) categoryColor = "black";
-        }
-        catch(error) {
-            categoryColor = "black";
-        }
-    }
     return(
-        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.reference_id)}>
+        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.id)}>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={{ uri: cardData.image }}/>
                 <View style={styles.imageWhiteLabel}>
@@ -46,7 +26,6 @@ function NumberCard({ cardData, index }) {
                 </View>
             </View>
             <View style={styles.textContainer}>
-                {categoryName && <Text style={[styles.title, { color: categoryColor }]}>{categoryName}</Text>}
                 <View>
                     <Text allowFontScaling style={styles.content}>{cardData.name}</Text>
                 </View>
@@ -109,6 +88,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexWrap: "wrap",
         fontSize: 18,
+        fontWeight: "bold",
         marginTop: 8,
         color: "black",
     },

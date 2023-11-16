@@ -13,8 +13,7 @@ import NumberCard from "../others/NumberCard";
 function TrendNews() {
     const [trendNews, setTrendNews] = useState();
     useEffect(() => {
-        // getHeadlineNews yerine getTrends metodu getirilmeli
-        newsApi.getHeadlineNews().then((respondData) => setTrendNews(respondData));
+        newsApi.getTrends().then((respondData) => setTrendNews(respondData));
     }, []);
 
     let content = <ActivityIndicator />;
@@ -22,7 +21,6 @@ function TrendNews() {
     if(trendNews) {
         content = (
             <View>
-                <Text>getHeadlineNews metodu değiştirilmeli</Text>
                 <NumberCard cardData={trendNews[0]} index={1}/>
                 <NumberCard cardData={trendNews[1]} index={2}/>
                 <NumberCard cardData={trendNews[2]} index={3}/>
