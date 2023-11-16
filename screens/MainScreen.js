@@ -315,7 +315,7 @@ function MainScreen({ navigation }) {
               </View>
             }
             { ctx.panelSettings.trendNewsModule && 
-              <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü">
+              <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü" onPress={() => navigation.navigate("TrendNewsScreen")}>
                 <TrendNews/>
               </ExpandableList>
             }
