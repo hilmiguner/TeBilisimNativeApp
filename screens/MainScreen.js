@@ -286,7 +286,7 @@ function MainScreen({ navigation }) {
             { currencyContent }
             <MainHeadlines/>
             { ctx.panelSettings.dailyCuffsModule && 
-              <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü">
+              <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü" onPress={() => navigation.navigate("DailyNewsScreen")}>
                 <SliderDailyNews/>
               </ExpandableList>
             }

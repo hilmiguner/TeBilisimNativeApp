@@ -14,7 +14,14 @@ function SliderDailyNews() {
     const [dailyNewsData, setDailyNewsData] = useState();
 
     useEffect(() => {
-        newsApi.getDailyHeadlineNews().then((apiData) => setDailyNewsData(apiData));
+        newsApi.getDailyHeadlineNews().then((apiData) => {
+            if(apiData.length > 5) {
+                setDailyNewsData(apiData.slice(0, 5));
+            }
+            else {
+                setDailyNewsData(apiData);
+            }
+        });
     }, []);
     
     let content = <ActivityIndicator />;
