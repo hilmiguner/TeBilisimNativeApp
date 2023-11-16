@@ -14,7 +14,7 @@ function LocalNews() {
     const [localNews, setLocalNews] = useState();
 
     useEffect(() => {
-        newsApi.getHeadlineNews().then((respondData) => setLocalNews(respondData));
+        newsApi.getLocalNews().then((respondData) => setLocalNews(respondData));
     }, []);
 
     let content = <ActivityIndicator />;
@@ -22,7 +22,6 @@ function LocalNews() {
     if(localNews) {
         content = (
             <View>
-                <Text>getHeadlineNews metodu değiştirilmeli</Text>
                 <View style={styles.localNewsContainer}>
                     <VerticalCard cardData={localNews[0]}/>
                     <VerticalCard cardData={localNews[1]}/>

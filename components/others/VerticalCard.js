@@ -17,12 +17,9 @@ function VerticalCard({ cardData }) {
     const ctx = useContext(Context);
     const navigation = useNavigation();
     return(
-        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.reference_id)}>
+        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, cardData.id)}>
             <View style={[styles.imageContainer, { borderBottomColor: ctx.panelSettings.themePrimaryColor }]}>
                 <Image style={styles.image} source={{ uri: cardData.image }}/>
-            </View>
-            <View style={styles.cityContainer}>
-                <Text style={[styles.cityText, { color: ctx.panelSettings.themePrimaryColor }]}>İSTANBUL(SABİT)</Text>
             </View>
             <Text style={styles.titleText}>{cardData.name}</Text>
         </Pressable>
@@ -45,11 +42,6 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
-    },
-    cityContainer: {
-        marginTop: 8,
-        borderBottomWidth: 2,
-        borderBottomColor: AppColors.gray200,
     },
     cityText: {
         fontWeight: "bold"
