@@ -30,41 +30,35 @@ import VideoDetailsScreen from "./screens/VideoDetailsScreen";
 import DailyNewsScreen from "./screens/DailyNewsScreen";
 import FeaturedNewsScreen from "./screens/FeaturedNewsScreen";
 import TrendNewsScreen from "./screens/TrendNewsScreen";
+import CustomHeader from "./components/CustomHeader";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-
-// Header barına gölge vermek için config objesi
-const NavigatorHeaderStyle = {
-  elevation: 10,
-  shadowColor: "black",
-  shadowOffset: { width: 0, height: 3 },
-  shadowOpacity: 0.20,
-  shadowRadius: 6,
-};
 
 function StackNavigator() {
     const ctx = useContext(Context);
     return(
         <Stack.Navigator screenOptions={({navigation}) => ({
-            headerTintColor: ctx.panelSettings.headerTextColor,
-            headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
-            headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
-            headerTitle: (_) => (
-                <Pressable onPress={() => {
-                    navigation.reset({
-                        index: 0,
-                        routes: [{ name: 'MainScreen' }],
-                    });
-                }}>
-                    <Image source={require("./assets/images/logo.png")} style={{
-                        width: 112,
-                        height: 30,
-                        resizeMode: 'stretch',
-                    }}/>
-                </Pressable>
-            ),
-            headerBackVisible: false,
+            headerShown: true,
+            header: () => CustomHeader({ 
+                left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                center: (
+                    <Pressable onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'StackNavigator' }],
+                        });
+                    }}>
+                        <Image source={require("./assets/images/logo.png")} style={{
+                            width: 112,
+                            height: 30,
+                            resizeMode: 'stretch',
+                        }}/>
+                    </Pressable>
+                ),
+                backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                useSafeArea: true,
+            })
             })}
         >
             <Stack.Screen 
@@ -75,56 +69,176 @@ function StackNavigator() {
                 name="NewsDetailsScreen" 
                 component={NewsDetailsScreen}
                 options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
             <Stack.Screen 
                 name="ArticleDetailsScreen" 
                 component={ArticleDetailsScreen}
                 options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
             <Stack.Screen 
                 name="VideoDetailsScreen" 
                 component={VideoDetailsScreen}
                 options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
             <Stack.Screen 
                 name="CitySelectionScreen" 
                 component={CitySelectionScreen}
-                options={{ 
+                options={({ navigation }) => ({ 
                     presentation: "modal",
-                    title: "Şehir Seç" 
-                }}
+                    header: () => CustomHeader({ 
+                        center: (
+                            <Pressable onPress={null}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={() => navigation.goBack()} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                    })
+                })}
             />
             <Stack.Screen 
                 name="DailyNewsScreen" 
                 component={DailyNewsScreen}
                 options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
             <Stack.Screen 
                 name="FeaturedNewsScreen" 
                 component={FeaturedNewsScreen}
                 options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
             <Stack.Screen 
                 name="TrendNewsScreen" 
                 component={TrendNewsScreen}
                 options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
         </Stack.Navigator>
@@ -135,22 +249,25 @@ function AuthorsStackNavigator() {
     const ctx = useContext(Context);
     return(
         <Stack.Navigator screenOptions={({navigation}) => ({
-            headerTintColor: ctx.panelSettings.headerTextColor,
-            headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
-            headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
-            headerTitle: (_) => (
-                <Pressable onPress={() => {
-                    mainDrawerNavigation = navigation.getParent();
-                    mainDrawerNavigation.jumpTo("StackNavigator")
-                }}>
-                    <Image source={require("./assets/images/logo.png")} style={{
-                        width: 112,
-                        height: 30,
-                        resizeMode: 'stretch',
-                    }}/>
-                </Pressable>
-            ),
-            headerBackVisible: false,
+            header: () => CustomHeader({ 
+                left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                center: (
+                    <Pressable onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'StackNavigator' }],
+                        });
+                    }}>
+                        <Image source={require("./assets/images/logo.png")} style={{
+                            width: 112,
+                            height: 30,
+                            resizeMode: 'stretch',
+                        }}/>
+                    </Pressable>
+                ),
+                backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                useSafeArea: true,
+            })
             })}
         >
             <Stack.Screen 
@@ -160,9 +277,27 @@ function AuthorsStackNavigator() {
             <Stack.Screen 
                 name="ArticleDetailsScreen" 
                 component={ArticleDetailsScreen}
-                options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                options={({ navigation }) => ({
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
         </Stack.Navigator>
@@ -173,22 +308,25 @@ function PhotoGalleryStackNavigator() {
     const ctx = useContext(Context);
     return(
         <Stack.Navigator screenOptions={({navigation}) => ({
-            headerTintColor: ctx.panelSettings.headerTextColor,
-            headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
-            headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
-            headerTitle: (_) => (
-                <Pressable onPress={() => {
-                    mainDrawerNavigation = navigation.getParent();
-                    mainDrawerNavigation.jumpTo("StackNavigator")
-                }}>
-                    <Image source={require("./assets/images/logo.png")} style={{
-                        width: 112,
-                        height: 30,
-                        resizeMode: 'stretch',
-                    }}/>
-                </Pressable>
-            ),
-            headerBackVisible: false,
+            header: () => CustomHeader({ 
+                left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                center: (
+                    <Pressable onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'StackNavigator' }],
+                        });
+                    }}>
+                        <Image source={require("./assets/images/logo.png")} style={{
+                            width: 112,
+                            height: 30,
+                            resizeMode: 'stretch',
+                        }}/>
+                    </Pressable>
+                ),
+                backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                useSafeArea: true,
+            }),
             })}
         >
             <Stack.Screen 
@@ -198,9 +336,27 @@ function PhotoGalleryStackNavigator() {
             <Stack.Screen 
                 name="NewsDetailsScreen" 
                 component={NewsDetailsScreen}
-                options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                options={({ navigation }) =>( {
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
         </Stack.Navigator>
@@ -211,22 +367,25 @@ function VideoGalleryStackNavigator() {
     const ctx = useContext(Context);
     return(
         <Stack.Navigator screenOptions={({navigation}) => ({
-            headerTintColor: ctx.panelSettings.headerTextColor,
-            headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
-            headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
-            headerTitle: (_) => (
-                <Pressable onPress={() => {
-                    mainDrawerNavigation = navigation.getParent();
-                    mainDrawerNavigation.jumpTo("StackNavigator")
-                }}>
-                    <Image source={require("./assets/images/logo.png")} style={{
-                        width: 112,
-                        height: 30,
-                        resizeMode: 'stretch',
-                    }}/>
-                </Pressable>
-            ),
-            headerBackVisible: false,
+            header: () => CustomHeader({ 
+                left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                center: (
+                    <Pressable onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'StackNavigator' }],
+                        });
+                    }}>
+                        <Image source={require("./assets/images/logo.png")} style={{
+                            width: 112,
+                            height: 30,
+                            resizeMode: 'stretch',
+                        }}/>
+                    </Pressable>
+                ),
+                backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                useSafeArea: true,
+            })
             })}
         >
             <Stack.Screen 
@@ -237,8 +396,26 @@ function VideoGalleryStackNavigator() {
                 name="VideoDetailsScreen" 
                 component={VideoDetailsScreen}
                 options={({ navigation}) =>( {
-                    headerRight: (_) => <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
-                    headerBackTitleVisible: false,
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
                 })}
             />
         </Stack.Navigator>
@@ -265,25 +442,9 @@ function MainContent() {
                 <NavigationContainer>  
                     <Drawer.Navigator screenOptions={({navigation}) => ({
                         headerShown: false,
-                        headerStyle: {...NavigatorHeaderStyle, backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color},
                         drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
-
                         // drawerActiveTintColor: ctx.panelSettings.menuTextColor,
                         drawerActiveTintColor: "white",
-
-                        headerTintColor: ctx.panelSettings.headerTextColor,
-                        headerLeft: (_) => <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
-                        headerTitle: (_) => (
-                            <Pressable onPress={() => {
-                                navigation.navigate("StackNavigator");
-                            }}>
-                                <Image source={require("./assets/images/logo.png")} style={{
-                                    width: 112,
-                                    height: 30,
-                                    resizeMode: 'stretch',
-                                }}/>
-                            </Pressable>
-                        ),
                     })}>
                         <Drawer.Screen name='StackNavigator' component={StackNavigator} options={{
                             drawerLabel: "ANASAYFA",

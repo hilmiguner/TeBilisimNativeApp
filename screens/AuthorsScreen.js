@@ -14,11 +14,8 @@ import { Context } from "../store/context";
 import AuthorCard from "../components/others/AuthorCard";
 import Footer from "../components/others/Footer";
 
-function AuthorsScreen({ navigation }) {
+function AuthorsScreen() {
     const [authors, setAuthors] = useState()
-    useLayoutEffect(() => {
-        navigation.setOptions({headerShown: true});
-    }, []);
 
     useEffect(() => {
         newsApi.getAuthors().then((apiData) => {setAuthors(apiData)});
