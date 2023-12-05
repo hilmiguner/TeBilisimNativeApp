@@ -72,9 +72,11 @@ const styles = StyleSheet.create({
     sliderText: {
         textAlign: "center",
         color: "black",
+        marginBottom: 16,
     },
     buttonContainer: {
         flexDirection: "row",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        marginTop: 16,
     },
 });

@@ -643,9 +643,20 @@ const getHomeVideos = async () => {
     }
 }
 
-const getComments = async (id,tip) => {
+// const getComments = async (id,tip) => {
+//     try {
+//         const response = await apiClient.get(`/?comments=${id}&tip=${tip}&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Yorumlar alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
+const getComments = async (id) => {
     try {
-        const response = await apiClient.get(`/?comments=${id}&tip=${tip}&v=${getCurrentTime()}`)
+        const response = await axios.get(`${Url}_api/?comments=${id}`)
         if (response) {
             return response.data
         }

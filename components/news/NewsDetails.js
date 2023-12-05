@@ -14,10 +14,12 @@ import { useState, useContext } from "react";
 
 // Context
 import { Context } from "../../store/context";
+import CommentModal from "../others/CommentModal";
 
 const screenWidth = Dimensions.get("window").width;
 function NewsDetails({ data }) {
     const [showingSlider, setShowingSlider] = useState(false);
+    const [showingComments, setShowingComments] = useState(false);
 
     const ctx = useContext(Context);
 
@@ -60,6 +62,10 @@ function NewsDetails({ data }) {
         setShowingSlider((currentValue) => !currentValue);
     }
 
+    function commentModalHandler() {
+        setShowingComments((currentValue) => !currentValue);
+    }
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
@@ -75,15 +81,15 @@ function NewsDetails({ data }) {
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-twitter" color="#4B9EC5"/>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-whatsapp" color="#54B635"/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
-                <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5"/>
+                <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5" onPress={commentModalHandler}/>
             </View>
             <FontModal isVisible={showingSlider} closeModalHandler={fontSizeButtonHandler}/>
+            <CommentModal isVisible={showingComments} closeModalHandler={commentModalHandler} id={data.id}/>
             <View style={styles.renderHtmlContainer}>
                 <RenderHTML tagsStyles={tagStyles} classesStyles={classesStyles} source={htmlSource} contentWidth={screenWidth}/>
             </View>
             <View style={styles.bottomButtonsContainer}>
-                <BorderButton title="YORUM YAP"/>
-                <BorderButton title={`YORUM OKU (${data.comment_count})`}/>
+                <BorderButton title={`YORUMLAR (${data.comment_count})`} onPress={commentModalHandler}/>
             </View>
         </View>
     );
