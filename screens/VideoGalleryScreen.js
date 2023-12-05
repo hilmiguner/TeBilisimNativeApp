@@ -9,11 +9,8 @@ import newsApi from "../util/newsApi";
 import CarouselVideoGallery from "../components/others/CarouselVideoGallery";
 import OtherVideoGalleries from "../components/others/OtherVideoGalleries";
 
-function VideoGalleryScreen({ navigation }) {
+function VideoGalleryScreen() {
     const [galleries, setGalleries] = useState();
-    useLayoutEffect(() => {
-        navigation.setOptions({headerShown: true});
-    }, []);
 
     useEffect(() => {
         newsApi.getVideos(1).then((respondData) => setGalleries(respondData));
