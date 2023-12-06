@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, RefreshControl } from "react-native";
 
 // Oluşturulan Öğeler
 import BreakingNews from "../components/news/BreakingNews";
@@ -28,7 +28,7 @@ import LeagueScoreModule from "../components/others/LeagueScoreModule";
 import { Context } from "../store/context";
 
 // React Native Hooks
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 function MainScreen({ navigation }) {
   const leagueScoreData = [
@@ -275,7 +275,17 @@ function MainScreen({ navigation }) {
 
   return(
       <View style={styles.rootContainer}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView 
+            showsVerticalScrollIndicator={false} 
+            refreshControl={
+              <RefreshControl refreshing={false} onRefresh={() => {
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: 'StackNavigator' }],
+                });
+              }}/>
+            }
+          >
             { ctx.panelSettings.breakingNewsModule && <BreakingNews/> }
             { ctx.panelSettings.topCuffsModule && <SliderTopHeadlines/> }
             { ctx.panelSettings.quintipleCuffsModule && 
