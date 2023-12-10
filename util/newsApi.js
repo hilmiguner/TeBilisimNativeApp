@@ -666,9 +666,20 @@ const getComments = async (id) => {
     }
 }
 
+// const getStandings = async (lig) => {
+//     try {
+//         const response = await apiClient.get(`/?puandurumu&lig=${lig}&v=${getCurrentTime()}`)
+//         if (response) {
+//             return response.data
+//         }
+//     } catch (error) {
+//         console.log('Yorumlar alınırken bir hata oluştu.', error.message);
+//         return [];
+//     }
+// }
 const getStandings = async (lig) => {
     try {
-        const response = await apiClient.get(`/?puandurumu&lig=${lig}&v=${getCurrentTime()}`)
+        const response = await apiClient.get(`/?puandurumu=${lig}`)
         if (response) {
             return response.data
         }

@@ -7,11 +7,11 @@ import LinearGradient from "react-native-linear-gradient";
 // Oluşturulan Öğeler
 import TopTabsLeague from "./TopTabsLeague";
 
-function LeagueScoreModule({ data }) {
+function LeagueScoreModule() {
     return(
         <LinearGradient colors={["#6FC355", "#3F6C8A"]} style={{ padding: 20, margin: 16, borderRadius: 8 }}>
             <Text style={styles.leagueScoreText}>Puan Durumu</Text>
-            <TopTabsLeague data={data}/>
+            <TopTabsLeague/>
         </LinearGradient>
     );
 }
