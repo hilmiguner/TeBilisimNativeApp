@@ -47,7 +47,6 @@ export default SliderDailyNews;
 
 const styles = StyleSheet.create({
     scrollView: {
-        paddingHorizontal: 8,
         paddingTop: 24,
     },
 });

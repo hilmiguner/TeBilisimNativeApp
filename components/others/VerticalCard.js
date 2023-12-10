@@ -31,7 +31,6 @@ export default VerticalCard;
 const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
-        margin: 12,
     },
     imageContainer: {
         borderBottomWidth: 4,

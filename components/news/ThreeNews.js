@@ -67,7 +67,9 @@ export default ThreeNews;
 
 const styles = StyleSheet.create({
     rootContainer: {
-        width: "100%",
+        // width: "100%",
+        flex: 1,
+        marginHorizontal: 6,
     },
     bigPhotoContainer: {
         width: "100%",

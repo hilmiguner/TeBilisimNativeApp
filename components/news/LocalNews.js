@@ -24,10 +24,12 @@ function LocalNews() {
             <View>
                 <View style={styles.localNewsContainer}>
                     <VerticalCard cardData={localNews[0]}/>
+                    <View style={{ marginHorizontal: 12 }}></View>
                     <VerticalCard cardData={localNews[1]}/>
                 </View>
                 <View style={styles.localNewsContainer}>
                     <VerticalCard cardData={localNews[2]}/>
+                    <View style={{ marginHorizontal: 12 }}></View>
                     <VerticalCard cardData={localNews[3]}/>
                 </View>
             </View>
@@ -42,5 +44,6 @@ const styles = StyleSheet.create({
     localNewsContainer: {
         flexDirection: "row",
         flex: 1,
+        marginVertical: 12,
     },
 });
