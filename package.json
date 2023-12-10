@@ -22,6 +22,7 @@
     "react-native-animated-dots-carousel": "^1.0.2",
     "react-native-countdown-component": "^2.7.1",
     "react-native-gesture-handler": "^2.12.1",
+    "react-native-google-mobile-ads": "^12.6.0",
     "react-native-linear-gradient": "^2.8.2",
     "react-native-maps": "^1.7.1",
     "react-native-modal": "^13.0.1",

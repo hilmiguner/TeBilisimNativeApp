@@ -24,11 +24,15 @@ import LocalNews from "../components/news/LocalNews";
 import OtherNews from "../components/news/OtherNews";
 import LeagueScoreModule from "../components/others/LeagueScoreModule";
 
+// AdMob
+import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
+
 // Context
 import { Context } from "../store/context";
 
 // React Native Hooks
-import { useContext, useState } from "react";
+import { useContext } from "react";
+
 
 function MainScreen({ navigation }) {
   const leagueScoreData = [
@@ -346,12 +350,13 @@ function MainScreen({ navigation }) {
               </View>
             }
             <OtherNews/>
-            {/* <View style={[styles.emptyArea, { borderColor: ctx.panelSettings.themePrimaryColor }]}>
-              Empty Area Above Footer
-            </View> */}
             <View style={{ borderBottomWidth: 6, borderBottomColor: ctx.panelSettings.themePrimaryColor }}></View>
             <Footer>{ctx.panelSettings.footerShortDescription}</Footer>
           </ScrollView>
+          <BannerAd 
+            unitId={TestIds.ADAPTIVE_BANNER}
+            size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+          />
       </View>
   );
 }
