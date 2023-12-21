@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image, View, Text, StyleSheet, Dimensions } from "react-native";
+import { Image, View, Text, StyleSheet, Dimensions, Share } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -66,6 +66,11 @@ function NewsDetails({ data }) {
         setShowingComments((currentValue) => !currentValue);
     }
 
+    const shareOptions = {
+        title: data.title,
+        message: `${data.spot}\n${data.direct_link}`,
+    };
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
@@ -77,9 +82,9 @@ function NewsDetails({ data }) {
             </View>
             <Image style={styles.image} source={{ uri: data.image }}/>
             <View style={styles.toolsContainer}>
-                <IconButton iconBundle="Ionicons" size={42} icon="logo-facebook" color="#4474AE"/>
-                <IconButton iconBundle="Ionicons" size={42} icon="logo-twitter" color="#4B9EC5"/>
-                <IconButton iconBundle="Ionicons" size={42} icon="logo-whatsapp" color="#54B635"/>
+                <IconButton iconBundle="Ionicons" size={42} icon="share-social" color="#4474AE" onPress={
+                    () => Share.share(shareOptions)
+                }/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5" onPress={commentModalHandler}/>
             </View>

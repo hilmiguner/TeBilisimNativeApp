@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { ActivityIndicator, Dimensions, StyleSheet, Image, Text, View} from "react-native";
+import { ActivityIndicator, Dimensions, StyleSheet, Image, Text, View, Share} from "react-native";
 
 // React Native Hooks
 import { useContext, useEffect, useState } from "react";
@@ -51,15 +51,19 @@ function PhotoGalleryDetailsScreen({ route }) {
 
   if(data) {
     const images = data.resimler;
+    const shareOptions = {
+      title: data.baslik,
+      message: `${data.baslik}\n${data.direct_link}`,
+    };
     content = (
       <View style={styles.rootContainer}>
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>{data.baslik}</Text>
         </View>
         <View style={styles.toolsContainer}>
-          <IconButton iconBundle="Ionicons" size={42} icon="logo-facebook" color="#4474AE"/>
-          <IconButton iconBundle="Ionicons" size={42} icon="logo-twitter" color="#4B9EC5"/>
-          <IconButton iconBundle="Ionicons" size={42} icon="logo-whatsapp" color="#54B635"/>
+          <IconButton iconBundle="Ionicons" size={42} icon="share-social" color="#4474AE" onPress={
+            () => Share.share(shareOptions)
+          }/>
           <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
         </View>
         <FontModal isVisible={showingSlider} closeModalHandler={fontSizeButtonHandler}/>
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     },
     toolsContainer: {
       flexDirection: "row",
-      justifyContent: "space-between",
+      justifyContent: "space-around",
       padding: 8,
       backgroundColor: "white",
       elevation: 8,

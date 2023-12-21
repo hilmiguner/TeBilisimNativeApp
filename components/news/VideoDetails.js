@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image, View, Text, StyleSheet, Dimensions, ActivityIndicator } from "react-native";
+import { Image, View, Text, StyleSheet, Dimensions, ActivityIndicator, Share } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -64,6 +64,11 @@ function VideoDetails({ data }) {
         setShowingSlider((currentValue) => !currentValue);
     }
 
+    const shareOptions = {
+        title: data.baslik,
+        message: `${data.baslik}\n${data.direct_link}`,
+    };
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.topTextContainer}>
@@ -105,9 +110,9 @@ function VideoDetails({ data }) {
                 }
             </View>
             <View style={styles.toolsContainer}>
-                <IconButton iconBundle="Ionicons" size={42} icon="logo-facebook" color="#4474AE"/>
-                <IconButton iconBundle="Ionicons" size={42} icon="logo-twitter" color="#4B9EC5"/>
-                <IconButton iconBundle="Ionicons" size={42} icon="logo-whatsapp" color="#54B635"/>
+                <IconButton iconBundle="Ionicons" size={42} icon="share-social" color="#4474AE" onPress={
+                    () => Share.share(shareOptions)
+                }/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5"/>
             </View>
