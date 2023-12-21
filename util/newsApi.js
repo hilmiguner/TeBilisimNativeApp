@@ -1,8 +1,5 @@
 import axios from 'axios';
 import apiClient, { Url } from './client';
-import { Dimensions } from 'react-native';
-
-const {width, height} = Dimensions.get('screen');
 
 const getCurrentTime = () => {
     let today = new Date();

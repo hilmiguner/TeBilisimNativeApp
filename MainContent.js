@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image, ActivityIndicator, View, StatusBar, Pressable } from "react-native";
+import { Image, ActivityIndicator, View, StatusBar, Pressable, DevSettings, Platform } from "react-native";
 
 // Drawer Paketi için Gerekli Paket
 import 'react-native-gesture-handler';
