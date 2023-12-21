@@ -100,7 +100,7 @@ function MainScreen({ navigation }) {
               </ExpandableList>
             }
             { ctx.panelSettings.localNewsModule && 
-              <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü">
+              <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü" onPress={() => navigation.navigate("LocalNewsScreen")}>
                 <LocalNews/>
               </ExpandableList>
             }

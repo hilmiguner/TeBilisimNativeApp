@@ -32,6 +32,7 @@ import FeaturedNewsScreen from "./screens/FeaturedNewsScreen";
 import TrendNewsScreen from "./screens/TrendNewsScreen";
 import CustomHeader from "./components/CustomHeader";
 import PhotoGalleryDetailsScreen from "./screens/PhotoGalleryDetailsScreen";
+import LocalNewsScreen from "./screens/LocalNewsScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -245,6 +246,32 @@ function StackNavigator() {
             <Stack.Screen 
                 name="TrendNewsScreen" 
                 component={TrendNewsScreen}
+                options={({ navigation}) =>( {
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
+                })}
+            />
+            <Stack.Screen 
+                name="LocalNewsScreen" 
+                component={LocalNewsScreen}
                 options={({ navigation}) =>( {
                     header: () => CustomHeader({ 
                         left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
