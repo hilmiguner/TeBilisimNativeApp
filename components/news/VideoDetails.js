@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image, View, Text, StyleSheet, Dimensions } from "react-native";
+import { Image, View, Text, StyleSheet, Dimensions, ActivityIndicator } from "react-native";
 
 // Oluşturulan Öğeler
 import IconButton from "../IconButton";
@@ -21,6 +21,7 @@ import { Context } from "../../store/context";
 function VideoDetails({ data }) {
     const screenWidth = Dimensions.get("window").width;
     const [showingSlider, setShowingSlider] = useState(false);
+    const [showingLoader, setShowingLoader] = useState(true);
 
     const ctx = useContext(Context);
 
@@ -72,16 +73,37 @@ function VideoDetails({ data }) {
                 <Text style={[styles.spotText, { display: data.spot ? "flex" : "none" }]}>{data.spot}</Text>
                 <Text>{newsDateTime.toLocaleDateString("tr-TR" , { dateStyle: "long"})}</Text>
             </View>
-            <Video 
-                source={{uri:data.dosya}}
-                controls={true}
-                paused={true}
-                resizeMode="contain"
-                style={{
-                    width: screenWidth,
-                    height: (1080*screenWidth)/1920,
-                }}
-            />
+            <View>
+                <View style={{ zIndex: 0 }}>
+                    <Video 
+                        source={{uri:data.dosya}}
+                        controls={true}
+                        paused={true}
+                        resizeMode="contain"
+                        style={{
+                            width: screenWidth,
+                            height: (1080*screenWidth)/1920,
+                        }}
+                        poster={data.resim}
+                        onLoad={() => setShowingLoader(false)}
+                    />
+                </View>
+                {   
+                    showingLoader
+                    &&
+                    <View style={{ 
+                        width: screenWidth, 
+                        height: (1080*screenWidth)/1920, 
+                        backgroundColor: "rgba(0, 0, 0, 0.8)", 
+                        zIndex: 1, 
+                        position: "absolute", 
+                        alignItems: "center", 
+                        justifyContent: "center"
+                    }}>
+                        <ActivityIndicator size={50}/>
+                    </View>
+                }
+            </View>
             <View style={styles.toolsContainer}>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-facebook" color="#4474AE"/>
                 <IconButton iconBundle="Ionicons" size={42} icon="logo-twitter" color="#4B9EC5"/>
@@ -92,10 +114,6 @@ function VideoDetails({ data }) {
             <FontModal isVisible={showingSlider} closeModalHandler={fontSizeButtonHandler}/>
             <View style={styles.renderHtmlContainer}>
                 <RenderHTML tagsStyles={tagStyles} classesStyles={classesStyles} source={htmlSource} contentWidth={screenWidth}/>
-            </View>
-            <View style={styles.bottomButtonsContainer}>
-                <BorderButton title="YORUM YAP"/>
-                <BorderButton title={`YORUM OKU (${data.comment_count})`}/>
             </View>
         </View>
     );
