@@ -31,6 +31,7 @@ import DailyNewsScreen from "./screens/DailyNewsScreen";
 import FeaturedNewsScreen from "./screens/FeaturedNewsScreen";
 import TrendNewsScreen from "./screens/TrendNewsScreen";
 import CustomHeader from "./components/CustomHeader";
+import PhotoGalleryDetailsScreen from "./screens/PhotoGalleryDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -94,6 +95,32 @@ function StackNavigator() {
             <Stack.Screen 
                 name="ArticleDetailsScreen" 
                 component={ArticleDetailsScreen}
+                options={({ navigation}) =>( {
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        right: <IconButton icon="chevron-back" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.goBack} iconBundle="Ionicons"/>,
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
+                })}
+            />
+            <Stack.Screen 
+                name="GalleryDetailsScreen" 
+                component={PhotoGalleryDetailsScreen}
                 options={({ navigation}) =>( {
                     header: () => CustomHeader({ 
                         left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
@@ -334,9 +361,9 @@ function PhotoGalleryStackNavigator() {
                 component={PhotoGalleryScreen}
             />
             <Stack.Screen 
-                name="NewsDetailsScreen" 
-                component={NewsDetailsScreen}
-                options={({ navigation }) =>( {
+                name="GalleryDetailsScreen" 
+                component={PhotoGalleryDetailsScreen}
+                options={({ navigation}) =>( {
                     header: () => CustomHeader({ 
                         left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
                         center: (

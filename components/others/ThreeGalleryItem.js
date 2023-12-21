@@ -20,8 +20,7 @@ function ThreeGalleryItem({ itemData, imageStyle }) {
     const image = itemData.kapak;
     const title = itemData.baslik;
     return(
-        // <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.id)}>
-        <Pressable style={styles.rootContainer} onPress={null}>
+        <Pressable style={styles.rootContainer} onPress={ctx.navigateGalleryDetailScreen.bind(this, navigation, itemData.id)}>
             <View>
                 <Image style={[styles.image, imageStyle]} source={{ uri: image }}/>
                 <View style={styles.iconContainer}>

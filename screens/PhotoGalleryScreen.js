@@ -2,7 +2,7 @@
 import { ActivityIndicator, ScrollView } from "react-native";
 
 // React Native Hooks
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // API
 import newsApi from "../util/newsApi";

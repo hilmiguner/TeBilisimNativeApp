@@ -22,12 +22,12 @@ function DailyNewsScreen({ navigation }) {
     let content = <ActivityIndicator/>;
 
     if(news) {
-        const carouselData = news.length > 10 ? news.slice(0, 10) : news;
-        const otherData = news.length > 10 ? news.slice(10, news.length) : null;
+        const carouselData = news.length > 10 ? news.slice(0, 10) : null;
+        const otherData = news.length > 10 ? news.slice(10, news.length) : news;
         content = (
             <ScrollView>
-                <CarouselDailyNews data={carouselData}/>
-                { otherData && <OtherDailyNews newsData={otherData}/> }
+                {carouselData && <CarouselDailyNews data={carouselData}/>}
+                <OtherDailyNews newsData={otherData}/>
             </ScrollView>
         );   
     }

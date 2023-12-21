@@ -13,6 +13,7 @@ export const Context = createContext({
     manageFontSizes: (fontSizes) => {},
     navigateNewsDetailScreen: (navigation, id, isPushing) => {},
     navigateArticleDetailScreen: (navigation, id, isPushing) => {},
+    navigateGalleryDetailScreen: (navigation, id, isPushing) => {},
     navigateVideoDetailScreen: (navigation, id, isPushing) => {},
 });
 
@@ -55,6 +56,15 @@ function ContextProvider({ children }) {
         }
     }
 
+    function navigateGalleryDetailScreen(navigation, id, isPushing) {
+        if(isPushing) {
+            navigation.push("GalleryDetailsScreen", { galleryID: id });
+        }
+        else {
+            navigation.navigate("GalleryDetailsScreen", { galleryID: id });
+        }
+    }
+
     function navigateVideoDetailScreen(navigation, id, isPushing) {
         if(isPushing) {
             navigation.push("VideoDetailsScreen", { videoID: id });
@@ -74,6 +84,7 @@ function ContextProvider({ children }) {
         manageFontSizes: manageFontSizes,
         navigateNewsDetailScreen: navigateNewsDetailScreen,
         navigateArticleDetailScreen: navigateArticleDetailScreen,
+        navigateGalleryDetailScreen: navigateGalleryDetailScreen,
         navigateVideoDetailScreen: navigateVideoDetailScreen,
     };
 

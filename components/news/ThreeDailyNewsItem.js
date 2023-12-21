@@ -14,10 +14,12 @@ function ThreeDailyNewsItem({ itemData, imageStyle }) {
     const ctx = useContext(Context);
     const navigation = useNavigation();
 
+    console.log(itemData);
+
     const image = itemData.image;
     const title = itemData.name;
     return(
-        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.id)}>
+        <Pressable style={styles.rootContainer} onPress={ctx.navigateNewsDetailScreen.bind(this, navigation, itemData.reference_id)}>
             <View>
                 <Image style={[imageStyle]} source={{ uri: image }}/>
             </View>
