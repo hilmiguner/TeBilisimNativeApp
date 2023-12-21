@@ -104,7 +104,7 @@ function PrayerTimes() {
         };
 
         const nextTimeData = whichTimeInterval(timeIntervals, currentDateTime);
-        const statusText = nextTimeData != "next-day" ? `${nextTimeData.nextIntervalKey.charAt(0).toUpperCase()}${nextTimeData.nextIntervalKey.slice(1)} vaktine kalan süre` : nextTimeData;
+        const statusText = nextTimeData != "next-day" ? `${nextTimeData.nextIntervalKey.charAt(0).toUpperCase()}${nextTimeData.nextIntervalKey.slice(1)} vaktine kalan süre` : "Bugün başka vakit yok";
         mainContent = (
             <>
                 <View style={styles.statusContainer}>
