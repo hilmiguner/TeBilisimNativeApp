@@ -34,6 +34,7 @@ import CustomHeader from "./components/CustomHeader";
 import PhotoGalleryDetailsScreen from "./screens/PhotoGalleryDetailsScreen";
 import LocalNewsScreen from "./screens/LocalNewsScreen";
 import CustomDrawerContent from "./components/CustomDrawerContent";
+import CategoryNewsScreen from "./screens/CategoryNewsScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -296,6 +297,32 @@ function StackNavigator() {
                     })
                 })}
             />
+            <Stack.Screen 
+                name="CategoryNewsScreen" 
+                component={CategoryNewsScreen}
+                options={({ navigation}) =>( {
+                    header: () => CustomHeader({ 
+                        left: <IconButton icon="menu" size={32} color={ctx.panelSettings.themePrimaryColor} onPress={navigation.toggleDrawer} iconBundle="Ionicons"/>,
+                        center: (
+                            <Pressable onPress={() => {
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'StackNavigator' }],
+                                });
+                            }}>
+                                <Image source={require("./assets/images/logo.png")} style={{
+                                    width: 112,
+                                    height: 30,
+                                    resizeMode: 'stretch',
+                                }}/>
+                            </Pressable>
+                        ),
+                        
+                        backgroundColor: ctx.panelSettings.headerAndStatusBarBG_Color,
+                        useSafeArea: true,
+                    })
+                })}
+            />
         </Stack.Navigator>
     );
 }
@@ -497,12 +524,12 @@ function MainContent() {
                 <NavigationContainer>  
                     <Drawer.Navigator 
                     drawerContent={(props) => CustomDrawerContent(props)}
-                    screenOptions={({navigation}) => ({
+                    screenOptions={{
                         headerShown: false,
                         drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
                         // drawerActiveTintColor: ctx.panelSettings.menuTextColor,
                         drawerActiveTintColor: "white",
-                    })}>
+                    }}>
                         <Drawer.Screen name='StackNavigator' component={StackNavigator} options={{
                             drawerLabel: "ANASAYFA",
                         }}/>

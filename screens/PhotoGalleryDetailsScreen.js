@@ -25,7 +25,7 @@ function RenderItem({ imageUri, text, fontSize}) {
     <View>
       <Image style={styles.image} source={{ uri: imageUri }} />
       <View style={{ padding: 12}}>
-        <Text style={{ fontSize: fontSize}}>{text}</Text>
+        <Text style={{ fontSize: fontSize, color: "black" }}>{text}</Text>
       </View>
     </View>
   );
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     titleText: {
       fontWeight: "bold",
       fontSize: 20,
+      color: "black",
     },
     image: {
       width: screenWidth,

@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     authorNameText: {
         textDecorationLine: "underline",
         fontSize: 18,
+        color: "black",
     },
     title: {
         flexWrap: "wrap",

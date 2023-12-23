@@ -114,7 +114,6 @@ function VideoDetails({ data }) {
                     () => Share.share(shareOptions)
                 }/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
-                <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5"/>
             </View>
             <FontModal isVisible={showingSlider} closeModalHandler={fontSizeButtonHandler}/>
             <View style={styles.renderHtmlContainer}>
@@ -155,7 +154,7 @@ const styles = StyleSheet.create({
     },
     toolsContainer: {
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         padding: 8,
         marginBottom: 24,
         elevation: 8,

@@ -78,15 +78,10 @@ function ArticleDetails({ data }) {
                     () => Share.share(shareOptions)
                 }/>
                 <IconButton iconBundle="MaterialIcons" size={42} icon="text-fields" color="#757272" onPress={fontSizeButtonHandler}/>
-                <IconButton iconBundle="MaterialIcons" size={42} icon="comment" color="#4B9EC5"/>
             </View>
             <FontModal isVisible={showingSlider} closeModalHandler={fontSizeButtonHandler}/>
             <View style={styles.renderHtmlContainer}>
                 <RenderHTML tagsStyles={tagStyles} classesStyles={classesStyles} source={htmlSource} contentWidth={screenWidth}/>
-            </View>
-            <View style={styles.bottomButtonsContainer}>
-                <BorderButton title="YORUM YAP"/>
-                <BorderButton title={`YORUM OKU (${data.comment_count})`}/>
             </View>
         </View>
     );
@@ -128,7 +123,7 @@ const styles = StyleSheet.create({
     },
     toolsContainer: {
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         padding: 8,
         marginBottom: 24,
         elevation: 8,
@@ -140,9 +135,5 @@ const styles = StyleSheet.create({
     },
     renderHtmlContainer: {
         padding: 8,
-    },
-    bottomButtonsContainer: {
-        flexDirection: "row",
-        justifyContent: "space-around",
     },
 });

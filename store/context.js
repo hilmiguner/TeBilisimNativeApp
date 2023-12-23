@@ -15,6 +15,7 @@ export const Context = createContext({
     navigateArticleDetailScreen: (navigation, id, isPushing) => {},
     navigateGalleryDetailScreen: (navigation, id, isPushing) => {},
     navigateVideoDetailScreen: (navigation, id, isPushing) => {},
+    navigateCategoryNewsScreen: (navigation, id, isPushing) => {},
 });
 
 function ContextProvider({ children }) {
@@ -74,6 +75,15 @@ function ContextProvider({ children }) {
         }
     }
 
+    function navigateCategoryNewsScreen(navigation, id, isPushing) {
+        if(isPushing) {
+            navigation.push("CategoryNewsScreen", { catID: id });
+        }
+        else {
+            navigation.navigate("CategoryNewsScreen", { catID: id });
+        }
+    }
+
     const value = {
         currentCity: cityName,
         panelSettings: panelSettings,
@@ -86,6 +96,7 @@ function ContextProvider({ children }) {
         navigateArticleDetailScreen: navigateArticleDetailScreen,
         navigateGalleryDetailScreen: navigateGalleryDetailScreen,
         navigateVideoDetailScreen: navigateVideoDetailScreen,
+        navigateCategoryNewsScreen: navigateCategoryNewsScreen,
     };
 
     return <Context.Provider value={value}>{children}</Context.Provider>
