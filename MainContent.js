@@ -33,6 +33,7 @@ import TrendNewsScreen from "./screens/TrendNewsScreen";
 import CustomHeader from "./components/CustomHeader";
 import PhotoGalleryDetailsScreen from "./screens/PhotoGalleryDetailsScreen";
 import LocalNewsScreen from "./screens/LocalNewsScreen";
+import CustomDrawerContent from "./components/CustomDrawerContent";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -494,7 +495,9 @@ function MainContent() {
             <>
                 <StatusBar barStyle={ctx.panelSettings.iosStatusBarContentColor} backgroundColor={ctx.panelSettings.mobile_app_bar_style_color}/>
                 <NavigationContainer>  
-                    <Drawer.Navigator screenOptions={({navigation}) => ({
+                    <Drawer.Navigator 
+                    drawerContent={(props) => CustomDrawerContent(props)}
+                    screenOptions={({navigation}) => ({
                         headerShown: false,
                         drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
                         // drawerActiveTintColor: ctx.panelSettings.menuTextColor,
