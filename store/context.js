@@ -3,14 +3,24 @@ import { getCity } from "../util/location";
 import newsApi from "../util/newsApi";
 import setSettings from "../util/panelSettings";
 
+let leaguesLoaded = {
+    sl: false,
+    fl: false,
+    pl: false,
+    bl: false,
+    ll: false,
+};
+
 export const Context = createContext({
     currentCity: "",
     panelSettings: "",
     fontSizes: {},
+    isAppLoaded: {},
     setCityCTX: (name) => {},
     getCityCTX: () => {},
     getPanelSettings: () => {},
     manageFontSizes: (fontSizes) => {},
+    setAppLoader: (flag) => {},
     navigateNewsDetailScreen: (navigation, id, isPushing) => {},
     navigateArticleDetailScreen: (navigation, id, isPushing) => {},
     navigateGalleryDetailScreen: (navigation, id, isPushing) => {},
@@ -22,6 +32,13 @@ function ContextProvider({ children }) {
     const [cityName, setCityName] = useState();
     const [panelSettings, setPanelSettings] = useState();
     const [fontSizes, setFontSizes] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
+    const [isAppLoaded, setIsAppLoaded] = useState({
+        sl: false,
+        fl: false,
+        pl: false,
+        bl: false,
+        ll: false,
+    });
 
     function setCityCTX(name) {
         setCityName(name);
@@ -37,6 +54,14 @@ function ContextProvider({ children }) {
 
     function manageFontSizes(fontSize) {
         setFontSizes({ smallTextFontSize: fontSize, bigTextFontSize: fontSize+2 });
+    }
+
+    function setAppLoader(key, flag) {
+        leaguesLoaded[key] = flag;
+        if(Object.keys(leaguesLoaded).every((key) => leaguesLoaded[key] == true))
+        {
+            setIsAppLoaded(leaguesLoaded);
+        }
     }
 
     function navigateNewsDetailScreen(navigation, id, isPushing) {
@@ -88,10 +113,12 @@ function ContextProvider({ children }) {
         currentCity: cityName,
         panelSettings: panelSettings,
         fontSizes: fontSizes,
+        isAppLoaded: isAppLoaded,
         setCityCTX: setCityCTX,
         getCityCTX: getCityCTX,
         getPanelSettings: getPanelSettings,
         manageFontSizes: manageFontSizes,
+        setAppLoader: setAppLoader,
         navigateNewsDetailScreen: navigateNewsDetailScreen,
         navigateArticleDetailScreen: navigateArticleDetailScreen,
         navigateGalleryDetailScreen: navigateGalleryDetailScreen,

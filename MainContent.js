@@ -1,5 +1,5 @@
 // React Native Temel Paketler
-import { Image, ActivityIndicator, View, StatusBar, Pressable, DevSettings, Platform } from "react-native";
+import { Image, ActivityIndicator, View, StatusBar, Pressable, DevSettings, Platform, Dimensions, Text } from "react-native";
 
 // Drawer Paketi için Gerekli Paket
 import 'react-native-gesture-handler';
@@ -35,6 +35,9 @@ import PhotoGalleryDetailsScreen from "./screens/PhotoGalleryDetailsScreen";
 import LocalNewsScreen from "./screens/LocalNewsScreen";
 import CustomDrawerContent from "./components/CustomDrawerContent";
 import CategoryNewsScreen from "./screens/CategoryNewsScreen";
+
+const screenWidth = Dimensions.get("screen").width;
+const screenHeight = Dimensions.get("screen").height;
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -517,33 +520,54 @@ function MainContent() {
           <ActivityIndicator />
         </View>
     );
+
+    const loadingScreen = (
+        <View style={{ zIndex: 1, position: "absolute", width: screenWidth, height: screenHeight, justifyContent: "center", alignItems: "center", backgroundColor: "white"}}>
+            <Image 
+                source={require("./assets/images/logo.png")}
+                style={{
+                    width: 224,
+                    height: 60,
+                    marginBottom: 20,
+                }}
+            />
+            <View style={{ flexDirection: "row", justifyContent: "center"}}>
+                <Text style={{ marginRight: 20, fontWeight: "bold", fontSize: 24, color: "black" }}>Haberler yükleniyor</Text>
+                <ActivityIndicator />
+            </View>
+        </View>
+    );
+    
     if(ctx.panelSettings) {
         mainContent = (
             <>
                 <StatusBar barStyle={ctx.panelSettings.iosStatusBarContentColor} backgroundColor={ctx.panelSettings.mobile_app_bar_style_color}/>
-                <NavigationContainer>  
-                    <Drawer.Navigator 
-                    drawerContent={(props) => CustomDrawerContent(props)}
-                    screenOptions={{
-                        headerShown: false,
-                        drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
-                        // drawerActiveTintColor: ctx.panelSettings.menuTextColor,
-                        drawerActiveTintColor: "white",
-                    }}>
-                        <Drawer.Screen name='StackNavigator' component={StackNavigator} options={{
-                            drawerLabel: "ANASAYFA",
-                        }}/>
-                        <Drawer.Screen name='PhotoGalleryStackNavigator' component={PhotoGalleryStackNavigator} options={{ 
-                            drawerLabel: "FOTO GALERİ",
-                        }}/>
-                        <Drawer.Screen name='VideoGalleryStackNavigator' component={VideoGalleryStackNavigator} options={{ 
-                            drawerLabel: "VİDEO GALERİ",
-                        }}/>
-                        <Drawer.Screen name='AuthorsStackNavigator' component={AuthorsStackNavigator} options={{ 
-                            drawerLabel: "YAZARLARIMIZ",
-                        }}/>
-                    </Drawer.Navigator>
-                </NavigationContainer>
+                { Object.keys(ctx.isAppLoaded).some((key) => ctx.isAppLoaded[key] == false) ? loadingScreen : null }
+                <View style={{ zIndex: 0, flex: 1, }}>
+                    <NavigationContainer>
+                        <Drawer.Navigator 
+                        drawerContent={(props) => CustomDrawerContent(props)}
+                        screenOptions={{
+                            headerShown: false,
+                            drawerActiveBackgroundColor: ctx.panelSettings.themePrimaryColor,
+                            // drawerActiveTintColor: ctx.panelSettings.menuTextColor,
+                            drawerActiveTintColor: "white",
+                        }}>
+                            <Drawer.Screen name='StackNavigator' component={StackNavigator} options={{
+                                drawerLabel: "ANASAYFA",
+                            }}/>
+                            <Drawer.Screen name='PhotoGalleryStackNavigator' component={PhotoGalleryStackNavigator} options={{ 
+                                drawerLabel: "FOTO GALERİ",
+                            }}/>
+                            <Drawer.Screen name='VideoGalleryStackNavigator' component={VideoGalleryStackNavigator} options={{ 
+                                drawerLabel: "VİDEO GALERİ",
+                            }}/>
+                            <Drawer.Screen name='AuthorsStackNavigator' component={AuthorsStackNavigator} options={{ 
+                                drawerLabel: "YAZARLARIMIZ",
+                            }}/>
+                        </Drawer.Navigator>
+                    </NavigationContainer>
+                </View>
             </>
         );
       }

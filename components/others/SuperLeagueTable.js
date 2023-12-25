@@ -5,10 +5,12 @@ import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-nat
 import AppColors from "../../constants/colors";
 
 // React Native Hooks
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // API
 import newsApi from "../../util/newsApi";
+
+import { Context } from "../../store/context";
 
 function renderItem(item, listLength, itemCount) {
     const isDarkBackground = itemCount % 2 == 1 ? true : false;
@@ -34,8 +36,12 @@ function renderItem(item, listLength, itemCount) {
 function SuperLeagueTable() {
     const [data, setData] = useState();
     useEffect(() => {
-        newsApi.getStandings("st-super-lig").then((respondData) => setData(respondData));
+        newsApi.getStandings("st-super-lig").then((respondData) => {
+            ctx.setAppLoader("sl", true);
+            setData(respondData);
+        });
     }, []);
+    const ctx = useContext(Context);
 
     let content = <ActivityIndicator />;
 

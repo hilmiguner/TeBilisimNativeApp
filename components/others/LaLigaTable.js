@@ -5,10 +5,12 @@ import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-nat
 import AppColors from "../../constants/colors";
 
 // React Native Hooks
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 // API
 import newsApi from "../../util/newsApi";
+
+import { Context } from "../../store/context";
 
 function renderItem(item, listLength, itemCount) {
     const isDarkBackground = itemCount % 2 == 1 ? true : false;
@@ -33,8 +35,12 @@ function renderItem(item, listLength, itemCount) {
 
 function LaLigaTable() {
     const [data, setData] = useState();
+    const ctx = useContext(Context);
     useEffect(() => {
-        newsApi.getStandings("ispanya-la-liga").then((respondData) => setData(respondData));
+        newsApi.getStandings("ispanya-la-liga").then((respondData) => {
+            ctx.setAppLoader("ll", true);
+            setData(respondData);
+        });
     }, []);
 
     let content = <ActivityIndicator />;

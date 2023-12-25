@@ -5,10 +5,12 @@ import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-nat
 import AppColors from "../../constants/colors";
 
 // React Native Hooks
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 // API
 import newsApi from "../../util/newsApi";
+
+import { Context } from "../../store/context";
 
 function renderItem(item, listLength, itemCount) {
     const isDarkBackground = itemCount % 2 == 1 ? true : false;
@@ -34,8 +36,12 @@ function renderItem(item, listLength, itemCount) {
 function PremiereLeagueTable() {
     const [data, setData] = useState();
     useEffect(() => {
-        newsApi.getStandings("ingiltere-premier-ligi").then((respondData) => setData(respondData));
+        newsApi.getStandings("ingiltere-premier-ligi").then((respondData) => {
+            ctx.setAppLoader("pl", true);
+            setData(respondData);
+        });
     }, []);
+    const ctx = useContext(Context);
 
     let content = <ActivityIndicator />;
 

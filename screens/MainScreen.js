@@ -31,12 +31,13 @@ import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
 import { Context } from "../store/context";
 
 // React Native Hooks
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 
 function MainScreen({ navigation }) {
+  const [isBannerAdLoaded, setIsBannerLoaded] = useState(false);
   const drawerNav = navigation.getParent();
-
+  
   const ctx = useContext(Context);
   
   let currencyContent;
@@ -44,86 +45,89 @@ function MainScreen({ navigation }) {
   else currencyContent = <CurrencySlider/>
 
   return(
-      <View style={styles.rootContainer}>
-          <ScrollView 
-            showsVerticalScrollIndicator={false} 
-            refreshControl={
-              <RefreshControl refreshing={false} onRefresh={() => {
-                navigation.reset({
-                  index: 0,
-                  routes: [{ name: 'StackNavigator' }],
-                });
-              }}/>
-            }
-          >
-            { ctx.panelSettings.breakingNewsModule && <BreakingNews/> }
-            { ctx.panelSettings.topCuffsModule && <SliderTopHeadlines/> }
-            { ctx.panelSettings.quintipleCuffsModule && 
-              <View style={styles.carouselContainer}>
-                <SliderQuintipleHeadlines/>
-              </View>
-            }
-            { currencyContent }
-            <MainHeadlines/>
-            { ctx.panelSettings.dailyCuffsModule && 
-              <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü" onPress={() => navigation.navigate("DailyNewsScreen")}>
-                <SliderDailyNews/>
+    <View style={styles.rootContainer}>
+        <ScrollView 
+          showsVerticalScrollIndicator={false} 
+          refreshControl={
+            <RefreshControl refreshing={false} onRefresh={() => {
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'StackNavigator' }],
+              });
+            }}/>
+          }
+        >
+          { ctx.panelSettings.breakingNewsModule && <BreakingNews/> }
+          { ctx.panelSettings.topCuffsModule && <SliderTopHeadlines/> }
+          { ctx.panelSettings.quintipleCuffsModule && 
+            <View style={styles.carouselContainer}>
+              <SliderQuintipleHeadlines/>
+            </View>
+          }
+          { currencyContent }
+          <MainHeadlines/>
+          { ctx.panelSettings.dailyCuffsModule && 
+            <ExpandableList title="Günün Manşetleri" expandButtonTitle="Tümü" onPress={() => navigation.navigate("DailyNewsScreen")}>
+              <SliderDailyNews/>
+            </ExpandableList>
+          }
+          { ctx.panelSettings.authorsModule && 
+            <ExpandableList title="Yazarlar" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("AuthorsStackNavigator")}>
+              <Authors/>
+            </ExpandableList>
+          }
+          { ctx.panelSettings.videosModule && 
+            <View style={styles.videoGalleryContainer}>
+              <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("VideoGalleryStackNavigator")}>
+                <SliderVideoGallery/>
               </ExpandableList>
-            }
-            { ctx.panelSettings.authorsModule && 
-              <ExpandableList title="Yazarlar" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("AuthorsStackNavigator")}>
-                <Authors/>
+            </View>
+          }
+          { ctx.panelSettings.galleriesModule && 
+            <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("PhotoGalleryStackNavigator")}>
+              <PhotoGallery/>
+            </ExpandableList>
+          }
+          { ctx.panelSettings.highlightedNewsModule && 
+            <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor, }}>
+              <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} onPress={() => navigation.navigate("FeaturedNewsScreen")}>
+                <VerticalFeatured/>
               </ExpandableList>
-            }
-            { ctx.panelSettings.videosModule && 
-              <View style={styles.videoGalleryContainer}>
-                <ExpandableList titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} title="Video Galeri" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("VideoGalleryStackNavigator")}>
-                  <SliderVideoGallery/>
-                </ExpandableList>
-              </View>
-            }
-            { ctx.panelSettings.galleriesModule && 
-              <ExpandableList title="Foto Galeri" expandButtonTitle="Tümü" onPress={() => drawerNav.navigate("PhotoGalleryStackNavigator")}>
-                <PhotoGallery/>
+            </View>
+          }
+          { ctx.panelSettings.trendNewsModule && 
+            <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü" onPress={() => navigation.navigate("TrendNewsScreen")}>
+              <TrendNews/>
+            </ExpandableList>
+          }
+          { ctx.panelSettings.localNewsModule && 
+            <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü" onPress={() => navigation.navigate("LocalNewsScreen")}>
+              <LocalNews/>
+            </ExpandableList>
+          }
+          { ctx.panelSettings.weatherModule && <Weather/> }
+          { ctx.panelSettings.tabbedNewsModule && <TabbedNews/> }
+          { ctx.panelSettings.prayerTimesModule && <PrayerTimes/> }
+          { ctx.panelSettings.leagueScoreStatusModule && <LeagueScoreModule/> }
+          { ctx.panelSettings.highlightedNewsModule && 
+            <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor }}>
+              <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} onPress={() => navigation.navigate("FeaturedNewsScreen")}>
+                <SliderHighlights />
               </ExpandableList>
-            }
-            { ctx.panelSettings.highlightedNewsModule && 
-              <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor, }}>
-                <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} onPress={() => navigation.navigate("FeaturedNewsScreen")}>
-                  <VerticalFeatured/>
-                </ExpandableList>
-              </View>
-            }
-            { ctx.panelSettings.trendNewsModule && 
-              <ExpandableList title="Trend Haberler" expandButtonTitle="Tümü" onPress={() => navigation.navigate("TrendNewsScreen")}>
-                <TrendNews/>
-              </ExpandableList>
-            }
-            { ctx.panelSettings.localNewsModule && 
-              <ExpandableList title="Yerel Haberler" expandButtonTitle="Tümü" onPress={() => navigation.navigate("LocalNewsScreen")}>
-                <LocalNews/>
-              </ExpandableList>
-            }
-            { ctx.panelSettings.weatherModule && <Weather/> }
-            { ctx.panelSettings.tabbedNewsModule && <TabbedNews/> }
-            { ctx.panelSettings.prayerTimesModule && <PrayerTimes/> }
-            { ctx.panelSettings.leagueScoreStatusModule && <LeagueScoreModule/> }
-            { ctx.panelSettings.highlightedNewsModule && 
-              <View style={{ backgroundColor: ctx.panelSettings.themePrimaryColor }}>
-                <ExpandableList title="Öne Çıkanlar" expandButtonTitle="Tümü" titleTextStyle={{ color: "white" }} buttonTextStyle={{ color: "white" }} onPress={() => navigation.navigate("FeaturedNewsScreen")}>
-                  <SliderHighlights />
-                </ExpandableList>
-              </View>
-            }
-            <OtherNews/>
-            <View style={{ borderBottomWidth: 6, borderBottomColor: ctx.panelSettings.themePrimaryColor }}></View>
-            <Footer>{ctx.panelSettings.footerShortDescription}</Footer>
-          </ScrollView>
+            </View>
+          }
+          <OtherNews/>
+          <View style={{ borderBottomWidth: 6, borderBottomColor: ctx.panelSettings.themePrimaryColor }}></View>
+          <Footer>{ctx.panelSettings.footerShortDescription}</Footer>
+        </ScrollView>
+        <View style={{ height: isBannerAdLoaded ? null : 0 }}>
           <BannerAd 
             unitId={TestIds.ADAPTIVE_BANNER}
             size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+            onAdLoaded={() => setIsBannerLoaded(true)}
           />
-      </View>
+        </View>
+    </View>
   );
 }
 
