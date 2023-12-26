@@ -512,14 +512,9 @@ function MainContent() {
     useEffect(() => {
         if(!ctx.panelSettings) {
             ctx.getPanelSettings();
+            ctx.setAppLoader("settings", true);
         }
     }, [ctx.panelSettings]);
-
-    let mainContent = (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <ActivityIndicator />
-        </View>
-    );
 
     const loadingScreen = (
         <View style={{ zIndex: 1, position: "absolute", width: screenWidth, height: screenHeight, justifyContent: "center", alignItems: "center", backgroundColor: "white"}}>
@@ -537,7 +532,24 @@ function MainContent() {
             </View>
         </View>
     );
-    
+
+    let mainContent = (
+        <View style={{ zIndex: 1, position: "absolute", width: screenWidth, height: screenHeight, justifyContent: "center", alignItems: "center", backgroundColor: "white"}}>
+            <Image 
+                source={require("./assets/images/logo.png")}
+                style={{
+                    width: 224,
+                    height: 60,
+                    marginBottom: 20,
+                }}
+            />
+            <View style={{ flexDirection: "row", justifyContent: "center"}}>
+                <Text style={{ marginRight: 20, fontWeight: "bold", fontSize: 24, color: "black" }}>Veriler yükleniyor</Text>
+                <ActivityIndicator />
+            </View>
+        </View>
+    );
+
     if(ctx.panelSettings) {
         mainContent = (
             <>

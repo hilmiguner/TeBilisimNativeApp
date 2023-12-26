@@ -3,7 +3,8 @@ import { getCity } from "../util/location";
 import newsApi from "../util/newsApi";
 import setSettings from "../util/panelSettings";
 
-let leaguesLoaded = {
+let appLoadingObject = {
+    settings: false,
     sl: false,
     fl: false,
     pl: false,
@@ -33,6 +34,7 @@ function ContextProvider({ children }) {
     const [panelSettings, setPanelSettings] = useState();
     const [fontSizes, setFontSizes] = useState({ smallTextFontSize: 18, bigTextFontSize: 20 });
     const [isAppLoaded, setIsAppLoaded] = useState({
+        settings: false,
         sl: false,
         fl: false,
         pl: false,
@@ -57,10 +59,10 @@ function ContextProvider({ children }) {
     }
 
     function setAppLoader(key, flag) {
-        leaguesLoaded[key] = flag;
-        if(Object.keys(leaguesLoaded).every((key) => leaguesLoaded[key] == true))
+        appLoadingObject[key] = flag;
+        if(Object.keys(appLoadingObject).every((key) => appLoadingObject[key] == true))
         {
-            setIsAppLoaded(leaguesLoaded);
+            setIsAppLoaded(appLoadingObject);
         }
     }
 
